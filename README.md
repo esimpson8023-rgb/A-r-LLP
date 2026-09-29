@@ -39,3 +39,7 @@ Placeholder content that must be replaced before publishing (the page labels the
 - Service and industry descriptions in the `SERVICES` and `INDUSTRIES` objects in the script
 
 The hero uses a built-in illustration rather than a photo; swap in licensed photography if preferred. The contact form only simulates a submission; connect it to a form service or backend.
+
+### Branding (v3)
+
+`a-r-llp-v3.html` uses the firm logo (`assets/ar-llp-logo.png`, embedded in the page as a data URI) and a palette built around it: white backgrounds, warm charcoal text, logo gold (#B8924A) for fills and accents, and a deeper gold (#86672A) for small text so it stays readable on white. A higher-resolution or SVG version of the logo would render more sharply on high-density screens.
