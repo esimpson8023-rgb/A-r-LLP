@@ -20,3 +20,9 @@ A static, dependency-free marketing site for A&R LLP. Open `index.html` in a bro
 ## Single-file version (US CPA)
 
 `a-r-llp.html` is a self-contained alternative built with Tailwind CSS (CDN) and vanilla JS, styled for a US CPA firm (navy / slate / gold). Open it directly in a browser. Its address, phone, email, testimonials and insight articles are placeholders, and the contact form only simulates a submission; wire it to a form service or backend before going live.
+
+## Single-file version 2 (dark, interactive)
+
+`a-r-llp-v2.html` is a dark-mode, motion-heavy take on the same US CPA brief (obsidian navy with emerald and amber accents). It uses Tailwind CSS and Lucide icons from CDNs plus vanilla JS, and needs no build step. It includes an animated hero with live counters, tabbed service cards with a detail panel, a scroll-linked process timeline, a pricing estimator by client type, a testimonial carousel, and a contact form with floating labels.
+
+Before publishing, replace the placeholder contact details, the testimonials, the headline stats ($1B+, 500+, 99%, 15+), the dashboard figures in the hero, and the estimator's pricing formulas (the `EST` object in the script). The contact form only simulates a submission; connect it to a form service or backend.
