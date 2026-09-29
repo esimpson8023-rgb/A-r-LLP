@@ -1,0 +1,1061 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A&amp;R LLP | Accounting, Tax &amp; Advisory</title>
+  <meta name="description" content="A&amp;R LLP provides reliable accounting, tax, and advisory services designed to help individuals and businesses make smarter financial decisions.">
+  <meta name="theme-color" content="#FFFFFF">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B1B2B'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='26' fill='%23fff' text-anchor='middle'%3EA%26amp;R%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (window.tailwind) tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Newsreader', 'Georgia', 'serif']
+          },
+          colors: {
+            ink: '#0B1B2B',
+            paper: '#F7F8FA',
+            accent: { DEFAULT: '#0F6E5F', dark: '#0B574B', soft: '#E8F3F0' }
+          }
+        }
+      }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.460.0/dist/umd/lucide.min.js" defer></script>
+
+  <style>
+    :root { --ink: #0B1B2B; --accent: #0F6E5F; --accent-soft: #E8F3F0; --line: #E6E8EC; --ease: cubic-bezier(.22, .8, .24, 1); }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; overflow-x: clip; }
+    body { background: #fff; color: #475569; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+    ::selection { background: rgba(15,110,95,.16); color: var(--ink); }
+    .tabular { font-variant-numeric: tabular-nums; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 8px; }
+    .overline { font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); display: inline-flex; align-items: center; gap: .6rem; }
+    .overline::before { content: ''; width: 22px; height: 1px; background: currentColor; }
+
+    /* Buttons */
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; border-radius: 999px; font-weight: 500;
+      transition: transform .35s var(--ease), box-shadow .35s var(--ease), background-color .25s, color .25s, border-color .25s; }
+    .btn:active { transform: scale(.98); }
+    .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 1px 2px rgba(11,27,43,.12), 0 8px 20px -10px rgba(15,110,95,.6); }
+    .btn-primary:hover { background: #0B574B; transform: translateY(-1px); box-shadow: 0 2px 4px rgba(11,27,43,.1), 0 14px 28px -12px rgba(15,110,95,.7); }
+    .btn-outline { color: var(--ink); border: 1px solid #CBD2DA; background: #fff; }
+    .btn-outline:hover { border-color: var(--ink); transform: translateY(-1px); }
+    .btn .arrow { transition: transform .35s var(--ease); }
+    .btn:hover .arrow { transform: translateX(3px); }
+
+    /* Header */
+    #header { transition: background-color .4s, box-shadow .4s, border-color .4s; border-bottom: 1px solid transparent; }
+    #header.scrolled { background: rgba(255,255,255,.86); backdrop-filter: blur(14px) saturate(160%); -webkit-backdrop-filter: blur(14px) saturate(160%);
+      border-color: var(--line); box-shadow: 0 6px 24px -18px rgba(11,27,43,.35); }
+    #header .bar-h { height: 72px; transition: height .4s var(--ease); }
+    #header.scrolled .bar-h { height: 60px; }
+    #progress { transform: scaleX(0); transform-origin: left; }
+    @media (max-width: 639px) { .hdr-cta { display: none; } }
+    .nav-link { position: relative; color: #475569; transition: color .25s; }
+    .nav-link::after { content: ''; position: absolute; left: 0; right: 0; bottom: -6px; height: 1.5px; background: var(--accent);
+      transform: scaleX(0); transform-origin: right; transition: transform .4s var(--ease); }
+    .nav-link:hover, .nav-link.active { color: var(--ink); }
+    .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); transform-origin: left; }
+    #mobile-menu { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s var(--ease); }
+    #mobile-menu.open { grid-template-rows: 1fr; }
+    #mobile-menu > div { overflow: hidden; }
+    .burger .l { display: block; width: 18px; height: 1.5px; background: var(--ink); border-radius: 2px; transition: transform .4s var(--ease), opacity .25s; }
+    .burger[aria-expanded="true"] .l:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+    .burger[aria-expanded="true"] .l:nth-child(2) { opacity: 0; }
+    .burger[aria-expanded="true"] .l:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+
+    /* Hero */
+    .hero-grid { background-image: linear-gradient(#EEF1F4 1px, transparent 1px), linear-gradient(90deg, #EEF1F4 1px, transparent 1px); background-size: 56px 56px;
+      -webkit-mask-image: radial-gradient(ellipse 70% 70% at 70% 30%, #000 20%, transparent 75%); mask-image: radial-gradient(ellipse 70% 70% at 70% 30%, #000 20%, transparent 75%); }
+    .js [data-load] { opacity: 0; transform: translateY(16px); animation: loadIn .9s var(--ease) forwards; animation-delay: var(--d, 0s); }
+    @keyframes loadIn { to { opacity: 1; transform: none; } }
+    .line-mask { display: block; overflow: hidden; padding-bottom: .08em; }
+    .js .line-mask > span { display: block; transform: translateY(105%); animation: lineUp 1.1s var(--ease) forwards; animation-delay: var(--d, 0s); }
+    @keyframes lineUp { to { transform: none; } }
+    .float-a { animation: floatA 7s ease-in-out infinite; }
+    .float-b { animation: floatB 8s ease-in-out infinite; }
+    @keyframes floatA { 50% { transform: translateY(-8px); } }
+    @keyframes floatB { 50% { transform: translateY(7px); } }
+    .js .bar-grow { transform: scaleY(0); transform-origin: bottom; animation: barUp .9s var(--ease) forwards; animation-delay: calc(var(--i) * 55ms + .7s); }
+    @keyframes barUp { to { transform: scaleY(1); } }
+    .draw { stroke-dasharray: 1; stroke-dashoffset: 0; }
+    .js .draw { stroke-dashoffset: 1; animation: draw 1.8s var(--ease) forwards; animation-delay: var(--d, 1.2s); }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+    .js .seg { animation: segGrow 1.4s var(--ease) both; animation-delay: var(--d, 1s); }
+    @keyframes segGrow { from { stroke-dasharray: 0 100; } }
+
+    /* Reveal on scroll */
+    .js [data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity .8s var(--ease), transform .8s var(--ease); transition-delay: var(--d, 0s); }
+    .js [data-reveal].in { opacity: 1; transform: none; }
+
+    /* Service cards */
+    .svc-card { position: relative; isolation: isolate; cursor: pointer; transition: transform .45s var(--ease), box-shadow .45s var(--ease), border-color .3s; }
+    .svc-card::before { content: ''; position: absolute; left: 24px; right: 24px; top: -1px; height: 2px; border-radius: 2px; background: var(--accent);
+      transform: scaleX(0); transition: transform .5s var(--ease); }
+    .svc-card::after { content: ''; position: absolute; inset: 0; border-radius: inherit; z-index: -1; opacity: 0; transition: opacity .4s;
+      background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 0%), rgba(15,110,95,.07), transparent 60%); }
+    .svc-card:hover { transform: translateY(-5px); border-color: #D5DBE1; box-shadow: 0 1px 2px rgba(11,27,43,.04), 0 24px 48px -24px rgba(11,27,43,.28); }
+    .svc-card:hover::before { transform: scaleX(1); }
+    .svc-card:hover::after { opacity: 1; }
+    .svc-card .ic { transition: background-color .35s, color .35s, transform .5s var(--ease); }
+    .svc-card:hover .ic { background: var(--accent); color: #fff; transform: rotate(-4deg) scale(1.05); }
+    .svc-card .more .arrow { transition: transform .35s var(--ease); }
+    .svc-card:hover .more .arrow { transform: translateX(4px); }
+
+    /* Dialog */
+    dialog.modal { padding: 0; border: 0; background: transparent; width: min(640px, calc(100vw - 32px)); max-height: calc(100dvh - 48px); overflow: visible; }
+    dialog.modal::backdrop { background: rgba(11,27,43,.42); backdrop-filter: blur(4px); }
+    dialog.modal[open] { animation: dlgIn .45s var(--ease); }
+    dialog.modal[open]::backdrop { animation: fadeIn .35s ease; }
+    dialog.modal.closing { animation: dlgOut .25s ease forwards; }
+    dialog.modal.closing::backdrop { animation: fadeOut .25s ease forwards; }
+    @keyframes dlgIn { from { opacity: 0; transform: translateY(16px) scale(.97); } }
+    @keyframes dlgOut { to { opacity: 0; transform: translateY(8px) scale(.98); } }
+    @keyframes fadeIn { from { opacity: 0; } }
+    @keyframes fadeOut { to { opacity: 0; } }
+    html:has(dialog[open]) { overflow: hidden; }
+    .stag { animation: stagIn .55s var(--ease) both; animation-delay: calc(var(--i, 0) * 50ms + 100ms); }
+    @keyframes stagIn { from { opacity: 0; transform: translateY(8px); } }
+
+    /* Approach timeline */
+    #approach { --p: 0; }
+    #approach .fill { transform: scaleY(var(--p)); transform-origin: top; }
+    .ap-step .dot { transition: background-color .4s, border-color .4s, color .4s, box-shadow .4s; }
+    .ap-step.on .dot { background: var(--accent); border-color: var(--accent); color: #fff; box-shadow: 0 0 0 6px var(--accent-soft); }
+
+    /* Industries */
+    .ind-tab { transition: background-color .3s, color .3s, border-color .3s, box-shadow .3s; }
+    .ind-tab[aria-selected="true"] { background: var(--ink); color: #fff; border-color: var(--ink); box-shadow: 0 8px 20px -12px rgba(11,27,43,.6); }
+    .ind-tab:not([aria-selected="true"]):hover { border-color: #94A3B8; color: var(--ink); }
+    .tabs-scroll { scrollbar-width: none; -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent); mask-image: linear-gradient(90deg, #000 85%, transparent); }
+    .tabs-scroll::-webkit-scrollbar { display: none; }
+    @media (min-width: 1024px) { .tabs-scroll { -webkit-mask-image: none; mask-image: none; } }
+    #ind-panel { transition: opacity .3s, transform .4s var(--ease); }
+    #ind-panel.out { opacity: 0; transform: translateY(8px); }
+    .chip-link { transition: background-color .25s, color .25s, border-color .25s; }
+    .chip-link:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    /* Testimonials */
+    .t-stack { display: grid; }
+    .t-slide { grid-area: 1 / 1; opacity: 0; transform: translateX(24px); pointer-events: none; transition: opacity .7s var(--ease), transform .8s var(--ease); }
+    .t-slide.active { opacity: 1; transform: none; pointer-events: auto; }
+    .t-slide.prev { transform: translateX(-24px); }
+    .t-dot { position: relative; height: 4px; width: 22px; border-radius: 9px; background: #D5DBE1; overflow: hidden; transition: width .5s var(--ease); }
+    .t-dot.active { width: 48px; }
+    .t-dot span { position: absolute; inset: 0; background: var(--accent); transform: scaleX(0); transform-origin: left; }
+    .t-dot.active span { animation: dotFill 7s linear forwards; }
+    #t-wrap.paused .t-dot.active span { animation-play-state: paused; }
+    @keyframes dotFill { to { transform: scaleX(1); } }
+
+    /* Form */
+    .inp { width: 100%; border: 1px solid #D5DBE1; border-radius: 12px; background: #fff; padding: 12px 14px; color: var(--ink); font-size: 15px;
+      transition: border-color .25s, box-shadow .25s; outline: none; -webkit-appearance: none; appearance: none; }
+    .inp::placeholder { color: #94A3B8; }
+    .inp:hover { border-color: #B6C0CB; }
+    .inp:focus { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(15,110,95,.12); }
+    select.inp { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 12px center; background-size: 18px; padding-right: 40px; cursor: pointer; }
+    .fld.invalid .inp { border-color: #DC2626; box-shadow: 0 0 0 4px rgba(220,38,38,.08); }
+    .fld .err { display: none; color: #B91C1C; font-size: 13px; margin-top: 6px; }
+    .fld.invalid .err { display: block; }
+    .seg-radio input { position: absolute; opacity: 0; pointer-events: none; }
+    .seg-radio label { transition: background-color .25s, color .25s, border-color .25s; }
+    .seg-radio input:checked + label { background: var(--ink); color: #fff; border-color: var(--ink); }
+    .seg-radio input:focus-visible + label { outline: 2px solid var(--accent); outline-offset: 2px; }
+    #submit .spin { display: none; }
+    #submit.loading .label, #submit.loading .arrow { display: none; }
+    #submit.loading .spin { display: block; }
+    #form-inner { transition: opacity .35s, transform .45s var(--ease); }
+    #form-card.done #form-inner { opacity: 0; transform: scale(.98); pointer-events: none; visibility: hidden; transition: opacity .35s, transform .45s var(--ease), visibility 0s .35s; }
+    #success { opacity: 0; visibility: hidden; transform: translateY(10px); transition: opacity .5s .2s, transform .6s .2s var(--ease), visibility 0s .8s; }
+    #form-card.done #success { opacity: 1; visibility: visible; transform: none; transition-delay: .2s, .2s, 0s; }
+    #success .ring, #success .tick { stroke-dasharray: 1; stroke-dashoffset: 1; }
+    #form-card.done #success .ring { animation: draw .8s .35s var(--ease) forwards; }
+    #form-card.done #success .tick { animation: draw .45s .95s var(--ease) forwards; }
+    .shake { animation: shake .45s var(--ease); }
+    @keyframes shake { 25%,75% { transform: translateX(-5px); } 50% { transform: translateX(5px); } }
+
+    #to-top { transition: opacity .35s, transform .35s var(--ease); }
+    #to-top:not(.show) { opacity: 0; transform: translateY(12px); pointer-events: none; }
+    .flink { transition: color .25s; }
+    .flink:hover { color: #fff; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .001ms !important; animation-delay: 0s !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; transition-delay: 0s !important; }
+    }
+  </style>
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+
+<body class="font-sans">
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[80] focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-white">Skip to content</a>
+
+  <!-- ================= HEADER ================= -->
+  <header id="header" class="fixed inset-x-0 top-0 z-50">
+    <div class="bar-h mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 sm:px-8">
+      <a href="#home" class="flex shrink-0 items-center gap-3" aria-label="A&amp;R LLP home">
+        <span class="flex h-9 w-10 items-center justify-center whitespace-nowrap rounded-lg bg-ink font-display text-[14px] font-medium tracking-tight text-white">A<span class="text-[#7FC8B8]">&amp;</span>R</span>
+        <span class="leading-none">
+          <span class="block font-display text-[19px] font-medium tracking-tight text-ink">A&amp;R LLP</span>
+          <span class="mt-1 hidden text-[10px] font-medium uppercase tracking-[.18em] text-slate-500 sm:block">Accounting · Tax · Advisory</span>
+        </span>
+      </a>
+
+      <nav class="hidden items-center gap-8 lg:flex" aria-label="Primary">
+        <a href="#home" class="nav-link text-sm font-medium">Home</a>
+        <a href="#about" class="nav-link text-sm font-medium">About</a>
+        <a href="#services" class="nav-link text-sm font-medium">Services</a>
+        <a href="#industries" class="nav-link text-sm font-medium">Industries</a>
+        <a href="#testimonials" class="nav-link text-sm font-medium">Testimonials</a>
+        <a href="#contact" class="nav-link text-sm font-medium">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <a href="#contact" class="hdr-cta btn btn-primary px-5 py-2.5 text-sm">Book a Consultation</a>
+        <button id="burger" class="burger grid h-10 w-10 place-items-center rounded-full border border-slate-200 lg:hidden" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+          <span class="flex flex-col gap-1"><span class="l"></span><span class="l"></span><span class="l"></span></span>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="border-t border-transparent bg-white lg:hidden">
+      <div>
+        <nav class="mx-auto flex max-w-7xl flex-col px-5 pb-5 pt-2 sm:px-8" aria-label="Mobile">
+          <a href="#home" class="border-b border-slate-100 py-3.5 text-[17px] text-ink">Home</a>
+          <a href="#about" class="border-b border-slate-100 py-3.5 text-[17px] text-ink">About</a>
+          <a href="#services" class="border-b border-slate-100 py-3.5 text-[17px] text-ink">Services</a>
+          <a href="#industries" class="border-b border-slate-100 py-3.5 text-[17px] text-ink">Industries</a>
+          <a href="#testimonials" class="border-b border-slate-100 py-3.5 text-[17px] text-ink">Testimonials</a>
+          <a href="#contact" class="py-3.5 text-[17px] text-ink">Contact</a>
+          <a href="#contact" class="btn btn-primary mt-3 px-5 py-3.5">Book a Consultation</a>
+        </nav>
+      </div>
+    </div>
+    <div id="progress" class="absolute inset-x-0 bottom-0 h-[2px] bg-accent" aria-hidden="true"></div>
+  </header>
+
+  <main id="main">
+    <!-- ================= HERO ================= -->
+    <section id="home" class="relative overflow-hidden bg-gradient-to-b from-paper to-white pb-28 pt-32 sm:pt-40 lg:pb-36">
+      <div class="hero-grid pointer-events-none absolute inset-0" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute -right-40 -top-40 h-[560px] w-[560px] rounded-full bg-[radial-gradient(closest-side,rgba(15,110,95,.10),transparent)]" aria-hidden="true"></div>
+      <!-- faint background chart line -->
+      <svg class="pointer-events-none absolute inset-x-0 bottom-0 h-40 w-full text-accent/10" viewBox="0 0 1440 160" preserveAspectRatio="none" fill="none" aria-hidden="true">
+        <path class="draw" pathLength="1" style="--d:.3s" d="M0 140 C160 130 240 120 360 112 S560 118 700 92 S920 70 1040 64 S1260 30 1440 18" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke"/>
+      </svg>
+
+      <div class="relative mx-auto grid max-w-7xl items-center gap-16 px-5 sm:px-8 lg:grid-cols-12 lg:gap-12">
+        <div class="lg:col-span-7">
+          <p data-load style="--d:.05s" class="overline">Accounting · Tax · Advisory</p>
+          <h1 class="mt-6 font-display text-[2.6rem] font-normal leading-[1.06] tracking-[-0.02em] text-ink sm:text-[3.4rem] lg:text-[3.5rem] xl:text-[3.9rem]">
+            <span class="line-mask"><span style="--d:.15s">Numbers You Can Trust.</span></span>
+            <span class="line-mask"><span style="--d:.3s" class="italic text-accent">Advice You Can Build On.</span></span>
+          </h1>
+          <p data-load style="--d:.55s" class="mt-7 max-w-xl text-lg leading-relaxed text-slate-600">
+            A&amp;R LLP provides reliable accounting, tax, and advisory services designed to help individuals and businesses make smarter financial decisions.
+          </p>
+          <div data-load style="--d:.7s" class="mt-10 flex flex-col gap-3 sm:flex-row">
+            <a href="#contact" class="btn btn-primary px-7 py-3.5 text-[15px]">Book a Consultation <i data-lucide="arrow-right" class="arrow h-4 w-4"></i></a>
+            <a href="#services" class="btn btn-outline px-7 py-3.5 text-[15px]">Explore Our Services</a>
+          </div>
+          <ul data-load style="--d:.85s" class="mt-10 flex flex-wrap gap-x-6 gap-y-2 text-sm text-slate-500">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="h-4 w-4 text-accent"></i>Individuals &amp; businesses</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="h-4 w-4 text-accent"></i>Year-round support</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="h-4 w-4 text-accent"></i>Secure client portal</li>
+          </ul>
+        </div>
+
+        <!-- Hero visual: illustrative financial report -->
+        <div class="relative mx-auto w-full max-w-[480px] lg:col-span-5 lg:ml-auto" aria-hidden="true">
+          <div data-load style="--d:.4s">
+            <div class="rounded-3xl border border-slate-200/80 bg-white p-6 shadow-[0_2px_4px_rgba(11,27,43,.04),0_40px_80px_-40px_rgba(11,27,43,.35)] sm:p-7">
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-xs font-medium uppercase tracking-[.14em] text-slate-400">Financial overview</p>
+                  <p class="mt-1 font-display text-2xl text-ink">FY 2026 Summary</p>
+                </div>
+                <span class="rounded-full border border-slate-200 bg-paper px-2.5 py-1 text-[11px] font-medium text-slate-500">Sample report</span>
+              </div>
+              <div class="mt-6 grid grid-cols-3 gap-3 border-y border-slate-100 py-5">
+                <div><p class="text-[11px] uppercase tracking-wider text-slate-400">Revenue</p><p class="tabular mt-1 text-lg font-semibold text-ink">$1.24M</p><p class="text-xs font-medium text-accent">▲ 12.4%</p></div>
+                <div><p class="text-[11px] uppercase tracking-wider text-slate-400">Net margin</p><p class="tabular mt-1 text-lg font-semibold text-ink">18.6%</p><p class="text-xs font-medium text-accent">▲ 2.1 pts</p></div>
+                <div><p class="text-[11px] uppercase tracking-wider text-slate-400">Cash</p><p class="tabular mt-1 text-lg font-semibold text-ink">$312K</p><p class="text-xs font-medium text-slate-400">14 mo runway</p></div>
+              </div>
+              <div class="relative mt-6 h-40">
+                <div class="absolute inset-0 flex items-end gap-[6px]">
+                  <span class="bar-grow flex-1 rounded-t-[4px] bg-slate-200" style="--i:0;height:38%"></span>
+                  <span class="bar-grow flex-1 rounded-t-[4px] bg-slate-200" style="--i:1;height:44%"></span>
+                  <span class="bar-grow flex-1 rounded-t-[4px] bg-slate-200" style="--i:2;height:41%"></span>
+                  <span class="bar-grow flex-1 rounded-t-[4px] bg-slate-200" style="--i:3;height:52%"></span>
+                  <span class="bar-grow flex-1 rounded-t-[4px] bg-slate-200" style="--i:4;height:49%"></span>
+                  <span class="bar-grow flex-1 rounded-t-[4px] bg-slate-200" style="--i:5;height:58%"></span>
+                  <span class="bar-grow flex-1 rounded-t-[4px] bg-slate-200" style="--i:6;height:62%"></span>
+                  <span class="bar-grow flex-1 rounded-t-[4px] bg-slate-200" style="--i:7;height:60%"></span>
+                  <span class="bar-grow flex-1 rounded-t-[4px] bg-accent/30" style="--i:8;height:70%"></span>
+                  <span class="bar-grow flex-1 rounded-t-[4px] bg-accent/45" style="--i:9;height:76%"></span>
+                  <span class="bar-grow flex-1 rounded-t-[4px] bg-accent/70" style="--i:10;height:84%"></span>
+                  <span class="bar-grow flex-1 rounded-t-[4px] bg-accent" style="--i:11;height:92%"></span>
+                </div>
+                <svg class="absolute inset-0 h-full w-full" viewBox="0 0 300 160" preserveAspectRatio="none" fill="none">
+                  <path class="draw" pathLength="1" style="--d:1.4s" d="M4 112 C30 104 50 100 76 92 S120 84 150 72 S200 62 226 46 S270 22 296 12" stroke="#0B1B2B" stroke-width="1.75" stroke-dasharray="1" vector-effect="non-scaling-stroke"/>
+                </svg>
+              </div>
+              <div class="mt-3 flex justify-between text-[10px] uppercase tracking-wider text-slate-400"><span>Jan</span><span>Apr</span><span>Jul</span><span>Oct</span><span>Dec</span></div>
+            </div>
+          </div>
+
+          <!-- floating: donut -->
+          <div class="absolute -right-3 -top-10 sm:-right-10" data-load style="--d:.8s">
+            <div class="float-a flex items-center gap-3 rounded-2xl border border-slate-200/80 bg-white p-3.5 pr-5 shadow-[0_24px_48px_-24px_rgba(11,27,43,.35)]">
+              <svg viewBox="0 0 42 42" class="h-12 w-12 -rotate-90">
+                <circle cx="21" cy="21" r="15.9" fill="none" stroke="#EEF1F4" stroke-width="6"/>
+                <circle class="seg" style="--d:1s" cx="21" cy="21" r="15.9" fill="none" stroke="#0F6E5F" stroke-width="6" pathLength="100" stroke-dasharray="46 54" stroke-dashoffset="0"/>
+                <circle class="seg" style="--d:1.15s" cx="21" cy="21" r="15.9" fill="none" stroke="#0B1B2B" stroke-width="6" pathLength="100" stroke-dasharray="30 70" stroke-dashoffset="-46"/>
+                <circle class="seg" style="--d:1.3s" cx="21" cy="21" r="15.9" fill="none" stroke="#A7D3C9" stroke-width="6" pathLength="100" stroke-dasharray="24 76" stroke-dashoffset="-76"/>
+              </svg>
+              <div>
+                <p class="text-xs text-slate-400">Expense mix</p>
+                <p class="text-sm font-semibold text-ink">On budget</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- floating: tax filed -->
+          <div class="absolute -bottom-8 -left-3 sm:-left-10" data-load style="--d:1s">
+            <div class="float-b flex items-center gap-3 rounded-2xl border border-slate-200/80 bg-white p-3.5 pr-5 shadow-[0_24px_48px_-24px_rgba(11,27,43,.35)]">
+              <span class="grid h-10 w-10 place-items-center rounded-xl bg-accent-soft text-accent"><i data-lucide="file-check-2" class="h-5 w-5"></i></span>
+              <div>
+                <p class="text-sm font-semibold text-ink">Tax return filed</p>
+                <p class="text-xs text-slate-400">Accepted · on time</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TRUST BAR ================= -->
+    <section class="relative z-10 -mt-14 px-5 sm:px-8" aria-label="Firm at a glance">
+      <div data-reveal class="mx-auto max-w-6xl rounded-2xl border border-slate-200/80 bg-white shadow-[0_2px_4px_rgba(11,27,43,.03),0_24px_48px_-28px_rgba(11,27,43,.3)]">
+        <dl class="grid grid-cols-2 divide-slate-100 lg:grid-cols-4 lg:divide-x">
+          <!-- PLACEHOLDER figures: replace with the firm's verified data -->
+          <div class="border-b border-r border-slate-100 flex flex-col px-6 py-7 text-center lg:border-b-0 lg:border-r-0">
+            <dt class="order-2 mt-1 text-sm text-slate-500">Years of Experience</dt>
+            <dd class="order-1 tabular font-display text-4xl text-ink sm:text-[2.6rem]"><span data-count="25">25</span>+</dd>
+          </div>
+          <div class="border-b border-slate-100 flex flex-col px-6 py-7 text-center lg:border-b-0">
+            <dt class="order-2 mt-1 text-sm text-slate-500">Clients Served</dt>
+            <dd class="order-1 tabular font-display text-4xl text-ink sm:text-[2.6rem]"><span data-count="500">500</span>+</dd>
+          </div>
+          <div class="border-r border-slate-100 flex flex-col px-6 py-7 text-center lg:border-r-0">
+            <dt class="order-2 mt-1 text-sm text-slate-500">Client Satisfaction</dt>
+            <dd class="order-1 tabular font-display text-4xl text-ink sm:text-[2.6rem]"><span data-count="98">98</span>%</dd>
+          </div>
+          <div class="flex flex-col items-center justify-center px-6 py-7 text-center">
+            <dt class="order-2 mt-2 text-sm text-slate-500"><span class="font-medium text-ink">Personalized Service</span><br class="sm:hidden"> for every client</dt>
+            <dd class="order-1 grid h-11 w-11 place-items-center rounded-full bg-accent-soft text-accent"><i data-lucide="handshake" class="h-5 w-5"></i></dd>
+          </div>
+        </dl>
+      </div>
+      <p class="mx-auto mt-3 flex max-w-6xl items-center justify-center gap-1.5 text-center text-xs text-slate-400">
+        <i data-lucide="sparkles" class="h-3.5 w-3.5"></i> Placeholder figures for demonstration. Replace with the firm's verified data before publishing.
+      </p>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section id="about" class="py-24 sm:py-32">
+      <div class="mx-auto grid max-w-7xl gap-16 px-5 sm:px-8 lg:grid-cols-12">
+        <div class="lg:col-span-6">
+          <p data-reveal class="overline">About A&amp;R LLP</p>
+          <h2 data-reveal style="--d:.05s" class="mt-5 font-display text-4xl leading-[1.1] tracking-[-0.015em] text-ink sm:text-5xl">A steady partner for every financial chapter.</h2>
+          <div data-reveal style="--d:.1s" class="mt-7 space-y-5 text-[17px] leading-relaxed">
+            <p>A&amp;R LLP is an independent accounting firm serving individuals, families, and businesses. We combine technical depth with plain-English advice, so you always understand where you stand and what to do next.</p>
+            <p>Whether you need dependable bookkeeping, a smarter tax strategy, or a trusted sounding board for a major decision, you'll work with the same dedicated team year after year.</p>
+          </div>
+          <ul class="mt-10 grid gap-4 sm:grid-cols-3">
+            <li data-reveal style="--d:.1s" class="rounded-2xl border border-slate-200/80 p-5">
+              <i data-lucide="scale" class="h-5 w-5 text-accent"></i>
+              <p class="mt-3 font-medium text-ink">Integrity</p>
+              <p class="mt-1 text-sm leading-relaxed">Objective advice, clearly documented.</p>
+            </li>
+            <li data-reveal style="--d:.18s" class="rounded-2xl border border-slate-200/80 p-5">
+              <i data-lucide="target" class="h-5 w-5 text-accent"></i>
+              <p class="mt-3 font-medium text-ink">Precision</p>
+              <p class="mt-1 text-sm leading-relaxed">Accurate work, reviewed at every step.</p>
+            </li>
+            <li data-reveal style="--d:.26s" class="rounded-2xl border border-slate-200/80 p-5">
+              <i data-lucide="handshake" class="h-5 w-5 text-accent"></i>
+              <p class="mt-3 font-medium text-ink">Partnership</p>
+              <p class="mt-1 text-sm leading-relaxed">One team that knows your story.</p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="lg:col-span-5 lg:col-start-8">
+          <div data-reveal class="rounded-3xl bg-paper p-7 sm:p-9">
+            <p class="text-xs font-semibold uppercase tracking-[.14em] text-slate-400">Our approach</p>
+            <ol id="approach" class="relative mt-7 space-y-8">
+              <li class="pointer-events-none absolute bottom-4 left-[19px] top-4 w-px bg-slate-200" aria-hidden="true"><span class="fill block h-full w-full bg-accent"></span></li>
+              <li class="ap-step relative flex gap-5">
+                <span class="dot relative z-10 grid h-10 w-10 shrink-0 place-items-center rounded-full border border-slate-300 bg-white text-sm font-medium text-ink">01</span>
+                <div><p class="font-medium text-ink">Listen</p><p class="mt-1 text-[15px] leading-relaxed">We start by understanding your goals, obligations, and concerns.</p></div>
+              </li>
+              <li class="ap-step relative flex gap-5">
+                <span class="dot relative z-10 grid h-10 w-10 shrink-0 place-items-center rounded-full border border-slate-300 bg-white text-sm font-medium text-ink">02</span>
+                <div><p class="font-medium text-ink">Plan</p><p class="mt-1 text-[15px] leading-relaxed">You receive a clear scope, timeline, and fixed fee before work begins.</p></div>
+              </li>
+              <li class="ap-step relative flex gap-5">
+                <span class="dot relative z-10 grid h-10 w-10 shrink-0 place-items-center rounded-full border border-slate-300 bg-white text-sm font-medium text-ink">03</span>
+                <div><p class="font-medium text-ink">Deliver</p><p class="mt-1 text-[15px] leading-relaxed">Our team handles the details accurately and on schedule.</p></div>
+              </li>
+              <li class="ap-step relative flex gap-5">
+                <span class="dot relative z-10 grid h-10 w-10 shrink-0 place-items-center rounded-full border border-slate-300 bg-white text-sm font-medium text-ink">04</span>
+                <div><p class="font-medium text-ink">Review</p><p class="mt-1 text-[15px] leading-relaxed">Regular check-ins keep your plan aligned as life and business change.</p></div>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SERVICES ================= -->
+    <section id="services" class="bg-paper py-24 sm:py-32">
+      <div class="mx-auto max-w-7xl px-5 sm:px-8">
+        <div class="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+          <div class="max-w-2xl">
+            <p data-reveal class="overline">Our Services</p>
+            <h2 data-reveal style="--d:.05s" class="mt-5 font-display text-4xl leading-[1.1] tracking-[-0.015em] text-ink sm:text-5xl">Comprehensive services, delivered with care.</h2>
+          </div>
+          <p data-reveal style="--d:.1s" class="max-w-md text-[17px] leading-relaxed">Select any service to see what's included and who it's designed for.</p>
+        </div>
+
+        <div id="svc-grid" class="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <article data-reveal class="svc-card flex flex-col rounded-2xl border border-slate-200/80 bg-white p-7" data-svc="accounting">
+            <span class="ic grid h-12 w-12 place-items-center rounded-xl bg-accent-soft text-accent"><i data-lucide="calculator" class="h-5 w-5"></i></span>
+            <h3 class="mt-6 font-display text-[22px] text-ink">Accounting &amp; Bookkeeping</h3>
+            <p class="mt-3 flex-1 text-[15px] leading-relaxed">Accurate financial records and reporting to keep your business organized.</p>
+            <button type="button" class="more mt-6 inline-flex w-fit items-center gap-2 text-sm font-medium text-accent">Learn more <i data-lucide="arrow-right" class="arrow h-4 w-4"></i></button>
+          </article>
+          <article data-reveal style="--d:.06s" class="svc-card flex flex-col rounded-2xl border border-slate-200/80 bg-white p-7" data-svc="tax">
+            <span class="ic grid h-12 w-12 place-items-center rounded-xl bg-accent-soft text-accent"><i data-lucide="receipt" class="h-5 w-5"></i></span>
+            <h3 class="mt-6 font-display text-[22px] text-ink">Tax Planning &amp; Preparation</h3>
+            <p class="mt-3 flex-1 text-[15px] leading-relaxed">Strategic tax services designed to help clients understand and manage their tax obligations.</p>
+            <button type="button" class="more mt-6 inline-flex w-fit items-center gap-2 text-sm font-medium text-accent">Learn more <i data-lucide="arrow-right" class="arrow h-4 w-4"></i></button>
+          </article>
+          <article data-reveal style="--d:.12s" class="svc-card flex flex-col rounded-2xl border border-slate-200/80 bg-white p-7" data-svc="advisory">
+            <span class="ic grid h-12 w-12 place-items-center rounded-xl bg-accent-soft text-accent"><i data-lucide="briefcase" class="h-5 w-5"></i></span>
+            <h3 class="mt-6 font-display text-[22px] text-ink">Business Advisory</h3>
+            <p class="mt-3 flex-1 text-[15px] leading-relaxed">Forward-looking guidance on growth, cash flow, and the decisions that shape your business.</p>
+            <button type="button" class="more mt-6 inline-flex w-fit items-center gap-2 text-sm font-medium text-accent">Learn more <i data-lucide="arrow-right" class="arrow h-4 w-4"></i></button>
+          </article>
+          <article data-reveal class="svc-card flex flex-col rounded-2xl border border-slate-200/80 bg-white p-7" data-svc="payroll">
+            <span class="ic grid h-12 w-12 place-items-center rounded-xl bg-accent-soft text-accent"><i data-lucide="users" class="h-5 w-5"></i></span>
+            <h3 class="mt-6 font-display text-[22px] text-ink">Payroll Services</h3>
+            <p class="mt-3 flex-1 text-[15px] leading-relaxed">Reliable, compliant payroll so your team is paid correctly and on time.</p>
+            <button type="button" class="more mt-6 inline-flex w-fit items-center gap-2 text-sm font-medium text-accent">Learn more <i data-lucide="arrow-right" class="arrow h-4 w-4"></i></button>
+          </article>
+          <article data-reveal style="--d:.06s" class="svc-card flex flex-col rounded-2xl border border-slate-200/80 bg-white p-7" data-svc="audit">
+            <span class="ic grid h-12 w-12 place-items-center rounded-xl bg-accent-soft text-accent"><i data-lucide="shield-check" class="h-5 w-5"></i></span>
+            <h3 class="mt-6 font-display text-[22px] text-ink">Audit &amp; Assurance</h3>
+            <p class="mt-3 flex-1 text-[15px] leading-relaxed">Independent reviews that give lenders, boards, and stakeholders confidence.</p>
+            <button type="button" class="more mt-6 inline-flex w-fit items-center gap-2 text-sm font-medium text-accent">Learn more <i data-lucide="arrow-right" class="arrow h-4 w-4"></i></button>
+          </article>
+          <article data-reveal style="--d:.12s" class="svc-card flex flex-col rounded-2xl border border-slate-200/80 bg-white p-7" data-svc="estate">
+            <span class="ic grid h-12 w-12 place-items-center rounded-xl bg-accent-soft text-accent"><i data-lucide="landmark" class="h-5 w-5"></i></span>
+            <h3 class="mt-6 font-display text-[22px] text-ink">Estate &amp; Trust Planning</h3>
+            <p class="mt-3 flex-1 text-[15px] leading-relaxed">Coordinated tax planning to protect assets and prepare for the next generation.</p>
+            <button type="button" class="more mt-6 inline-flex w-fit items-center gap-2 text-sm font-medium text-accent">Learn more <i data-lucide="arrow-right" class="arrow h-4 w-4"></i></button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service detail dialog -->
+    <dialog id="svc-dialog" class="modal" aria-labelledby="dlg-title">
+      <div class="relative max-h-[calc(100dvh-48px)] overflow-y-auto rounded-3xl bg-white p-7 shadow-2xl sm:p-10">
+        <button type="button" data-close class="absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-full text-slate-500 transition hover:bg-slate-100 hover:text-ink" aria-label="Close">
+          <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg>
+        </button>
+        <div id="dlg-body"></div>
+      </div>
+    </dialog>
+
+    <!-- ================= INDUSTRIES ================= -->
+    <section id="industries" class="py-24 sm:py-32">
+      <div class="mx-auto max-w-7xl px-5 sm:px-8">
+        <div class="max-w-2xl">
+          <p data-reveal class="overline">Industries</p>
+          <h2 data-reveal style="--d:.05s" class="mt-5 font-display text-4xl leading-[1.1] tracking-[-0.015em] text-ink sm:text-5xl">Specialized knowledge for the way you work.</h2>
+          <p data-reveal style="--d:.1s" class="mt-5 text-[17px] leading-relaxed">Every industry has its own rules, rhythms, and risks. Choose yours to see how we help.</p>
+        </div>
+
+        <div data-reveal style="--d:.1s" class="tabs-scroll -mx-5 mt-10 overflow-x-auto px-5 sm:mx-0 sm:px-0">
+          <div id="ind-tabs" role="tablist" aria-label="Industries" class="flex w-max gap-2 pb-1 lg:w-auto lg:flex-wrap"></div>
+        </div>
+
+        <div data-reveal style="--d:.15s" class="mt-8 overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-[0_2px_4px_rgba(11,27,43,.03),0_30px_60px_-40px_rgba(11,27,43,.3)]">
+          <div id="ind-panel" role="tabpanel" tabindex="0" class="grid lg:grid-cols-12"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TESTIMONIALS ================= -->
+    <section id="testimonials" class="bg-paper py-24 sm:py-32">
+      <div class="mx-auto max-w-5xl px-5 text-center sm:px-8">
+        <p data-reveal class="overline justify-center">Testimonials</p>
+        <h2 data-reveal style="--d:.05s" class="mt-5 font-display text-4xl leading-[1.1] tracking-[-0.015em] text-ink sm:text-5xl">What our clients value most.</h2>
+        <p data-reveal style="--d:.1s" class="mt-4 inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs text-slate-500">
+          <i data-lucide="sparkles" class="h-3.5 w-3.5"></i> Sample testimonials. Replace with real client feedback, used with permission.
+        </p>
+
+        <div id="t-wrap" data-reveal style="--d:.15s" class="relative mt-12" aria-roledescription="carousel" aria-label="Client testimonials">
+          <div id="t-stack" class="t-stack" style="touch-action: pan-y">
+            <figure class="t-slide active">
+              <div class="flex justify-center gap-1 text-accent" aria-label="5 out of 5 stars"><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i></div>
+              <blockquote class="mx-auto mt-7 max-w-3xl font-display text-2xl leading-[1.4] text-ink sm:text-[2rem]">“A&amp;R LLP brought order to our books and clarity to our decisions. For the first time, I understand our numbers well enough to plan ahead with confidence.”</blockquote>
+              <figcaption class="mt-8 flex items-center justify-center gap-3">
+                <span class="grid h-11 w-11 place-items-center rounded-full bg-ink text-sm font-medium text-white">EM</span>
+                <span class="text-left"><span class="block font-medium text-ink">Elena Marsh</span><span class="text-sm text-slate-500">Owner, Marsh &amp; Co. Interiors</span></span>
+              </figcaption>
+            </figure>
+            <figure class="t-slide" aria-hidden="true">
+              <div class="flex justify-center gap-1 text-accent" aria-label="5 out of 5 stars"><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i></div>
+              <blockquote class="mx-auto mt-7 max-w-3xl font-display text-2xl leading-[1.4] text-ink sm:text-[2rem]">“Their year-round tax planning took the stress out of filing season. They explain every option clearly and always respond quickly.”</blockquote>
+              <figcaption class="mt-8 flex items-center justify-center gap-3">
+                <span class="grid h-11 w-11 place-items-center rounded-full bg-accent text-sm font-medium text-white">RT</span>
+                <span class="text-left"><span class="block font-medium text-ink">Robert Tan</span><span class="text-sm text-slate-500">Physician &amp; Practice Owner</span></span>
+              </figcaption>
+            </figure>
+            <figure class="t-slide" aria-hidden="true">
+              <div class="flex justify-center gap-1 text-accent" aria-label="5 out of 5 stars"><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i></div>
+              <blockquote class="mx-auto mt-7 max-w-3xl font-display text-2xl leading-[1.4] text-ink sm:text-[2rem]">“As we grew from one location to four, A&amp;R was there for every step: financing, payroll, and the reporting our lender required.”</blockquote>
+              <figcaption class="mt-8 flex items-center justify-center gap-3">
+                <span class="grid h-11 w-11 place-items-center rounded-full bg-slate-600 text-sm font-medium text-white">JA</span>
+                <span class="text-left"><span class="block font-medium text-ink">Jamal Adeyemi</span><span class="text-sm text-slate-500">Founder, Northgate Fitness</span></span>
+              </figcaption>
+            </figure>
+            <figure class="t-slide" aria-hidden="true">
+              <div class="flex justify-center gap-1 text-accent" aria-label="5 out of 5 stars"><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i></div>
+              <blockquote class="mx-auto mt-7 max-w-3xl font-display text-2xl leading-[1.4] text-ink sm:text-[2rem]">“Our nonprofit's audit used to be a scramble. A&amp;R made the process organized and predictable, and our board noticed the difference.”</blockquote>
+              <figcaption class="mt-8 flex items-center justify-center gap-3">
+                <span class="grid h-11 w-11 place-items-center rounded-full bg-[#7FC8B8] text-sm font-medium text-ink">CW</span>
+                <span class="text-left"><span class="block font-medium text-ink">Claire Whitfield</span><span class="text-sm text-slate-500">Executive Director, Harbor Arts Foundation</span></span>
+              </figcaption>
+            </figure>
+          </div>
+
+          <div class="mt-10 flex items-center justify-center gap-5">
+            <button id="t-prev" class="grid h-11 w-11 place-items-center rounded-full border border-slate-300 bg-white text-ink transition hover:border-ink" aria-label="Previous testimonial"><i data-lucide="chevron-left" class="h-5 w-5"></i></button>
+            <div id="t-dots" class="flex items-center gap-2"></div>
+            <button id="t-next" class="grid h-11 w-11 place-items-center rounded-full border border-slate-300 bg-white text-ink transition hover:border-ink" aria-label="Next testimonial"><i data-lucide="chevron-right" class="h-5 w-5"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section id="contact" class="py-24 sm:py-32">
+      <div class="mx-auto grid max-w-7xl gap-14 px-5 sm:px-8 lg:grid-cols-12">
+        <div class="lg:col-span-5">
+          <p data-reveal class="overline">Contact</p>
+          <h2 data-reveal style="--d:.05s" class="mt-5 font-display text-4xl leading-[1.1] tracking-[-0.015em] text-ink sm:text-5xl">Let's start the conversation.</h2>
+          <p data-reveal style="--d:.1s" class="mt-5 text-[17px] leading-relaxed">Book a complimentary consultation. We'll listen to your needs and recommend a clear next step, with no obligation.</p>
+
+          <!-- PLACEHOLDER contact details: replace with the firm's real address, phone, email, and hours -->
+          <ul data-reveal style="--d:.15s" class="mt-10 space-y-5">
+            <li class="flex gap-4"><span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-accent-soft text-accent"><i data-lucide="map-pin" class="h-5 w-5"></i></span><div><p class="font-medium text-ink">Office</p><p class="text-[15px]">100 Main Street, Suite 300<br>Your City, ST 00000</p></div></li>
+            <li class="flex gap-4"><span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-accent-soft text-accent"><i data-lucide="phone" class="h-5 w-5"></i></span><div><p class="font-medium text-ink">Phone</p><a href="tel:+15555550123" class="text-[15px] hover:text-accent">(555) 555-0123</a></div></li>
+            <li class="flex gap-4"><span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-accent-soft text-accent"><i data-lucide="mail" class="h-5 w-5"></i></span><div><p class="font-medium text-ink">Email</p><a href="mailto:hello@example.com" class="text-[15px] hover:text-accent">hello@example.com</a></div></li>
+            <li class="flex gap-4"><span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-accent-soft text-accent"><i data-lucide="clock" class="h-5 w-5"></i></span><div><p class="font-medium text-ink">Hours</p><p class="text-[15px]">Mon–Fri, 9:00 AM – 5:30 PM<br>Saturdays by appointment in tax season</p></div></li>
+          </ul>
+        </div>
+
+        <div data-reveal style="--d:.1s" class="lg:col-span-7">
+          <div id="form-card" class="relative rounded-3xl border border-slate-200/80 bg-white p-6 shadow-[0_2px_4px_rgba(11,27,43,.03),0_40px_80px_-48px_rgba(11,27,43,.4)] sm:p-10">
+            <form id="lead-form" novalidate>
+              <div id="form-inner">
+                <h3 class="font-display text-2xl text-ink">Book a Consultation</h3>
+                <p class="mt-1 text-sm text-slate-500">We typically reply within one business day.</p>
+                <div class="mt-8 grid gap-5 sm:grid-cols-2">
+                  <div class="fld">
+                    <label for="f-name" class="mb-1.5 block text-sm font-medium text-ink">Full name</label>
+                    <input id="f-name" name="name" class="inp" type="text" autocomplete="name" required placeholder="Jane Smith">
+                    <p class="err">Please enter your name.</p>
+                  </div>
+                  <div class="fld">
+                    <label for="f-email" class="mb-1.5 block text-sm font-medium text-ink">Email</label>
+                    <input id="f-email" name="email" class="inp" type="email" autocomplete="email" required placeholder="jane@company.com">
+                    <p class="err">Please enter a valid email address.</p>
+                  </div>
+                  <div class="fld">
+                    <label for="f-phone" class="mb-1.5 block text-sm font-medium text-ink">Phone <span class="font-normal text-slate-400">(optional)</span></label>
+                    <input id="f-phone" name="phone" class="inp" type="tel" autocomplete="tel" placeholder="(555) 555-0123">
+                  </div>
+                  <div class="fld">
+                    <label for="f-service" class="mb-1.5 block text-sm font-medium text-ink">Service of interest</label>
+                    <select id="f-service" name="service" class="inp" required>
+                      <option value="" disabled selected>Select a service</option>
+                      <option value="accounting">Accounting &amp; Bookkeeping</option>
+                      <option value="tax">Tax Planning &amp; Preparation</option>
+                      <option value="advisory">Business Advisory</option>
+                      <option value="payroll">Payroll Services</option>
+                      <option value="audit">Audit &amp; Assurance</option>
+                      <option value="estate">Estate &amp; Trust Planning</option>
+                      <option value="other">Something else</option>
+                    </select>
+                    <p class="err">Please choose a service.</p>
+                  </div>
+                  <fieldset class="sm:col-span-2">
+                    <legend class="mb-2 text-sm font-medium text-ink">Preferred contact method</legend>
+                    <div class="seg-radio flex gap-2">
+                      <input type="radio" id="m-email" name="method" value="email" checked><label for="m-email" class="cursor-pointer rounded-full border border-slate-300 px-4 py-2 text-sm">Email</label>
+                      <input type="radio" id="m-phone" name="method" value="phone"><label for="m-phone" class="cursor-pointer rounded-full border border-slate-300 px-4 py-2 text-sm">Phone</label>
+                      <input type="radio" id="m-either" name="method" value="either"><label for="m-either" class="cursor-pointer rounded-full border border-slate-300 px-4 py-2 text-sm">Either</label>
+                    </div>
+                  </fieldset>
+                  <div class="fld sm:col-span-2">
+                    <label for="f-msg" class="mb-1.5 block text-sm font-medium text-ink">How can we help?</label>
+                    <textarea id="f-msg" name="message" class="inp min-h-[130px] resize-y" required placeholder="Tell us briefly about your situation..."></textarea>
+                    <p class="err">Please add a short message.</p>
+                  </div>
+                </div>
+                <div class="mt-7 flex flex-col-reverse gap-4 sm:flex-row sm:items-center sm:justify-between">
+                  <p class="text-xs leading-relaxed text-slate-400">Your information is kept confidential. Submitting this form does not create a client relationship.</p>
+                  <button id="submit" type="submit" class="btn btn-primary shrink-0 whitespace-nowrap px-7 py-3.5 text-[15px]">
+                    <span class="label">Request Consultation</span><i data-lucide="arrow-right" class="arrow h-4 w-4"></i>
+                    <svg class="spin h-5 w-5 animate-spin" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-opacity=".3" stroke-width="3"/><path d="M21 12a9 9 0 00-9-9" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+                  </button>
+                </div>
+              </div>
+            </form>
+
+            <div id="success" class="absolute inset-0 grid place-items-center p-8 text-center" role="status" aria-live="polite">
+              <div>
+                <svg viewBox="0 0 96 96" class="mx-auto h-20 w-20" fill="none" aria-hidden="true">
+                  <circle cx="48" cy="48" r="44" fill="#E8F3F0"/>
+                  <circle class="ring" pathLength="1" cx="48" cy="48" r="44" stroke="#0F6E5F" stroke-width="2.5" transform="rotate(-90 48 48)"/>
+                  <path class="tick" pathLength="1" d="M31 49 L43 61 L66 36" stroke="#0F6E5F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <h3 class="mt-6 font-display text-3xl text-ink">Thank you.</h3>
+                <p id="success-msg" class="mx-auto mt-3 max-w-sm leading-relaxed">Your request has been received. A member of our team will be in touch within one business day.</p>
+                <button id="reset" type="button" class="btn btn-outline mt-8 px-6 py-3 text-sm">Send another message</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-ink text-slate-400">
+    <div class="mx-auto max-w-7xl px-5 pb-10 pt-16 sm:px-8">
+      <div class="grid gap-12 md:grid-cols-12">
+        <div class="md:col-span-4">
+          <a href="#home" class="flex items-center gap-3">
+            <span class="flex h-9 w-10 items-center justify-center whitespace-nowrap rounded-lg bg-white font-display text-[14px] font-medium tracking-tight text-ink">A<span class="text-accent">&amp;</span>R</span>
+            <span class="font-display text-[19px] text-white">A&amp;R LLP</span>
+          </a>
+          <p class="mt-5 max-w-xs text-[15px] leading-relaxed">Reliable accounting, tax, and advisory services for individuals and businesses.</p>
+          <div class="mt-6 flex gap-2">
+            <a href="#" aria-label="LinkedIn" class="grid h-10 w-10 place-items-center rounded-full border border-white/15 transition hover:border-white hover:text-white">
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.4c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21H9z"/></svg>
+            </a>
+            <a href="#" aria-label="Facebook" class="grid h-10 w-10 place-items-center rounded-full border border-white/15 transition hover:border-white hover:text-white">
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M14 8V6.2c0-.8.2-1.2 1.4-1.2H17V2h-2.6C11.3 2 10 3.5 10 6v2H8v3h2v11h4V11h2.7l.3-3H14z"/></svg>
+            </a>
+            <a href="#" aria-label="X" class="grid h-10 w-10 place-items-center rounded-full border border-white/15 transition hover:border-white hover:text-white">
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.8 3h3.1l-6.8 7.8L22 21h-6.2l-4.9-6.4L5.3 21H2.2l7.3-8.3L2 3h6.4l4.4 5.8L17.8 3zm-1.1 16.2h1.7L7.4 4.7H5.6l11.1 14.5z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-8 sm:grid-cols-3 md:col-span-8">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-[.14em] text-white">Services</p>
+            <ul class="mt-5 space-y-3 text-[15px]">
+              <li><a href="#services" class="flink">Accounting &amp; Bookkeeping</a></li>
+              <li><a href="#services" class="flink">Tax Planning</a></li>
+              <li><a href="#services" class="flink">Business Advisory</a></li>
+              <li><a href="#services" class="flink">Payroll</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-[.14em] text-white">Firm</p>
+            <ul class="mt-5 space-y-3 text-[15px]">
+              <li><a href="#about" class="flink">About</a></li>
+              <li><a href="#industries" class="flink">Industries</a></li>
+              <li><a href="#testimonials" class="flink">Testimonials</a></li>
+              <li><a href="#contact" class="flink">Contact</a></li>
+            </ul>
+          </div>
+          <div class="col-span-2 sm:col-span-1">
+            <p class="text-xs font-semibold uppercase tracking-[.14em] text-white">Get in touch</p>
+            <ul class="mt-5 space-y-3 text-[15px]">
+              <li><a href="tel:+15555550123" class="flink">(555) 555-0123</a></li>
+              <li><a href="mailto:hello@example.com" class="flink">hello@example.com</a></li>
+              <li>Mon–Fri, 9:00 – 5:30</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="mt-14 border-t border-white/10 pt-8 text-xs leading-relaxed">
+        <p class="max-w-4xl">The information on this website is for general informational purposes only and does not constitute accounting, tax, legal, or investment advice. Viewing this site or contacting A&amp;R LLP does not create a client relationship; engagements are established only through a signed engagement letter. Please consult a qualified professional about your specific circumstances.</p>
+        <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <p>&copy; <span id="year">2026</span> A&amp;R LLP. All rights reserved.</p>
+          <div class="flex gap-6"><a href="#" class="flink">Privacy Policy</a><a href="#" class="flink">Terms of Use</a><a href="#" class="flink">Accessibility</a></div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#home" id="to-top" class="fixed bottom-5 right-5 z-40 grid h-11 w-11 place-items-center rounded-full bg-ink text-white shadow-lg transition hover:bg-accent" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 15l6-6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+
+  <script>
+  (() => {
+    const $ = (s, c = document) => c.querySelector(s);
+    const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const drawIcons = () => { if (window.lucide) window.lucide.createIcons(); };
+    const CHECK = '<svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+    $('#year').textContent = new Date().getFullYear();
+
+    /* ---------- Header, progress, back-to-top, approach timeline ---------- */
+    const header = $('#header'), progress = $('#progress'), toTop = $('#to-top');
+    const approach = $('#approach'), apSteps = $$('.ap-step');
+    let ticking = false;
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        ticking = false;
+        const y = scrollY, max = document.documentElement.scrollHeight - innerHeight;
+        header.classList.toggle('scrolled', y > 8);
+        progress.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
+        toTop.classList.toggle('show', y > 800);
+        const r = approach.getBoundingClientRect(), line = innerHeight * 0.65;
+        approach.style.setProperty('--p', Math.min(Math.max((line - r.top) / r.height, 0), 1).toFixed(3));
+        apSteps.forEach(s => s.classList.toggle('on', s.getBoundingClientRect().top + 20 < line));
+      });
+    }
+    addEventListener('scroll', onScroll, { passive: true });
+    addEventListener('resize', onScroll);
+    onScroll();
+
+    /* ---------- Mobile menu ---------- */
+    const burger = $('#burger'), menu = $('#mobile-menu');
+    const setMenu = open => {
+      menu.classList.toggle('open', open);
+      burger.setAttribute('aria-expanded', open);
+      burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      if (open) header.classList.add('scrolled'); else onScroll();
+    };
+    burger.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
+    $$('a', menu).forEach(a => a.addEventListener('click', () => setMenu(false)));
+    addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+    addEventListener('resize', () => { if (innerWidth >= 1024) setMenu(false); });
+
+    /* ---------- Active nav link ---------- */
+    const navLinks = $$('.nav-link');
+    const spy = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        navLinks.forEach(a => {
+          const on = a.getAttribute('href') === '#' + e.target.id;
+          a.classList.toggle('active', on);
+          on ? a.setAttribute('aria-current', 'true') : a.removeAttribute('aria-current');
+        });
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    ['home', 'about', 'services', 'industries', 'testimonials', 'contact'].forEach(id => spy.observe(document.getElementById(id)));
+
+    /* ---------- Reveal on scroll ---------- */
+    const revealer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const el = e.target;
+        obs.unobserve(el);
+        el.classList.add('in');
+        // Once revealed, hand transforms back to hover effects.
+        setTimeout(() => { el.removeAttribute('data-reveal'); el.classList.remove('in'); },
+          reduce ? 0 : 900 + (parseFloat(el.style.getPropertyValue('--d')) || 0) * 1000);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    $$('[data-reveal]').forEach(el => revealer.observe(el));
+
+    /* ---------- Counters ---------- */
+    const counter = new IntersectionObserver((entries, obs) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        obs.unobserve(e.target);
+        const el = e.target, to = +el.dataset.count;
+        if (reduce) { el.textContent = to; return; }
+        const t0 = performance.now(), dur = 1800;
+        const step = now => {
+          const p = Math.min((now - t0) / dur, 1);
+          el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3)));
+          if (p < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      });
+    }, { threshold: 0.6 });
+    $$('[data-count]').forEach(el => { if (!reduce) el.textContent = '0'; counter.observe(el); });
+
+    /* ---------- Services: detail dialog ---------- */
+    const SERVICES = {
+      accounting: { icon: 'calculator', title: 'Accounting & Bookkeeping',
+        body: 'Clean, timely books are the foundation of every good decision. We keep your records accurate and your reports ready, so you always know how your business is performing.',
+        includes: ['Monthly bookkeeping & reconciliations', 'Financial statement preparation', 'Accounts payable & receivable support', 'Cloud accounting setup & clean-up', 'Management reports & KPIs'],
+        who: 'Small and mid-sized businesses, startups, and professional practices.' },
+      tax: { icon: 'receipt', title: 'Tax Planning & Preparation',
+        body: 'Strategic tax services designed to help clients understand and manage their tax obligations, with planning throughout the year rather than only at filing time.',
+        includes: ['Individual & business tax returns', 'Year-round tax planning & projections', 'Entity structure review', 'Multi-state & local filings', 'Correspondence & notice support'],
+        who: 'Individuals, families, business owners, and corporations.' },
+      advisory: { icon: 'briefcase', title: 'Business Advisory',
+        body: 'Practical, forward-looking guidance for the moments that matter, from planning growth and managing cash flow to preparing for financing or a sale.',
+        includes: ['Budgeting & cash-flow forecasting', 'Business planning & growth strategy', 'Financing & lender readiness', 'Succession & exit planning', 'Outsourced CFO support'],
+        who: 'Growing companies and owners facing a major decision.' },
+      payroll: { icon: 'users', title: 'Payroll Services',
+        body: 'Accurate, on-time payroll with the filings and records handled for you, so your team is paid correctly and you stay compliant.',
+        includes: ['Payroll processing & direct deposit', 'Payroll tax filings & deposits', 'Year-end W-2 and 1099 preparation', 'New-hire & compliance reporting', 'Benefits & deductions administration'],
+        who: 'Employers of every size, from first hire to growing teams.' },
+      audit: { icon: 'shield-check', title: 'Audit & Assurance',
+        body: 'Independent, objective reviews of your financial information that give lenders, boards, investors, and regulators confidence in your numbers.',
+        includes: ['Financial statement audits', 'Reviews & compilations', 'Nonprofit & grant compliance audits', 'Employee benefit plan audits', 'Internal control recommendations'],
+        who: 'Businesses with lender or investor requirements, and nonprofits.' },
+      estate: { icon: 'landmark', title: 'Estate & Trust Planning',
+        body: 'Thoughtful tax planning that helps protect what you have built and makes transitions smoother for the people who matter to you.',
+        includes: ['Estate & gift tax planning', 'Trust & estate tax returns', 'Charitable giving strategies', 'Coordination with attorneys & advisors', 'Wealth transfer projections'],
+        who: 'Individuals, families, and trustees planning for the future.' }
+    };
+    const dialog = $('#svc-dialog'), dlgBody = $('#dlg-body');
+    let lastFocus = null;
+    function openService(key) {
+      const s = SERVICES[key];
+      if (!s) return;
+      lastFocus = document.activeElement;
+      dlgBody.innerHTML = `
+        <span class="stag grid h-12 w-12 place-items-center rounded-xl bg-accent-soft text-accent"><i data-lucide="${s.icon}" class="h-5 w-5"></i></span>
+        <h3 id="dlg-title" tabindex="-1" class="stag mt-6 outline-none pr-10 font-display text-3xl text-ink" style="--i:1">${s.title}</h3>
+        <p class="stag mt-4 text-[16px] leading-relaxed" style="--i:2">${s.body}</p>
+        <p class="stag mt-8 text-xs font-semibold uppercase tracking-[.14em] text-slate-400" style="--i:3">What's included</p>
+        <ul class="mt-4 grid gap-3 sm:grid-cols-2">${s.includes.map((x, i) => `<li class="stag flex items-start gap-3 text-[15px] text-slate-700" style="--i:${i + 3}"><span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-accent-soft text-accent">${CHECK}</span>${x}</li>`).join('')}</ul>
+        <div class="stag mt-8 rounded-2xl bg-paper p-5 text-[15px]" style="--i:8"><span class="font-medium text-ink">Ideal for:</span> ${s.who}</div>
+        <div class="stag mt-8 flex flex-col gap-3 sm:flex-row" style="--i:9">
+          <a href="#contact" data-prefill="${key}" class="btn btn-primary px-6 py-3 text-[15px]">Discuss this service <i data-lucide="arrow-right" class="arrow h-4 w-4"></i></a>
+          <button type="button" data-close class="btn btn-outline px-6 py-3 text-[15px]">Close</button>
+        </div>`;
+      drawIcons();
+      dialog.classList.remove('closing');
+      dialog.showModal();
+      $('#dlg-title').focus();
+    }
+    function closeDialog(after) {
+      if (!dialog.open) return after && after();
+      const done = () => { dialog.classList.remove('closing'); dialog.close(); if (after) after(); else if (lastFocus) lastFocus.focus({ preventScroll: true }); };
+      if (reduce) return done();
+      dialog.classList.add('closing');
+      const onEnd = e => { if (e.target !== dialog) return; dialog.removeEventListener('animationend', onEnd); done(); };
+      dialog.addEventListener('animationend', onEnd);
+    }
+    dialog.addEventListener('cancel', e => { e.preventDefault(); closeDialog(); });
+    dialog.addEventListener('click', e => {
+      if (e.target === dialog || e.target.closest('[data-close]')) closeDialog();
+      const pre = e.target.closest('[data-prefill]');
+      if (pre) { e.preventDefault(); closeDialog(() => { prefill(pre.dataset.prefill); $('#contact').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); }); }
+    });
+    $$('.svc-card').forEach(card => {
+      card.addEventListener('click', () => openService(card.dataset.svc));
+      card.addEventListener('pointermove', e => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', e.clientX - r.left + 'px');
+        card.style.setProperty('--my', e.clientY - r.top + 'px');
+      });
+    });
+
+    /* ---------- Industries ---------- */
+    const INDUSTRIES = [
+      { key: 'smb', icon: 'store', name: 'Small Businesses', title: 'Owner-managed & family businesses',
+        text: 'You wear many hats. We take the financial ones off your plate, keeping your books current, your taxes planned, and your decisions grounded in real numbers.',
+        needs: ['Keeping books current without a full-time accountant', 'Planning for taxes instead of reacting to them', 'Understanding profitability by product or location'],
+        services: ['accounting', 'tax', 'payroll'] },
+      { key: 'realestate', icon: 'house', name: 'Real Estate', title: 'Investors, developers & property managers',
+        text: 'From a single rental to a multi-entity portfolio, we help you track performance property by property and structure holdings in a tax-efficient way.',
+        needs: ['Depreciation, cost segregation & 1031 considerations', 'Multi-entity and partnership reporting', 'Accurate property-level financials'],
+        services: ['tax', 'accounting', 'advisory'] },
+      { key: 'health', icon: 'stethoscope', name: 'Healthcare', title: 'Medical, dental & wellness practices',
+        text: 'We help practice owners understand their numbers, manage cash flow around reimbursements, and plan for growth, partnership changes, and retirement.',
+        needs: ['Cash flow tied to insurance reimbursement cycles', 'Practice valuation and partner buy-ins', 'Personal and practice tax coordination'],
+        services: ['accounting', 'tax', 'advisory'] },
+      { key: 'construction', icon: 'hard-hat', name: 'Construction', title: 'Contractors & trades',
+        text: 'Job costing, bonding requirements, and uneven cash flow make construction finance unique. We bring clarity to each project and to the business as a whole.',
+        needs: ['Job costing and work-in-progress schedules', 'Financial statements for bonding & lenders', 'Equipment purchases and tax timing'],
+        services: ['accounting', 'audit', 'tax'] },
+      { key: 'nonprofit', icon: 'heart-handshake', name: 'Nonprofits', title: 'Charities, foundations & associations',
+        text: 'We support mission-driven organizations with the accountability their boards, donors, and grantors expect, without distracting from the work that matters.',
+        needs: ['Annual audits and grant compliance', 'Form 990 preparation', 'Fund accounting and board-ready reporting'],
+        services: ['audit', 'accounting', 'tax'] },
+      { key: 'tech', icon: 'laptop', name: 'Technology & Startups', title: 'Founders & venture-backed companies',
+        text: 'We help startups build finance foundations that scale: clean books for investors, smart tax positioning, and forecasts that support fundraising.',
+        needs: ['Investor-ready financials and metrics', 'R&D tax credit opportunities', 'Burn rate and runway forecasting'],
+        services: ['accounting', 'advisory', 'tax'] },
+      { key: 'professional', icon: 'scale', name: 'Professional Services', title: 'Law firms, agencies & consultancies',
+        text: 'For firms that sell expertise, we focus on utilization, partner compensation, and cash flow, so your practice runs as well as the work you deliver.',
+        needs: ['Partner compensation and profit allocation', 'Work-in-progress and billing visibility', 'Entity and retirement plan structure'],
+        services: ['accounting', 'tax', 'advisory'] },
+      { key: 'individuals', icon: 'user-round', name: 'Individuals & Families', title: 'Individuals, families & retirees',
+        text: 'Personal finances grow more complex over time. We help you file accurately, plan ahead for major life events, and pass on wealth thoughtfully.',
+        needs: ['Complex returns with investments or rentals', 'Retirement and income planning coordination', 'Estate, gift, and charitable planning'],
+        services: ['tax', 'estate'] }
+    ];
+    const tabsWrap = $('#ind-tabs'), indPanel = $('#ind-panel');
+    tabsWrap.innerHTML = INDUSTRIES.map((ind, i) =>
+      `<button role="tab" id="ind-${ind.key}" aria-controls="ind-panel" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}" data-i="${i}"
+        class="ind-tab inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-600">
+        <i data-lucide="${ind.icon}" class="h-4 w-4"></i>${ind.name}</button>`).join('');
+    const indTabs = $$('.ind-tab', tabsWrap);
+    const renderIndustry = ind => `
+      <div class="border-b border-slate-100 p-7 sm:p-10 lg:col-span-7 lg:border-b-0 lg:border-r">
+        <span class="stag grid h-12 w-12 place-items-center rounded-xl bg-ink text-white"><i data-lucide="${ind.icon}" class="h-5 w-5"></i></span>
+        <h3 class="stag mt-6 font-display text-3xl leading-tight text-ink" style="--i:1">${ind.title}</h3>
+        <p class="stag mt-4 max-w-xl text-[16px] leading-relaxed" style="--i:2">${ind.text}</p>
+        <a href="#contact" class="stag btn btn-primary mt-8 px-6 py-3 text-sm" style="--i:3">Talk to an advisor <i data-lucide="arrow-right" class="arrow h-4 w-4"></i></a>
+      </div>
+      <div class="bg-paper/60 p-7 sm:p-10 lg:col-span-5">
+        <p class="stag text-xs font-semibold uppercase tracking-[.14em] text-slate-400" style="--i:1">Challenges we solve</p>
+        <ul class="mt-4 space-y-3">${ind.needs.map((n, i) => `<li class="stag flex items-start gap-3 text-[15px] text-slate-700" style="--i:${i + 2}"><span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-accent-soft text-accent">${CHECK}</span>${n}</li>`).join('')}</ul>
+        <p class="stag mt-8 text-xs font-semibold uppercase tracking-[.14em] text-slate-400" style="--i:5">Related services</p>
+        <div class="mt-4 flex flex-wrap gap-2">${ind.services.map((k, i) => `<button type="button" data-open="${k}" class="stag chip-link rounded-full border border-slate-300 bg-white px-3.5 py-1.5 text-sm text-ink" style="--i:${i + 6}">${SERVICES[k].title}</button>`).join('')}</div>
+      </div>`;
+    let indIdx = 0, indT;
+    function selectIndustry(i, focus) {
+      indTabs.forEach((t, k) => { t.setAttribute('aria-selected', k === i); t.tabIndex = k === i ? 0 : -1; });
+      const tab = indTabs[i];
+      if (focus) tab.focus();
+      tab.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: reduce ? 'auto' : 'smooth' });
+      indPanel.setAttribute('aria-labelledby', tab.id);
+      if (i === indIdx && indPanel.innerHTML) return;
+      indIdx = i;
+      indPanel.classList.add('out');
+      clearTimeout(indT);
+      indT = setTimeout(() => { indPanel.innerHTML = renderIndustry(INDUSTRIES[i]); drawIcons(); indPanel.classList.remove('out'); }, reduce ? 0 : 200);
+    }
+    indPanel.innerHTML = renderIndustry(INDUSTRIES[0]);
+    indPanel.setAttribute('aria-labelledby', indTabs[0].id);
+    indTabs.forEach((t, i) => {
+      t.addEventListener('click', () => selectIndustry(i));
+      t.addEventListener('keydown', e => {
+        const dir = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
+        if (!dir) return;
+        e.preventDefault();
+        selectIndustry((i + dir + indTabs.length) % indTabs.length, true);
+      });
+    });
+    indPanel.addEventListener('click', e => { const b = e.target.closest('[data-open]'); if (b) openService(b.dataset.open); });
+
+    /* ---------- Testimonials ---------- */
+    const wrap = $('#t-wrap'), stack = $('#t-stack'), slides = $$('.t-slide', stack), dots = $('#t-dots');
+    let tIdx = 0;
+    slides.forEach((_, i) => {
+      const d = document.createElement('button');
+      d.className = 't-dot';
+      d.setAttribute('aria-label', `Show testimonial ${i + 1}`);
+      d.innerHTML = '<span></span>';
+      d.addEventListener('click', () => showSlide(i));
+      if (!reduce) d.firstChild.addEventListener('animationend', () => showSlide(tIdx + 1));
+      dots.appendChild(d);
+    });
+    function showSlide(i) {
+      const n = slides.length, next = ((i % n) + n) % n;
+      slides.forEach((s, k) => {
+        s.classList.toggle('active', k === next);
+        s.classList.toggle('prev', k === tIdx && k !== next);
+        s.setAttribute('aria-hidden', k !== next);
+      });
+      tIdx = next;
+      $$('.t-dot', dots).forEach((d, k) => { d.classList.remove('active'); if (k === next) { void d.offsetWidth; d.classList.add('active'); } });
+    }
+    $('#t-prev').addEventListener('click', () => showSlide(tIdx - 1));
+    $('#t-next').addEventListener('click', () => showSlide(tIdx + 1));
+    wrap.addEventListener('mouseenter', () => wrap.classList.add('paused'));
+    wrap.addEventListener('mouseleave', () => wrap.classList.remove('paused'));
+    wrap.addEventListener('focusin', () => wrap.classList.add('paused'));
+    wrap.addEventListener('focusout', () => wrap.classList.remove('paused'));
+    let sx = null, dx = 0;
+    stack.addEventListener('pointerdown', e => { sx = e.clientX; dx = 0; });
+    stack.addEventListener('pointermove', e => { if (sx !== null) dx = e.clientX - sx; });
+    stack.addEventListener('pointerup', () => { if (sx !== null && Math.abs(dx) > 50) showSlide(tIdx + (dx < 0 ? 1 : -1)); sx = null; });
+    stack.addEventListener('pointercancel', () => (sx = null));
+    new IntersectionObserver(([e]) => wrap.classList.toggle('paused', !e.isIntersecting)).observe(wrap);
+    showSlide(0);
+
+    /* ---------- Contact form ---------- */
+    const form = $('#lead-form'), card = $('#form-card'), submit = $('#submit'), service = $('#f-service');
+    const required = $$('[required]', form);
+    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    function validate(f) {
+      const v = f.value.trim();
+      const ok = !!v && (f.type !== 'email' || emailRe.test(v));
+      f.closest('.fld').classList.toggle('invalid', !ok);
+      f.setAttribute('aria-invalid', !ok);
+      return ok;
+    }
+    required.forEach(f => {
+      f.addEventListener('blur', () => { if (f.value.trim()) validate(f); });
+      f.addEventListener('input', () => { if (f.closest('.fld').classList.contains('invalid')) validate(f); });
+      f.addEventListener('change', () => validate(f));
+    });
+    function prefill(key) {
+      if (!key || !service.querySelector(`option[value="${key}"]`)) return;
+      service.value = key;
+      validate(service);
+    }
+    document.addEventListener('click', e => {
+      const pre = e.target.closest('[data-prefill]');
+      if (pre && !dialog.contains(pre)) prefill(pre.dataset.prefill);
+    });
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const results = required.map(validate);
+      const bad = required[results.indexOf(false)];
+      if (bad) { card.classList.remove('shake'); void card.offsetWidth; card.classList.add('shake'); bad.focus(); return; }
+      submit.classList.add('loading');
+      submit.disabled = true;
+      const first = $('#f-name').value.trim().split(/\s+/)[0];
+      // Simulated submission. Replace with fetch() to your form service or backend.
+      setTimeout(() => {
+        submit.classList.remove('loading');
+        submit.disabled = false;
+        $('#success-msg').textContent = `Thank you, ${first}. Your request has been received, and a member of our team will be in touch within one business day.`;
+        card.style.minHeight = card.offsetHeight + 'px';
+        card.classList.add('done');
+      }, 1100);
+    });
+    $('#reset').addEventListener('click', () => {
+      form.reset();
+      $$('.fld', form).forEach(f => f.classList.remove('invalid'));
+      required.forEach(f => f.removeAttribute('aria-invalid'));
+      card.classList.remove('done');
+      setTimeout(() => (card.style.minHeight = ''), 500);
+      $('#f-name').focus({ preventScroll: true });
+    });
+
+    // Convert icons last, after the industries tabs and panel have been rendered.
+    if (window.lucide) drawIcons(); else addEventListener('load', drawIcons);
+  })();
+  </script>
+</body>
+</html>

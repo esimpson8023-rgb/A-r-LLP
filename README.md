@@ -26,3 +26,16 @@ A static, dependency-free marketing site for A&R LLP. Open `index.html` in a bro
 `a-r-llp-v2.html` is a dark-mode, motion-heavy take on the same US CPA brief (obsidian navy with emerald and amber accents). It uses Tailwind CSS and Lucide icons from CDNs plus vanilla JS, and needs no build step. It includes an animated hero with live counters, tabbed service cards with a detail panel, a scroll-linked process timeline, a pricing estimator by client type, a testimonial carousel, and a contact form with floating labels.
 
 Before publishing, replace the placeholder contact details, the testimonials, the headline stats ($1B+, 500+, 99%, 15+), the dashboard figures in the hero, and the estimator's pricing formulas (the `EST` object in the script). The contact form only simulates a submission; connect it to a form service or backend.
+
+## Single-file version 3 (light, premium)
+
+`a-r-llp-v3.html` is a light, minimalist version (white background, navy text, deep teal accent, serif headlines). It uses Tailwind CSS and Lucide icons from CDNs plus vanilla JS. Sections: hero, stats bar, About with an "Our approach" timeline, six services that open a detail dialog, an eight-industry switcher, a testimonial carousel, and a consultation form.
+
+Placeholder content that must be replaced before publishing (the page labels the stats and testimonials as placeholders on screen):
+- Stats bar figures (25+, 500+, 98%)
+- Testimonials (sample names and quotes)
+- Contact details: address, phone, email, hours (also in the footer)
+- The "Sample report" figures in the hero illustration
+- Service and industry descriptions in the `SERVICES` and `INDUSTRIES` objects in the script
+
+The hero uses a built-in illustration rather than a photo; swap in licensed photography if preferred. The contact form only simulates a submission; connect it to a form service or backend.
