@@ -88,6 +88,26 @@
     });
   });
 
+  // Copy buttons for phone and email
+  document.querySelectorAll(".copy").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      function done(label) {
+        btn.textContent = label;
+        setTimeout(function () { btn.textContent = "Copy"; }, 1600);
+      }
+      var text = btn.getAttribute("data-copy");
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () { done("Copied"); }, function () { selectText(); });
+      } else { selectText(); }
+      function selectText() {
+        var range = document.createRange();
+        range.selectNodeContents(btn.previousElementSibling || btn.parentNode);
+        var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
+        done("Selected");
+      }
+    });
+  });
+
   // Contact form: validate, then open the visitor's email client.
   // Replace with a form service (e.g. Formspree) or your own endpoint when ready.
   var form = document.getElementById("contact-form");

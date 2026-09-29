@@ -39,6 +39,7 @@ h1, h2, h3 {
   line-height: 1.15;
   letter-spacing: -0.01em;
   margin: 0 0 0.5em;
+  text-wrap: balance;
   color: var(--ink);
 }
 
@@ -155,7 +156,7 @@ p { margin: 0 0 1em; }
 }
 .hero-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: clamp(32px, 6vw, 80px); align-items: center; position: relative; }
 .hero h1 em { font-style: italic; color: var(--brass-dark); }
-.lede { font-size: 1.18rem; color: var(--muted); max-width: 36em; }
+.lede { font-size: 1.18rem; color: var(--muted); max-width: 34em; text-wrap: pretty; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 32px 0 36px; }
 .hero-points { display: flex; flex-wrap: wrap; gap: 10px 26px; list-style: none; padding: 0; margin: 0; font-size: 0.93rem; font-weight: 500; }
 .hero-points li { display: flex; align-items: center; gap: 8px; }
@@ -173,10 +174,10 @@ p { margin: 0 0 1em; }
 .card-label { font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brass); font-weight: 700; }
 .deadlines { list-style: none; margin: 0 0 20px; padding: 0; }
 .deadlines li {
-  display: grid; grid-template-columns: 92px 1fr; gap: 14px; align-items: baseline;
+  display: grid; grid-template-columns: 118px 1fr; gap: 14px; align-items: baseline;
   padding: 14px 0; border-bottom: 1px solid rgba(247, 244, 238, 0.14);
 }
-.deadlines .date { font: 500 1.15rem var(--serif); color: var(--white); }
+.deadlines .date { font: 500 1.05rem var(--serif); color: var(--white); font-variant-numeric: tabular-nums lining-nums; }
 .deadlines li span:last-child { color: rgba(247, 244, 238, 0.8); font-size: 0.95rem; }
 .card-foot { font-size: 0.9rem; color: rgba(247, 244, 238, 0.7); margin: 0; }
 
@@ -201,7 +202,12 @@ p { margin: 0 0 1em; }
   transition: background 0.25s;
 }
 .service:hover { background: var(--white); }
-.service-num { display: block; font: 500 0.9rem var(--serif); color: var(--brass-dark); margin-bottom: 36px; }
+.service-tag {
+  display: inline-block; margin-bottom: 28px;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--brass-dark); padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px;
+}
+.service:hover .service-tag { border-color: var(--brass); }
 .service p { color: var(--muted); font-size: 0.97rem; margin: 0; }
 
 /* Tabs */
@@ -270,6 +276,7 @@ p { margin: 0 0 1em; }
   content: "+"; font: 400 1.6rem/1 var(--sans); color: var(--brass-dark); transition: transform 0.25s;
 }
 .faq details[open] summary::after { transform: rotate(45deg); }
+.faq summary:hover { color: var(--brass-dark); }
 .faq details p { color: var(--muted); padding-bottom: 22px; margin: 0; max-width: 62ch; }
 
 /* Contact */
@@ -279,6 +286,12 @@ p { margin: 0 0 1em; }
 .contact-details dt { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; color: var(--muted); padding-top: 3px; }
 .contact-details dd { margin: 0; font-weight: 500; }
 .contact-details a { text-decoration-color: var(--brass); text-underline-offset: 3px; }
+.copy {
+  margin-left: 8px; padding: 3px 10px; font: 600 0.75rem var(--sans); color: var(--muted);
+  background: transparent; border: 1px solid var(--line); border-radius: 999px; cursor: pointer;
+  vertical-align: 2px; transition: border-color 0.2s, color 0.2s;
+}
+.copy:hover { border-color: var(--ink); color: var(--ink); }
 
 .contact-form {
   background: var(--white); border: 1px solid var(--line); border-radius: 20px;
@@ -353,7 +366,7 @@ p { margin: 0 0 1em; }
   .steps li::after { display: none; }
   .field-row { grid-template-columns: 1fr; gap: 0; }
   .hero-card { padding: 24px; }
-  .deadlines li { grid-template-columns: 80px 1fr; }
+  .deadlines li { grid-template-columns: 1fr; gap: 2px; }
   .contact-details div { grid-template-columns: 1fr; gap: 2px; }
   .hero-actions .btn { width: 100%; }
 }
