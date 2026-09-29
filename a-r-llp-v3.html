@@ -38,9 +38,11 @@
     body { background: #fff; color: #475569; -webkit-font-smoothing: antialiased; overflow-x: clip; }
     ::selection { background: rgba(15,110,95,.16); color: var(--ink); }
     .tabular { font-variant-numeric: tabular-nums; }
+    h1, h2, h3, blockquote { text-wrap: balance; }
+    p, li { text-wrap: pretty; }
     :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 8px; }
-    .overline { font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); display: inline-flex; align-items: center; gap: .6rem; }
-    .overline::before { content: ''; width: 22px; height: 1px; background: currentColor; }
+    .eyebrow { font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); display: inline-flex; align-items: center; gap: .6rem; }
+    .eyebrow::before { content: ''; width: 22px; height: 1px; background: currentColor; }
 
     /* Buttons */
     .btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; border-radius: 999px; font-weight: 500;
@@ -124,6 +126,7 @@
     @keyframes fadeIn { from { opacity: 0; } }
     @keyframes fadeOut { to { opacity: 0; } }
     html:has(dialog[open]) { overflow: hidden; }
+    #dlg-title:focus { outline: none; }
     .stag { animation: stagIn .55s var(--ease) both; animation-delay: calc(var(--i, 0) * 50ms + 100ms); }
     @keyframes stagIn { from { opacity: 0; transform: translateY(8px); } }
 
@@ -256,7 +259,7 @@
 
       <div class="relative mx-auto grid max-w-7xl items-center gap-16 px-5 sm:px-8 lg:grid-cols-12 lg:gap-12">
         <div class="lg:col-span-7">
-          <p data-load style="--d:.05s" class="overline">Accounting · Tax · Advisory</p>
+          <p data-load style="--d:.05s" class="eyebrow">Accounting · Tax · Advisory</p>
           <h1 class="mt-6 font-display text-[2.6rem] font-normal leading-[1.06] tracking-[-0.02em] text-ink sm:text-[3.4rem] lg:text-[3.5rem] xl:text-[3.9rem]">
             <span class="line-mask"><span style="--d:.15s">Numbers You Can Trust.</span></span>
             <span class="line-mask"><span style="--d:.3s" class="italic text-accent">Advice You Can Build On.</span></span>
@@ -281,15 +284,15 @@
             <div class="rounded-3xl border border-slate-200/80 bg-white p-6 shadow-[0_2px_4px_rgba(11,27,43,.04),0_40px_80px_-40px_rgba(11,27,43,.35)] sm:p-7">
               <div class="flex items-center justify-between">
                 <div>
-                  <p class="text-xs font-medium uppercase tracking-[.14em] text-slate-400">Financial overview</p>
+                  <p class="text-xs font-medium uppercase tracking-[.14em] text-slate-500">Financial overview</p>
                   <p class="mt-1 font-display text-2xl text-ink">FY 2026 Summary</p>
                 </div>
                 <span class="rounded-full border border-slate-200 bg-paper px-2.5 py-1 text-[11px] font-medium text-slate-500">Sample report</span>
               </div>
               <div class="mt-6 grid grid-cols-3 gap-3 border-y border-slate-100 py-5">
-                <div><p class="text-[11px] uppercase tracking-wider text-slate-400">Revenue</p><p class="tabular mt-1 text-lg font-semibold text-ink">$1.24M</p><p class="text-xs font-medium text-accent">▲ 12.4%</p></div>
-                <div><p class="text-[11px] uppercase tracking-wider text-slate-400">Net margin</p><p class="tabular mt-1 text-lg font-semibold text-ink">18.6%</p><p class="text-xs font-medium text-accent">▲ 2.1 pts</p></div>
-                <div><p class="text-[11px] uppercase tracking-wider text-slate-400">Cash</p><p class="tabular mt-1 text-lg font-semibold text-ink">$312K</p><p class="text-xs font-medium text-slate-400">14 mo runway</p></div>
+                <div><p class="text-[11px] uppercase tracking-wider text-slate-500">Revenue</p><p class="tabular mt-1 text-lg font-semibold text-ink">$1.24M</p><p class="text-xs font-medium text-accent">▲ 12.4%</p></div>
+                <div><p class="text-[11px] uppercase tracking-wider text-slate-500">Net margin</p><p class="tabular mt-1 text-lg font-semibold text-ink">18.6%</p><p class="text-xs font-medium text-accent">▲ 2.1 pts</p></div>
+                <div><p class="text-[11px] uppercase tracking-wider text-slate-500">Cash</p><p class="tabular mt-1 text-lg font-semibold text-ink">$312K</p><p class="text-xs font-medium text-slate-500">14 mo runway</p></div>
               </div>
               <div class="relative mt-6 h-40">
                 <div class="absolute inset-0 flex items-end gap-[6px]">
@@ -310,7 +313,7 @@
                   <path class="draw" pathLength="1" style="--d:1.4s" d="M4 112 C30 104 50 100 76 92 S120 84 150 72 S200 62 226 46 S270 22 296 12" stroke="#0B1B2B" stroke-width="1.75" stroke-dasharray="1" vector-effect="non-scaling-stroke"/>
                 </svg>
               </div>
-              <div class="mt-3 flex justify-between text-[10px] uppercase tracking-wider text-slate-400"><span>Jan</span><span>Apr</span><span>Jul</span><span>Oct</span><span>Dec</span></div>
+              <div class="mt-3 flex justify-between text-[10px] uppercase tracking-wider text-slate-500"><span>Jan</span><span>Apr</span><span>Jul</span><span>Oct</span><span>Dec</span></div>
             </div>
           </div>
 
@@ -324,7 +327,7 @@
                 <circle class="seg" style="--d:1.3s" cx="21" cy="21" r="15.9" fill="none" stroke="#A7D3C9" stroke-width="6" pathLength="100" stroke-dasharray="24 76" stroke-dashoffset="-76"/>
               </svg>
               <div>
-                <p class="text-xs text-slate-400">Expense mix</p>
+                <p class="text-xs text-slate-500">Expense mix</p>
                 <p class="text-sm font-semibold text-ink">On budget</p>
               </div>
             </div>
@@ -336,7 +339,7 @@
               <span class="grid h-10 w-10 place-items-center rounded-xl bg-accent-soft text-accent"><i data-lucide="file-check-2" class="h-5 w-5"></i></span>
               <div>
                 <p class="text-sm font-semibold text-ink">Tax return filed</p>
-                <p class="text-xs text-slate-400">Accepted · on time</p>
+                <p class="text-xs text-slate-500">Accepted · on time</p>
               </div>
             </div>
           </div>
@@ -361,13 +364,13 @@
             <dt class="order-2 mt-1 text-sm text-slate-500">Client Satisfaction</dt>
             <dd class="order-1 tabular font-display text-4xl text-ink sm:text-[2.6rem]"><span data-count="98">98</span>%</dd>
           </div>
-          <div class="flex flex-col items-center justify-center px-6 py-7 text-center">
-            <dt class="order-2 mt-2 text-sm text-slate-500"><span class="font-medium text-ink">Personalized Service</span><br class="sm:hidden"> for every client</dt>
-            <dd class="order-1 grid h-11 w-11 place-items-center rounded-full bg-accent-soft text-accent"><i data-lucide="handshake" class="h-5 w-5"></i></dd>
+          <div class="flex flex-col items-center px-6 py-7 text-center">
+            <dt class="order-2 mt-1 text-sm text-slate-500">Personalized Service</dt>
+            <dd class="order-1 grid h-10 w-10 place-items-center rounded-full bg-accent-soft text-accent"><i data-lucide="handshake" class="h-5 w-5"></i></dd>
           </div>
         </dl>
       </div>
-      <p class="mx-auto mt-3 flex max-w-6xl items-center justify-center gap-1.5 text-center text-xs text-slate-400">
+      <p class="mx-auto mt-3 flex max-w-6xl items-center justify-center gap-1.5 text-center text-xs text-slate-500">
         <i data-lucide="sparkles" class="h-3.5 w-3.5"></i> Placeholder figures for demonstration. Replace with the firm's verified data before publishing.
       </p>
     </section>
@@ -376,7 +379,7 @@
     <section id="about" class="py-24 sm:py-32">
       <div class="mx-auto grid max-w-7xl gap-16 px-5 sm:px-8 lg:grid-cols-12">
         <div class="lg:col-span-6">
-          <p data-reveal class="overline">About A&amp;R LLP</p>
+          <p data-reveal class="eyebrow">About A&amp;R LLP</p>
           <h2 data-reveal style="--d:.05s" class="mt-5 font-display text-4xl leading-[1.1] tracking-[-0.015em] text-ink sm:text-5xl">A steady partner for every financial chapter.</h2>
           <div data-reveal style="--d:.1s" class="mt-7 space-y-5 text-[17px] leading-relaxed">
             <p>A&amp;R LLP is an independent accounting firm serving individuals, families, and businesses. We combine technical depth with plain-English advice, so you always understand where you stand and what to do next.</p>
@@ -403,7 +406,7 @@
 
         <div class="lg:col-span-5 lg:col-start-8">
           <div data-reveal class="rounded-3xl bg-paper p-7 sm:p-9">
-            <p class="text-xs font-semibold uppercase tracking-[.14em] text-slate-400">Our approach</p>
+            <p class="text-xs font-semibold uppercase tracking-[.14em] text-slate-500">Our approach</p>
             <ol id="approach" class="relative mt-7 space-y-8">
               <li class="pointer-events-none absolute bottom-4 left-[19px] top-4 w-px bg-slate-200" aria-hidden="true"><span class="fill block h-full w-full bg-accent"></span></li>
               <li class="ap-step relative flex gap-5">
@@ -433,7 +436,7 @@
       <div class="mx-auto max-w-7xl px-5 sm:px-8">
         <div class="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
           <div class="max-w-2xl">
-            <p data-reveal class="overline">Our Services</p>
+            <p data-reveal class="eyebrow">Our Services</p>
             <h2 data-reveal style="--d:.05s" class="mt-5 font-display text-4xl leading-[1.1] tracking-[-0.015em] text-ink sm:text-5xl">Comprehensive services, delivered with care.</h2>
           </div>
           <p data-reveal style="--d:.1s" class="max-w-md text-[17px] leading-relaxed">Select any service to see what's included and who it's designed for.</p>
@@ -494,7 +497,7 @@
     <section id="industries" class="py-24 sm:py-32">
       <div class="mx-auto max-w-7xl px-5 sm:px-8">
         <div class="max-w-2xl">
-          <p data-reveal class="overline">Industries</p>
+          <p data-reveal class="eyebrow">Industries</p>
           <h2 data-reveal style="--d:.05s" class="mt-5 font-display text-4xl leading-[1.1] tracking-[-0.015em] text-ink sm:text-5xl">Specialized knowledge for the way you work.</h2>
           <p data-reveal style="--d:.1s" class="mt-5 text-[17px] leading-relaxed">Every industry has its own rules, rhythms, and risks. Choose yours to see how we help.</p>
         </div>
@@ -512,7 +515,7 @@
     <!-- ================= TESTIMONIALS ================= -->
     <section id="testimonials" class="bg-paper py-24 sm:py-32">
       <div class="mx-auto max-w-5xl px-5 text-center sm:px-8">
-        <p data-reveal class="overline justify-center">Testimonials</p>
+        <p data-reveal class="eyebrow justify-center">Testimonials</p>
         <h2 data-reveal style="--d:.05s" class="mt-5 font-display text-4xl leading-[1.1] tracking-[-0.015em] text-ink sm:text-5xl">What our clients value most.</h2>
         <p data-reveal style="--d:.1s" class="mt-4 inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs text-slate-500">
           <i data-lucide="sparkles" class="h-3.5 w-3.5"></i> Sample testimonials. Replace with real client feedback, used with permission.
@@ -567,7 +570,7 @@
     <section id="contact" class="py-24 sm:py-32">
       <div class="mx-auto grid max-w-7xl gap-14 px-5 sm:px-8 lg:grid-cols-12">
         <div class="lg:col-span-5">
-          <p data-reveal class="overline">Contact</p>
+          <p data-reveal class="eyebrow">Contact</p>
           <h2 data-reveal style="--d:.05s" class="mt-5 font-display text-4xl leading-[1.1] tracking-[-0.015em] text-ink sm:text-5xl">Let's start the conversation.</h2>
           <p data-reveal style="--d:.1s" class="mt-5 text-[17px] leading-relaxed">Book a complimentary consultation. We'll listen to your needs and recommend a clear next step, with no obligation.</p>
 
@@ -598,7 +601,7 @@
                     <p class="err">Please enter a valid email address.</p>
                   </div>
                   <div class="fld">
-                    <label for="f-phone" class="mb-1.5 block text-sm font-medium text-ink">Phone <span class="font-normal text-slate-400">(optional)</span></label>
+                    <label for="f-phone" class="mb-1.5 block text-sm font-medium text-ink">Phone <span class="font-normal text-slate-500">(optional)</span></label>
                     <input id="f-phone" name="phone" class="inp" type="tel" autocomplete="tel" placeholder="(555) 555-0123">
                   </div>
                   <div class="fld">
@@ -630,7 +633,7 @@
                   </div>
                 </div>
                 <div class="mt-7 flex flex-col-reverse gap-4 sm:flex-row sm:items-center sm:justify-between">
-                  <p class="text-xs leading-relaxed text-slate-400">Your information is kept confidential. Submitting this form does not create a client relationship.</p>
+                  <p class="text-xs leading-relaxed text-slate-500">Your information is kept confidential. Submitting this form does not create a client relationship.</p>
                   <button id="submit" type="submit" class="btn btn-primary shrink-0 whitespace-nowrap px-7 py-3.5 text-[15px]">
                     <span class="label">Request Consultation</span><i data-lucide="arrow-right" class="arrow h-4 w-4"></i>
                     <svg class="spin h-5 w-5 animate-spin" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-opacity=".3" stroke-width="3"/><path d="M21 12a9 9 0 00-9-9" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
@@ -850,7 +853,7 @@
         <span class="stag grid h-12 w-12 place-items-center rounded-xl bg-accent-soft text-accent"><i data-lucide="${s.icon}" class="h-5 w-5"></i></span>
         <h3 id="dlg-title" tabindex="-1" class="stag mt-6 outline-none pr-10 font-display text-3xl text-ink" style="--i:1">${s.title}</h3>
         <p class="stag mt-4 text-[16px] leading-relaxed" style="--i:2">${s.body}</p>
-        <p class="stag mt-8 text-xs font-semibold uppercase tracking-[.14em] text-slate-400" style="--i:3">What's included</p>
+        <p class="stag mt-8 text-xs font-semibold uppercase tracking-[.14em] text-slate-500" style="--i:3">What's included</p>
         <ul class="mt-4 grid gap-3 sm:grid-cols-2">${s.includes.map((x, i) => `<li class="stag flex items-start gap-3 text-[15px] text-slate-700" style="--i:${i + 3}"><span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-accent-soft text-accent">${CHECK}</span>${x}</li>`).join('')}</ul>
         <div class="stag mt-8 rounded-2xl bg-paper p-5 text-[15px]" style="--i:8"><span class="font-medium text-ink">Ideal for:</span> ${s.who}</div>
         <div class="stag mt-8 flex flex-col gap-3 sm:flex-row" style="--i:9">
@@ -934,9 +937,9 @@
         <a href="#contact" class="stag btn btn-primary mt-8 px-6 py-3 text-sm" style="--i:3">Talk to an advisor <i data-lucide="arrow-right" class="arrow h-4 w-4"></i></a>
       </div>
       <div class="bg-paper/60 p-7 sm:p-10 lg:col-span-5">
-        <p class="stag text-xs font-semibold uppercase tracking-[.14em] text-slate-400" style="--i:1">Challenges we solve</p>
+        <p class="stag text-xs font-semibold uppercase tracking-[.14em] text-slate-500" style="--i:1">Challenges we solve</p>
         <ul class="mt-4 space-y-3">${ind.needs.map((n, i) => `<li class="stag flex items-start gap-3 text-[15px] text-slate-700" style="--i:${i + 2}"><span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-accent-soft text-accent">${CHECK}</span>${n}</li>`).join('')}</ul>
-        <p class="stag mt-8 text-xs font-semibold uppercase tracking-[.14em] text-slate-400" style="--i:5">Related services</p>
+        <p class="stag mt-8 text-xs font-semibold uppercase tracking-[.14em] text-slate-500" style="--i:5">Related services</p>
         <div class="mt-4 flex flex-wrap gap-2">${ind.services.map((k, i) => `<button type="button" data-open="${k}" class="stag chip-link rounded-full border border-slate-300 bg-white px-3.5 py-1.5 text-sm text-ink" style="--i:${i + 6}">${SERVICES[k].title}</button>`).join('')}</div>
       </div>`;
     let indIdx = 0, indT;
