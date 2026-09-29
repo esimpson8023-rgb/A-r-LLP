@@ -16,3 +16,7 @@ A static, dependency-free marketing site for A&R LLP. Open `index.html` in a bro
 - **Footer legal line**: LLP registration number (`OC…`) and registered office address
 - Add your professional body and regulatory wording (e.g. ICAEW/ACCA registration, audit registration) and a privacy policy / cookie notice
 - Review services, FAQs and key dates so they match what the firm actually offers
+
+## Single-file version (US CPA)
+
+`a-r-llp.html` is a self-contained alternative built with Tailwind CSS (CDN) and vanilla JS, styled for a US CPA firm (navy / slate / gold). Open it directly in a browser. Its address, phone, email, testimonials and insight articles are placeholders, and the contact form only simulates a submission; wire it to a form service or backend before going live.
