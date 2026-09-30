@@ -116,13 +116,15 @@
       transform: scaleX(0); transition: transform .5s var(--ease); }
     .svc-card::after { content: ''; position: absolute; inset: 0; border-radius: inherit; z-index: -1; opacity: 0; transition: opacity .4s;
       background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 0%), rgba(184,146,74,.07), transparent 60%); }
-    .svc-card:hover { transform: translateY(-5px); border-color: #E2DCD0; box-shadow: 0 1px 2px rgba(31,28,24,.04), 0 24px 48px -24px rgba(31,28,24,.28); }
-    .svc-card:hover::before { transform: scaleX(1); }
-    .svc-card:hover::after { opacity: 1; }
     .svc-card .ic { transition: background-color .35s, color .35s, transform .5s var(--ease); }
-    .svc-card:hover .ic { background: linear-gradient(135deg, var(--gold-light), var(--gold)); color: var(--ink); transform: rotate(-4deg) scale(1.05); }
     .svc-card .more .arrow { transition: transform .35s var(--ease); }
-    .svc-card:hover .more .arrow { transform: translateX(4px); }
+    @media (hover: hover) and (pointer: fine) {
+      .svc-card:hover { transform: translateY(-5px); border-color: #E2DCD0; box-shadow: 0 1px 2px rgba(31,28,24,.04), 0 24px 48px -24px rgba(31,28,24,.28); }
+      .svc-card:hover::before { transform: scaleX(1); }
+      .svc-card:hover::after { opacity: 1; }
+      .svc-card:hover .ic { background: linear-gradient(135deg, var(--gold-light), var(--gold)); color: var(--ink); transform: rotate(-4deg) scale(1.05); }
+      .svc-card:hover .more .arrow { transform: translateX(4px); }
+    }
 
     /* Dialog */
     dialog.modal { padding: 0; border: 0; background: transparent; width: min(640px, calc(100vw - 32px)); max-height: calc(100dvh - 48px); overflow: visible; }
@@ -147,7 +149,7 @@
     .ap-step.on .dot { background: linear-gradient(135deg, var(--gold-light), var(--gold)); border-color: var(--gold); color: var(--ink); box-shadow: 0 0 0 6px var(--accent-soft); }
 
     /* Industries */
-    .ind-tab { transition: background-color .3s, color .3s, border-color .3s, box-shadow .3s; }
+    .ind-tab { transition: background-color .3s, color .3s, border-color .3s, box-shadow .3s, transform 160ms var(--ease); }
     .ind-tab[aria-selected="true"] { background: var(--navy); color: #fff; border-color: var(--navy); box-shadow: 0 8px 20px -12px rgba(31,28,24,.6); }
     .ind-tab:not([aria-selected="true"]):hover { border-color: #A39B8E; color: var(--ink); }
     .tabs-scroll { scrollbar-width: none; -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent); mask-image: linear-gradient(90deg, #000 85%, transparent); }
@@ -155,7 +157,7 @@
     @media (min-width: 1024px) { .tabs-scroll { -webkit-mask-image: none; mask-image: none; } }
     #ind-panel { transition: opacity .3s, transform .4s var(--ease); }
     #ind-panel.out { opacity: 0; transform: translateY(8px); }
-    .chip-link { transition: background-color .25s, color .25s, border-color .25s; }
+    .chip-link { transition: background-color .25s, color .25s, border-color .25s, transform 160ms var(--ease); }
     .chip-link:hover { background: var(--navy); color: var(--gold-light); border-color: var(--navy); }
 
     /* Testimonials */
@@ -179,10 +181,21 @@
     select.inp { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2378716C' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
       background-repeat: no-repeat; background-position: right 12px center; background-size: 18px; padding-right: 40px; cursor: pointer; }
     .fld.invalid .inp { border-color: #DC2626; box-shadow: 0 0 0 4px rgba(220,38,38,.08); }
-    .fld .err { display: none; color: #B91C1C; font-size: 13px; margin-top: 6px; }
-    .fld.invalid .err { display: block; }
+    .fld .err { display: grid; grid-template-rows: 0fr; color: #B91C1C; font-size: 13px; transition: grid-template-rows 200ms var(--ease); }
+    .fld .err > span { min-height: 0; overflow: hidden; padding-top: 6px; opacity: 0; transform: translateY(-4px); visibility: hidden;
+      transition: opacity 180ms var(--ease), transform 180ms var(--ease), visibility 0s 200ms; }
+    .fld.invalid .err { grid-template-rows: 1fr; }
+    .fld.invalid .err > span { opacity: 1; transform: none; visibility: visible; transition-delay: 0s; }
+    .sel-wrap { position: relative; }
+    .sel-wrap::after { content: ''; position: absolute; inset: -4px; border-radius: 16px; pointer-events: none; opacity: 0;
+      box-shadow: 0 0 0 2px var(--gold), 0 0 0 7px rgba(184,146,74,.18); transition: opacity 400ms var(--ease); }
+    .sel-wrap.flash::after { opacity: 1; transition-duration: 180ms; }
     .seg-radio input { position: absolute; opacity: 0; pointer-events: none; }
-    .seg-radio label { transition: background-color .25s, color .25s, border-color .25s; }
+    .seg-radio label { transition: background-color .25s, color .25s, border-color .25s, transform 160ms var(--ease); }
+    #t-prev, #t-next { transition: border-color .25s, background-color .25s, transform 160ms var(--ease); }
+    button[data-copy] { transition: border-color .25s, color .25s, transform 160ms var(--ease); }
+    /* Press feedback: a small, quick scale on every tap or click */
+    .ind-tab:active, .chip-link:active, .seg-radio label:active, #t-prev:active, #t-next:active, button[data-copy]:active { transform: scale(.97); }
     .seg-radio input:checked + label { background: var(--navy); color: #fff; border-color: var(--navy); }
     .seg-radio input:focus-visible + label { outline: 2px solid var(--accent); outline-offset: 2px; }
     #submit .spin { display: none; }
@@ -213,6 +226,8 @@
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
+      .ind-tab:active, .chip-link:active, .seg-radio label:active, #t-prev:active, #t-next:active, button[data-copy]:active { transform: none; }
+      .fld .err > span { transform: none; }
       *, *::before, *::after { animation-duration: .001ms !important; animation-delay: 0s !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; transition-delay: 0s !important; }
     }
   </style>
@@ -573,12 +588,12 @@
                   <div class="fld">
                     <label for="f-name" class="mb-1.5 block text-sm font-medium text-ink">Full name</label>
                     <input id="f-name" name="name" class="inp" type="text" autocomplete="name" required placeholder="Jane Smith">
-                    <p class="err">Please enter your name.</p>
+                    <p class="err"><span>Please enter your name.</span></p>
                   </div>
                   <div class="fld">
                     <label for="f-email" class="mb-1.5 block text-sm font-medium text-ink">Email</label>
                     <input id="f-email" name="email" class="inp" type="email" autocomplete="email" required placeholder="jane@company.ca">
-                    <p class="err">Please enter a valid email address.</p>
+                    <p class="err"><span>Please enter a valid email address.</span></p>
                   </div>
                   <div class="fld">
                     <label for="f-phone" class="mb-1.5 block text-sm font-medium text-ink">Phone <span class="font-normal text-stone-500">(optional)</span></label>
@@ -586,7 +601,7 @@
                   </div>
                   <div class="fld">
                     <label for="f-service" class="mb-1.5 block text-sm font-medium text-ink">Service of interest</label>
-                    <select id="f-service" name="service" class="inp" required>
+                    <div class="sel-wrap"><select id="f-service" name="service" class="inp" required>
                       <option value="" disabled selected>Select a service</option>
                       <option value="accounting">Accounting &amp; Bookkeeping</option>
                       <option value="tax">Personal &amp; Corporate Tax</option>
@@ -595,8 +610,8 @@
                       <option value="estate">Estates &amp; Trusts</option>
                       <option value="assurance">Audits &amp; Financial Reviews</option>
                       <option value="other">Something else</option>
-                    </select>
-                    <p class="err">Please choose a service.</p>
+                    </select></div>
+                    <p class="err"><span>Please choose a service.</span></p>
                   </div>
                   <fieldset class="sm:col-span-2">
                     <legend class="mb-2 text-sm font-medium text-ink">Preferred contact method</legend>
@@ -609,7 +624,7 @@
                   <div class="fld sm:col-span-2">
                     <label for="f-msg" class="mb-1.5 block text-sm font-medium text-ink">How can we help?</label>
                     <textarea id="f-msg" name="message" class="inp min-h-[130px] resize-y" required placeholder="Tell us briefly about your situation..."></textarea>
-                    <p class="err">Please add a short message.</p>
+                    <p class="err"><span>Please add a short message.</span></p>
                   </div>
                 </div>
                 <div class="mt-7 flex flex-col-reverse gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -1156,10 +1171,22 @@
       f.addEventListener('input', () => { if (f.closest('.fld').classList.contains('invalid')) validate(f); });
       f.addEventListener('change', () => validate(f));
     });
+    // Once the pre-filled field is on screen, fade a gold ring in (180ms), hold it (600ms), then fade out (400ms).
+    const selWrap = service.closest('.sel-wrap');
+    function flashService() {
+      const io = new IntersectionObserver(([e]) => {
+        if (!e.isIntersecting) return;
+        io.disconnect();
+        selWrap.classList.add('flash');
+        setTimeout(() => selWrap.classList.remove('flash'), 780);
+      }, { threshold: 0.9 });
+      io.observe(selWrap);
+    }
     function prefill(key) {
       if (!key || !service.querySelector(`option[value="${key}"]`)) return;
       service.value = key;
       validate(service);
+      flashService();
     }
     document.addEventListener('click', e => {
       const pre = e.target.closest('[data-prefill]');
