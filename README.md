@@ -39,10 +39,10 @@ Content is written for Canada and uses details published on arllp.ca (Waterdown 
 - The "Sample report" figures in the hero illustration (illustrative only)
 - Office hours, which were not found on arllp.ca and are not shown (the primary email is info@arllp.ca)
 
-The hero photo (`assets/hero-meeting.jpg`, embedded in the page as a data URI) appears to be a 612 x 408 stock-site preview. Before publishing, license it and replace it with the full-resolution file (1600px or wider): re-encode the new image as a data URI in the `hero-img` `<img>`. The contact form only simulates a submission; connect it to a form service or backend.
+The hero photo (`assets/hero-calculator.jpg`, embedded in the page as a data URI) is 1000 x 360. Before publishing, confirm it is licensed and replace it with a larger file (2000px or wider) if available: re-encode the new image as a data URI in the `hero-img` `<img>`. The contact form only simulates a submission; connect it to a form service or backend.
 
 ### Branding (v3)
 
-`a-r-llp-v3.html` uses the firm logo (`assets/ar-llp-logo.png`, embedded in the page as a data URI) and a palette built around it: white backgrounds, warm charcoal text, logo gold (#B8924A) for fills and accents, and a deeper gold (#86672A) for small text so it stays readable on white. A higher-resolution or SVG version of the logo would render more sharply on high-density screens.
+`a-r-llp-v3.html` uses the firm logo (`assets/ar-llp-logo.png`, embedded in the page as a data URI) and a palette built around it: white backgrounds, warm charcoal text, logo gold (#B8924A) for fills and accents, and a deeper gold (#86672A) for small text so it stays readable on white. A navy family drawn from the hero photo adds contrast: deep navy (#1E3350) for the footer, dark photo sections and selected states, and pale blue (#EFF4F9) for the Services background. A higher-resolution or SVG version of the logo would render more sharply on high-density screens.
 
 Two dark photo sections add contrast: a call-to-action band between Services and Industries (`assets/band-boardroom.jpg`) and the Testimonials background (`assets/testimonials-bg.jpg`). Both are embedded as data URIs; confirm they are licensed before publishing.
