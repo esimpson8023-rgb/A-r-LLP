@@ -39,7 +39,7 @@ Content is written for Canada and uses details published on arllp.ca (Waterdown 
 - The "Sample report" figures in the hero illustration (illustrative only)
 - Office hours, which were not found on arllp.ca and are not shown (the primary email is info@arllp.ca)
 
-The hero photo (`assets/hero-meeting.jpg`, embedded in the page as a data URI) is a watermarked Pngtree preview. Replace it with the licensed, unwatermarked file before publishing: re-encode the new image as a data URI in the `hero-img` `<img>`. The contact form only simulates a submission; connect it to a form service or backend.
+The hero photo (`assets/hero-meeting.jpg`, embedded in the page as a data URI) appears to be a 612 x 408 stock-site preview. Before publishing, license it and replace it with the full-resolution file (1600px or wider): re-encode the new image as a data URI in the `hero-img` `<img>`. The contact form only simulates a submission; connect it to a form service or backend.
 
 ### Branding (v3)
 
