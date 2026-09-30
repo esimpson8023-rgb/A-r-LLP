@@ -1,0 +1,1408 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A&amp;R LLP | CPAs &amp; Business Advisors</title>
+  <meta name="description" content="A&amp;R LLP is a modern CPA and advisory firm for founders, scaling companies, and private clients: tax strategy, corporate advisory, fractional CFO, and audit &amp; compliance.">
+  <meta name="theme-color" content="#0A0F1D">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230A0F1D'/%3E%3Cpath d='M18 46 L32 16 L46 46' stroke='%2300E699' stroke-width='6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M24 36 H40' stroke='%23F59E0B' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (window.tailwind) tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Geist', 'Inter', 'system-ui', 'sans-serif'],
+            mono: ['"Geist Mono"', 'ui-monospace', 'monospace']
+          },
+          colors: { ink: '#0A0F1D', mint: '#00E699', silver: '#94A3B8' }
+        }
+      }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.460.0/dist/umd/lucide.min.js" defer></script>
+
+  <style>
+    :root {
+      --bg: #0A0F1D;
+      --mint: #00E699;
+      --amber: #F59E0B;
+      --muted: #94A3B8;
+      --line: rgba(148, 163, 184, .10);
+      --ease: cubic-bezier(.22, .8, .24, 1);
+    }
+    html { background: var(--bg); scroll-behavior: smooth; scroll-padding-top: 96px; overflow-x: clip; }
+    body { background: var(--bg); color: var(--muted); -webkit-font-smoothing: antialiased; overflow-x: clip; }
+    ::selection { background: rgba(0, 230, 153, .28); color: #fff; }
+    .tabular { font-variant-numeric: tabular-nums; }
+
+    /* Film grain */
+    .grain { position: fixed; inset: 0; pointer-events: none; z-index: 90; opacity: .035;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+    /* Glass & lines */
+    .glass { background: linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.015));
+      border: 1px solid rgba(255,255,255,.08); backdrop-filter: blur(18px) saturate(140%); -webkit-backdrop-filter: blur(18px) saturate(140%);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 30px 60px -30px rgba(0,0,0,.6); }
+    .grid-lines { background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 64px 64px; }
+    .fade-mask { -webkit-mask-image: radial-gradient(ellipse 75% 60% at 50% 0%, #000 25%, transparent 75%); mask-image: radial-gradient(ellipse 75% 60% at 50% 0%, #000 25%, transparent 75%); }
+    .hairline { background: linear-gradient(90deg, transparent, rgba(148,163,184,.25), transparent); height: 1px; }
+    .text-grad { background: linear-gradient(100deg, #00E699 10%, #8AF5CF 45%, #F59E0B 95%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+    /* Aurora */
+    .blob { position: absolute; border-radius: 9999px; filter: blur(90px); will-change: transform; pointer-events: none; }
+    .blob-a { animation: driftA 22s ease-in-out infinite alternate; }
+    .blob-b { animation: driftB 26s ease-in-out infinite alternate; }
+    @keyframes driftA { to { transform: translate3d(120px, 60px, 0) scale(1.15); } }
+    @keyframes driftB { to { transform: translate3d(-140px, -40px, 0) scale(.9); } }
+
+    /* Eyebrow */
+    .eyebrow { display: inline-flex; align-items: center; gap: .5rem; font-family: "Geist Mono", ui-monospace, monospace; font-size: 11px;
+      letter-spacing: .16em; text-transform: uppercase; color: #CBD5E1; padding: .4rem .8rem; border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.09); background: rgba(255,255,255,.03); }
+    .eyebrow i, .eyebrow .dot { width: 6px; height: 6px; border-radius: 99px; background: var(--mint); box-shadow: 0 0 12px var(--mint); }
+
+    /* Buttons */
+    .btn { position: relative; isolation: isolate; overflow: hidden; display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+      border-radius: 999px; font-weight: 500; transition: transform .35s var(--ease), box-shadow .35s var(--ease), background-color .3s, border-color .3s, color .3s; }
+    .btn:active { transform: scale(.97); }
+    .btn-primary { background: var(--mint); color: #03140D;
+      box-shadow: 0 0 0 1px rgba(0,230,153,.6), 0 10px 30px -10px rgba(0,230,153,.7), inset 0 1px 0 rgba(255,255,255,.5); }
+    .btn-primary:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 0 0 1px rgba(0,230,153,.8), 0 18px 45px -12px rgba(0,230,153,.85), inset 0 1px 0 rgba(255,255,255,.5); }
+    .btn-ghost { color: #fff; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.12); backdrop-filter: blur(10px); }
+    .btn-ghost:hover { transform: translateY(-2px); border-color: rgba(255,255,255,.28); background: rgba(255,255,255,.08); }
+    .btn-shine::after { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+      background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,.65) 50%, transparent 70%);
+      transform: translateX(-130%); transition: transform .9s var(--ease); }
+    .btn-ghost.btn-shine::after { background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,.18) 50%, transparent 70%); }
+    .btn-shine:hover::after, .btn-shine:focus-visible::after { transform: translateX(130%); }
+    .btn .arrow { transition: transform .35s var(--ease); }
+    .btn:hover .arrow { transform: translateX(3px); }
+    .glow-wrap { position: relative; }
+    .glow-wrap::before { content: ''; position: absolute; inset: -8px; border-radius: 999px; pointer-events: none;
+      background: radial-gradient(closest-side, rgba(0,230,153,.55), transparent); filter: blur(8px); animation: glow 3.2s ease-in-out infinite; }
+    @keyframes glow { 0%,100% { opacity: .25; transform: scale(.95); } 50% { opacity: .7; transform: scale(1.05); } }
+    :focus-visible { outline: 2px solid var(--mint); outline-offset: 3px; border-radius: 10px; }
+
+    /* Header */
+    #nav .nav-inner { max-width: 80rem; padding: 14px 20px; border: 1px solid transparent; border-radius: 20px;
+      transition: max-width .7s var(--ease), padding .5s var(--ease), background-color .5s, border-color .5s, box-shadow .5s, backdrop-filter .5s; }
+    #nav.scrolled .nav-inner, #nav.menu-open .nav-inner { max-width: 62rem; padding: 8px 8px 8px 18px; background: rgba(10,15,29,.62);
+      border-color: rgba(255,255,255,.08); backdrop-filter: blur(20px) saturate(160%); -webkit-backdrop-filter: blur(20px) saturate(160%);
+      box-shadow: 0 20px 50px -20px rgba(0,0,0,.8), inset 0 1px 0 rgba(255,255,255,.05); }
+    #nav .brand-sub { transition: opacity .4s, max-width .5s var(--ease); max-width: 200px; overflow: hidden; white-space: nowrap; }
+    #nav.scrolled .brand-sub { opacity: 0; max-width: 0; }
+    #nav-pill { transition: transform .45s var(--ease), width .45s var(--ease), opacity .3s; }
+    #navlinks a[aria-current="true"] { color: #fff; }
+    #progress { transform: scaleX(0); transform-origin: left; }
+
+    /* Mobile menu */
+    #menu { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .5s var(--ease); }
+    #menu.open { grid-template-rows: 1fr; }
+    #menu > div { overflow: hidden; }
+    #menu a { opacity: 0; transform: translateY(-6px); transition: opacity .4s, transform .4s var(--ease); }
+    #menu.open a { opacity: 1; transform: none; }
+    #menu.open a:nth-child(2) { transition-delay: .04s; } #menu.open a:nth-child(3) { transition-delay: .08s; }
+    #menu.open a:nth-child(4) { transition-delay: .12s; } #menu.open a:nth-child(5) { transition-delay: .16s; } #menu.open a:nth-child(6) { transition-delay: .2s; }
+    .burger .l { display: block; height: 1.5px; width: 18px; background: #fff; border-radius: 2px; transition: transform .4s var(--ease), opacity .3s; }
+    .burger[aria-expanded="true"] .l:first-child { transform: translateY(3.25px) rotate(45deg); }
+    .burger[aria-expanded="true"] .l:last-child { transform: translateY(-3.25px) rotate(-45deg); }
+
+    /* Load-in & word reveal (only when JS runs) */
+    .js [data-load] { opacity: 0; transform: translateY(18px); filter: blur(8px); animation: loadIn 1s var(--ease) forwards; animation-delay: var(--d, 0s); }
+    @keyframes loadIn { to { opacity: 1; transform: none; filter: blur(0); } }
+    .words .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .12em; margin-bottom: -.12em; }
+    .js .words .w > span { display: inline-block; transform: translateY(110%) rotate(4deg); transform-origin: left bottom;
+      animation: wordUp 1s var(--ease) forwards; animation-delay: calc(var(--i) * 75ms + 120ms); }
+    @keyframes wordUp { to { transform: none; } }
+
+    /* Scroll reveal */
+    .js [data-reveal] { opacity: 0; transform: translateY(28px) scale(.985); transition: opacity .9s var(--ease), transform .9s var(--ease); transition-delay: var(--d, 0s); }
+    .js [data-reveal].in { opacity: 1; transform: none; }
+
+    /* Floating cards */
+    .float-a { animation: floatA 7s ease-in-out infinite; }
+    .float-b { animation: floatB 8s ease-in-out infinite; }
+    @keyframes floatA { 50% { transform: translateY(-10px); } }
+    @keyframes floatB { 50% { transform: translateY(8px); } }
+    .draw { stroke-dasharray: 1; stroke-dashoffset: 1; }
+    .js .draw-load { animation: draw 2.2s var(--ease) forwards; animation-delay: var(--d, .6s); }
+    html:not(.js) .draw { stroke-dashoffset: 0; }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+    .ping { animation: ping 2s cubic-bezier(0,0,.2,1) infinite; transform-box: fill-box; transform-origin: center; }
+    @keyframes ping { 75%,100% { transform: scale(2.6); opacity: 0; } }
+    .live-dot { position: relative; width: 7px; height: 7px; border-radius: 99px; background: var(--mint); }
+    .live-dot::after { content: ''; position: absolute; inset: 0; border-radius: inherit; background: var(--mint); animation: ping 1.8s cubic-bezier(0,0,.2,1) infinite; }
+    #toast-text { transition: opacity .35s, transform .45s var(--ease); }
+    #toast-text.out { opacity: 0; transform: translateY(6px); }
+
+    /* Marquee */
+    .marquee { -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
+    .marquee-track { animation: marquee 38s linear infinite; }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+
+    /* Service cards: spotlight + animated gradient border */
+    @property --angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+    .card { position: relative; isolation: isolate; border-radius: 24px; transition: transform .5s var(--ease), background-color .4s, border-color .4s; }
+    .card > * { position: relative; z-index: 1; }
+    .gborder::before { content: ''; position: absolute; inset: -1px; border-radius: inherit; padding: 1px; z-index: 2; pointer-events: none;
+      background: conic-gradient(from var(--angle), transparent 0 55%, rgba(0,230,153,.9) 72%, rgba(245,158,11,.9) 84%, transparent 96%);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude;
+      opacity: 0; transition: opacity .5s; animation: spin 4.5s linear infinite paused; }
+    .gborder:hover::before, .gborder.is-active::before { opacity: 1; animation-play-state: running; }
+    @keyframes spin { to { --angle: 360deg; } }
+    .spot::after { content: ''; position: absolute; inset: 0; border-radius: inherit; z-index: 0; pointer-events: none; opacity: 0; transition: opacity .4s;
+      background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(0,230,153,.10), transparent 45%); }
+    .spot:hover::after { opacity: 1; }
+    .svc-card:hover { transform: translateY(-6px) scale(1.015); }
+    .svc-card.is-active { background: rgba(255,255,255,.05); }
+    .svc-card .icon-chip { transition: background-color .4s, color .4s, box-shadow .4s, transform .5s var(--ease); }
+    .svc-card:hover .icon-chip, .svc-card.is-active .icon-chip { background: rgba(0,230,153,.14); color: var(--mint); box-shadow: 0 0 24px -4px rgba(0,230,153,.6); transform: rotate(-6deg) scale(1.06); }
+
+    /* Card micro-illustrations: play on hover or when the card is selected */
+    .ill svg * { transform-box: fill-box; }
+    .ill-tax .bar { transform-origin: bottom; transition: transform .8s var(--ease), fill .5s; fill: rgba(148,163,184,.22); }
+    .play .ill-tax .bar { transform: scaleY(var(--s)); fill: url(#gAmber); }
+    .ill-tax .bar:nth-of-type(2) { transition-delay: .05s; } .ill-tax .bar:nth-of-type(3) { transition-delay: .1s; }
+    .ill-tax .bar:nth-of-type(4) { transition-delay: .15s; } .ill-tax .bar:nth-of-type(5) { transition-delay: .2s; }
+    .ill-tax .tag, .ill-cfo .tag { opacity: 0; transform: translateY(4px); transition: opacity .5s .35s, transform .5s .35s var(--ease); }
+    .play .ill-tax .tag, .play .ill-cfo .tag { opacity: 1; transform: none; }
+    .ill-adv .link { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset .9s var(--ease); }
+    .play .ill-adv .link { stroke-dashoffset: 0; }
+    .ill-adv .link:nth-of-type(2) { transition-delay: .08s; } .ill-adv .link:nth-of-type(3) { transition-delay: .16s; }
+    .ill-adv .link:nth-of-type(4) { transition-delay: .24s; } .ill-adv .link:nth-of-type(5) { transition-delay: .32s; }
+    .ill-adv .node { fill: #1E293B; stroke: rgba(148,163,184,.4); transition: fill .4s .4s, stroke .4s .4s; }
+    .play .ill-adv .node { fill: rgba(0,230,153,.25); stroke: var(--mint); }
+    .ill-adv .core { transition: transform .6s var(--ease); transform-origin: center; }
+    .play .ill-adv .core { transform: scale(1.25); }
+    .ill-cfo .path { stroke-dasharray: 1; stroke-dashoffset: .72; transition: stroke-dashoffset 1.2s var(--ease); }
+    .play .ill-cfo .path { stroke-dashoffset: 0; }
+    .ill-cfo .area { opacity: .15; transition: opacity .8s .2s; }
+    .play .ill-cfo .area { opacity: 1; }
+    .ill-cfo .end { transform-origin: center; transform: scale(0); transition: transform .5s 1s var(--ease); }
+    .play .ill-cfo .end { transform: scale(1); }
+    .ill-aud .scan { opacity: 0; }
+    .play .ill-aud .scan { opacity: 1; animation: scan 2.2s ease-in-out infinite; }
+    @keyframes scan { 0%,100% { transform: translateY(0); } 50% { transform: translateY(52px); } }
+    .ill-aud .badge { transform-origin: center; transform: scale(.6); opacity: .25; transition: transform .5s var(--ease), opacity .4s; }
+    .play .ill-aud .badge { transform: scale(1); opacity: 1; }
+    .ill-aud .tick { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset .5s .3s var(--ease); }
+    .play .ill-aud .tick { stroke-dashoffset: 0; }
+
+    /* Service detail panel */
+    #svc-panel { transition: height .55s var(--ease); }
+    #svc-inner { transition: opacity .3s, transform .45s var(--ease), filter .3s; }
+    #svc-inner.swap-out { opacity: 0; transform: translateY(10px); filter: blur(6px); }
+    #svc-inner.swap-in { opacity: 0; transform: translateY(-10px); filter: blur(6px); transition: none; }
+    .stag { animation: stagIn .6s var(--ease) both; animation-delay: calc(var(--i, 0) * 55ms + 120ms); }
+    @keyframes stagIn { from { opacity: 0; transform: translateY(10px); } }
+
+    /* Process */
+    #steps { --p: 0; }
+    .p-fill { transform: scaleX(var(--p)); transform-origin: left; }
+    .step .num { transition: background-color .5s, color .5s, border-color .5s, box-shadow .5s, transform .6s var(--ease); }
+    .step.on .num { background: var(--mint); color: #03140D; border-color: var(--mint); box-shadow: 0 0 30px -4px rgba(0,230,153,.8); transform: scale(1.06); }
+    .step .seg { transform: scaleY(0); transform-origin: top; transition: transform .8s var(--ease); }
+    .step.on .seg { transform: scaleY(1); }
+    .step .body { transition: opacity .6s; opacity: .55; }
+    .step.on .body { opacity: 1; }
+
+    /* Estimator */
+    #seg-pill { transition: transform .5s var(--ease), width .5s var(--ease); }
+    .seg-btn { transition: color .3s; }
+    .seg-btn[aria-selected="true"] { color: #fff; }
+    #est-body { transition: opacity .25s, transform .35s var(--ease); }
+    #est-body.swap-out { opacity: 0; transform: translateY(6px); }
+    .range { -webkit-appearance: none; appearance: none; height: 6px; border-radius: 99px; outline: none; cursor: pointer;
+      background: linear-gradient(90deg, var(--mint), #8AF5CF var(--fill, 50%), rgba(255,255,255,.08) var(--fill, 50%)); }
+    .range::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 99px; background: #fff; border: 5px solid var(--mint);
+      box-shadow: 0 0 0 6px rgba(0,230,153,.15), 0 0 24px rgba(0,230,153,.6); transition: transform .25s var(--ease), box-shadow .25s; }
+    .range::-webkit-slider-thumb:hover, .range:active::-webkit-slider-thumb { transform: scale(1.15); box-shadow: 0 0 0 10px rgba(0,230,153,.12), 0 0 30px rgba(0,230,153,.8); }
+    .range::-moz-range-thumb { width: 14px; height: 14px; border-radius: 99px; background: #fff; border: 5px solid var(--mint); box-shadow: 0 0 20px rgba(0,230,153,.6); }
+    .range:focus-visible { outline: 2px solid var(--mint); outline-offset: 6px; }
+    .chip { display: inline-flex; align-items: center; gap: .6rem; padding: .55rem .9rem .55rem .6rem; border-radius: 999px; font-size: 14px; color: #CBD5E1;
+      border: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.03); transition: border-color .3s, background-color .3s, color .3s, transform .3s var(--ease); }
+    .chip:hover { border-color: rgba(255,255,255,.25); transform: translateY(-1px); }
+    .chip .box { display: grid; place-items: center; width: 20px; height: 20px; border-radius: 99px; border: 1px solid rgba(255,255,255,.2); transition: all .3s var(--ease); }
+    .chip .box svg { opacity: 0; transform: scale(.5); transition: all .3s var(--ease); }
+    .chip[aria-pressed="true"] { border-color: rgba(0,230,153,.55); background: rgba(0,230,153,.08); color: #fff; }
+    .chip[aria-pressed="true"] .box { background: var(--mint); border-color: var(--mint); color: #03140D; }
+    .chip[aria-pressed="true"] .box svg { opacity: 1; transform: none; }
+    .chip .cost { font-family: "Geist Mono", monospace; font-size: 12px; color: #64748B; }
+    .mrow .mark { transition: background-color .4s, color .4s, transform .5s var(--ease); }
+    .mrow .label { transition: color .4s, opacity .4s; opacity: .45; }
+    .mrow.on .label { color: #fff; opacity: 1; }
+    .mrow.on .mark { background: rgba(0,230,153,.15); color: var(--mint); transform: scale(1); }
+    .mrow:not(.on) .mark { transform: scale(.85); }
+    .mrow .yes { display: none; } .mrow.on .yes { display: block; } .mrow.on .no { display: none; }
+    #est-amount { transition: text-shadow .4s; }
+    #est-amount.pulse { text-shadow: 0 0 30px rgba(0,230,153,.55); }
+
+    /* Testimonials */
+    #t-track { transition: transform .8s var(--ease); }
+    .t-card { transition: opacity .6s, transform .8s var(--ease); }
+    .t-card:not(.is-vis) { opacity: .25; transform: scale(.96); }
+    .t-dot { position: relative; height: 6px; width: 18px; border-radius: 99px; background: rgba(255,255,255,.14); overflow: hidden; transition: width .5s var(--ease); }
+    .t-dot.active { width: 44px; }
+    .t-dot span { position: absolute; inset: 0; background: var(--mint); transform: scaleX(0); transform-origin: left; }
+    .t-dot.active span { animation: dotfill 7s linear forwards; }
+    #carousel.paused .t-dot.active span { animation-play-state: paused; }
+    @keyframes dotfill { to { transform: scaleX(1); } }
+
+    /* Form */
+    .field { position: relative; }
+    .field input, .field textarea, .field select { width: 100%; color: #fff; font-size: 15px; background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.09); border-radius: 14px; padding: 24px 44px 9px 16px; outline: none; -webkit-appearance: none; appearance: none;
+      transition: border-color .3s, box-shadow .3s, background-color .3s; }
+    .field textarea { resize: vertical; min-height: 132px; padding-right: 16px; }
+    .field select { cursor: pointer; }
+    .field select option { background: #0F1629; color: #fff; }
+    .field label { position: absolute; left: 17px; top: 16px; font-size: 15px; color: var(--muted); pointer-events: none; transform-origin: left top;
+      transition: transform .3s var(--ease), color .3s; }
+    .field input:not(:placeholder-shown) ~ label, .field textarea:not(:placeholder-shown) ~ label,
+    .field.filled label, .field:focus-within label { transform: translateY(-9px) scale(.76); }
+    .field:focus-within label { color: var(--mint); }
+    .field input:hover, .field textarea:hover, .field select:hover { border-color: rgba(255,255,255,.18); }
+    .field input:focus, .field textarea:focus, .field select:focus { border-color: rgba(0,230,153,.6); background: rgba(0,230,153,.03);
+      box-shadow: 0 0 0 4px rgba(0,230,153,.10), 0 0 32px -10px rgba(0,230,153,.6); }
+    .field .bar { position: absolute; left: 14px; right: 14px; bottom: 0; height: 2px; border-radius: 2px; pointer-events: none;
+      background: linear-gradient(90deg, var(--mint), var(--amber)); transform: scaleX(0); transition: transform .5s var(--ease); }
+    .field:focus-within .bar { transform: scaleX(1); }
+    .field .ok { position: absolute; right: 14px; top: 18px; width: 20px; height: 20px; color: var(--mint); opacity: 0; transform: scale(.4); transition: all .35s var(--ease); pointer-events: none; }
+    .field.valid .ok { opacity: 1; transform: none; }
+    .field .chev { position: absolute; right: 16px; top: 21px; width: 16px; height: 16px; color: var(--muted); pointer-events: none; transition: transform .3s var(--ease); }
+    .field:focus-within .chev { transform: rotate(180deg); color: var(--mint); }
+    .field .err { max-height: 0; opacity: 0; overflow: hidden; font-size: 13px; color: #FCA5A5; transition: max-height .3s, opacity .3s, margin .3s; }
+    .field.invalid .err { max-height: 24px; opacity: 1; margin-top: 6px; }
+    .field.invalid input, .field.invalid textarea, .field.invalid select { border-color: rgba(248,113,113,.7); box-shadow: 0 0 0 4px rgba(248,113,113,.1); }
+    .shake { animation: shake .5s var(--ease); }
+    @keyframes shake { 20%,60% { transform: translateX(-6px); } 40%,80% { transform: translateX(6px); } }
+    #submit .spinner { display: none; }
+    #submit.loading .label, #submit.loading .arrow { display: none; }
+    #submit.loading .spinner { display: block; }
+    #form-body { transition: opacity .4s, transform .5s var(--ease), filter .4s; }
+    #form-card.done #form-body { opacity: 0; transform: scale(.97); filter: blur(6px); pointer-events: none; }
+    #success { opacity: 0; visibility: hidden; transform: scale(.96); pointer-events: none; transition: opacity .5s .15s, transform .6s .15s var(--ease), visibility 0s .7s; }
+    #form-card.done #success { opacity: 1; visibility: visible; transform: none; pointer-events: auto; transition-delay: .15s, .15s, 0s; }
+    #success .ring, #success .tick { stroke-dasharray: 1; stroke-dashoffset: 1; }
+    #form-card.done #success .ring { animation: draw .8s .3s var(--ease) forwards; }
+    #form-card.done #success .tick { animation: draw .5s .9s var(--ease) forwards; }
+    .particle { position: absolute; width: 7px; height: 7px; border-radius: 99px; pointer-events: none; }
+
+    /* Footer links */
+    .ulink { position: relative; transition: color .3s; }
+    .ulink::after { content: ''; position: absolute; left: 0; right: 0; bottom: -3px; height: 1px; background: var(--mint); transform: scaleX(0); transform-origin: right; transition: transform .45s var(--ease); }
+    .ulink:hover { color: #fff; }
+    .ulink:hover::after { transform: scaleX(1); transform-origin: left; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; transition-delay: 0s !important; }
+      .marquee-track { animation: none; }
+    }
+  </style>
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+
+<body class="font-sans">
+  <div class="grain" aria-hidden="true"></div>
+  <div id="progress" class="fixed left-0 top-0 z-[70] h-[2px] w-full bg-gradient-to-r from-mint to-amber-500" aria-hidden="true"></div>
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[80] focus:rounded-full focus:bg-mint focus:px-4 focus:py-2 focus:text-ink">Skip to content</a>
+
+  <!-- ================= NAV ================= -->
+  <header id="nav" class="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-4">
+    <div class="nav-inner mx-auto">
+      <div class="flex items-center justify-between gap-4">
+        <a href="#top" class="group flex items-center gap-3" aria-label="A&amp;R LLP home">
+          <span class="relative grid h-9 w-9 place-items-center rounded-xl border border-white/10 bg-white/[.04] transition duration-500 group-hover:border-mint/50 group-hover:shadow-[0_0_24px_-4px_rgba(0,230,153,.6)]">
+            <svg viewBox="0 0 64 64" class="h-5 w-5" fill="none" aria-hidden="true"><path d="M18 48 L32 16 L46 48" stroke="#00E699" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 37 H40" stroke="#F59E0B" stroke-width="6" stroke-linecap="round"/></svg>
+          </span>
+          <span class="flex items-baseline gap-2">
+            <span class="whitespace-nowrap text-[17px] font-semibold tracking-tight text-white">A&amp;R LLP</span>
+            <span class="brand-sub hidden font-mono text-[10px] uppercase tracking-[.16em] text-slate-500 md:inline">CPAs &amp; Advisors</span>
+          </span>
+        </a>
+
+        <nav id="navlinks" class="relative hidden items-center lg:flex" aria-label="Primary">
+          <span id="nav-pill" class="absolute left-0 top-0 h-full w-0 rounded-full border border-white/10 bg-white/[.06] opacity-0" aria-hidden="true"></span>
+          <a href="#services" class="relative z-10 px-4 py-2 text-sm text-slate-300 transition hover:text-white">Services</a>
+          <a href="#process" class="relative z-10 px-4 py-2 text-sm text-slate-300 transition hover:text-white">Process</a>
+          <a href="#pricing" class="relative z-10 px-4 py-2 text-sm text-slate-300 transition hover:text-white">Pricing</a>
+          <a href="#clients" class="relative z-10 px-4 py-2 text-sm text-slate-300 transition hover:text-white">Clients</a>
+          <a href="#contact" class="relative z-10 px-4 py-2 text-sm text-slate-300 transition hover:text-white">Contact</a>
+        </nav>
+
+        <div class="flex items-center gap-2">
+          <span class="glow-wrap hidden sm:inline-flex">
+            <a href="#contact" class="btn btn-primary btn-shine px-5 py-2.5 text-sm">Book Consultation <i data-lucide="arrow-up-right" class="arrow h-4 w-4"></i></a>
+          </span>
+          <button id="burger" class="burger grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-white/[.04] lg:hidden" aria-expanded="false" aria-controls="menu" aria-label="Toggle menu">
+            <span class="flex flex-col gap-[5px]"><span class="l"></span><span class="l"></span></span>
+          </button>
+        </div>
+      </div>
+
+      <div id="menu" class="lg:hidden">
+        <div>
+          <nav class="flex flex-col gap-1 pb-2 pt-4" aria-label="Mobile">
+            <a href="#services" class="rounded-xl px-3 py-3 text-lg text-white hover:bg-white/5">Services</a>
+            <a href="#process" class="rounded-xl px-3 py-3 text-lg text-white hover:bg-white/5">Process</a>
+            <a href="#pricing" class="rounded-xl px-3 py-3 text-lg text-white hover:bg-white/5">Pricing</a>
+            <a href="#clients" class="rounded-xl px-3 py-3 text-lg text-white hover:bg-white/5">Clients</a>
+            <a href="#contact" class="rounded-xl px-3 py-3 text-lg text-white hover:bg-white/5">Contact</a>
+            <a href="#contact" class="btn btn-primary btn-shine mt-2 px-5 py-3.5 text-base">Book Consultation</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ================= HERO ================= -->
+    <section id="top" class="relative overflow-hidden pb-20 pt-36 sm:pt-44 lg:pb-28">
+      <div class="grid-lines fade-mask pointer-events-none absolute inset-0" aria-hidden="true"></div>
+      <div class="blob blob-a left-[-10%] top-[-10%] h-[520px] w-[520px] bg-mint/20" aria-hidden="true"></div>
+      <div class="blob blob-b right-[-8%] top-[10%] h-[460px] w-[460px] bg-amber-500/15" aria-hidden="true"></div>
+      <div id="cursor-glow" class="pointer-events-none absolute left-0 top-0 h-[600px] w-[600px] rounded-full opacity-0 transition-opacity duration-700" style="background:radial-gradient(closest-side,rgba(0,230,153,.09),transparent)" aria-hidden="true"></div>
+
+      <div class="relative mx-auto grid max-w-7xl items-center gap-16 px-5 sm:px-8 lg:grid-cols-12 lg:gap-10">
+        <div class="lg:col-span-6">
+          <a href="#contact" data-load style="--d:.05s" class="eyebrow group transition hover:border-mint/40">
+            <span class="dot"></span> Accepting new clients this quarter
+            <i data-lucide="arrow-right" class="h-3.5 w-3.5 transition group-hover:translate-x-0.5"></i>
+          </a>
+
+          <h1 class="words mt-7 text-[2.7rem] font-semibold leading-[1.02] tracking-[-0.035em] text-white sm:text-6xl lg:text-[4.4rem]">
+            <span class="w"><span style="--i:0">Financial</span></span>
+            <span class="w"><span style="--i:1">clarity,</span></span><br class="hidden sm:block">
+            <span class="w"><span style="--i:2">engineered</span></span>
+            <span class="w"><span style="--i:3">for</span></span>
+            <span class="w"><span style="--i:4" class="text-grad">growth.</span></span>
+          </h1>
+
+          <p data-load style="--d:.55s" class="mt-7 max-w-xl text-lg leading-relaxed text-silver">
+            A&amp;R LLP is the CPA and advisory partner for modern founders, scaling companies, and private clients. Real-time books, year-round tax strategy, and CFO-level insight, delivered on infrastructure you'll actually enjoy using.
+          </p>
+
+          <div data-load style="--d:.7s" class="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <a href="#contact" class="btn btn-primary btn-shine px-7 py-4 text-[15px]">Book a Free Consultation <i data-lucide="arrow-right" class="arrow h-4 w-4"></i></a>
+            <a href="#services" class="btn btn-ghost btn-shine px-7 py-4 text-[15px]">Explore Services</a>
+          </div>
+
+          <ul data-load style="--d:.85s" class="mt-10 flex flex-wrap gap-x-6 gap-y-3 text-sm text-slate-400">
+            <li class="flex items-center gap-2"><i data-lucide="shield-check" class="h-4 w-4 text-mint"></i>Licensed CPAs</li>
+            <li class="flex items-center gap-2"><i data-lucide="lock" class="h-4 w-4 text-mint"></i>Bank-grade client portal</li>
+            <li class="flex items-center gap-2"><i data-lucide="clock" class="h-4 w-4 text-mint"></i>1-business-day response</li>
+          </ul>
+        </div>
+
+        <!-- Hero visual: live stat cards -->
+        <div id="hero-visual" class="relative mx-auto w-full max-w-[540px] lg:col-span-6 lg:ml-auto">
+          <div class="absolute -inset-10 rounded-full bg-[radial-gradient(closest-side,rgba(0,230,153,.16),transparent)]" aria-hidden="true"></div>
+
+          <div class="layer relative" data-depth="12">
+            <div data-load style="--d:.45s">
+              <div class="glass rounded-[28px] p-6 sm:p-7">
+                <div class="flex items-start justify-between gap-4">
+                  <div>
+                    <p class="font-mono text-[11px] uppercase tracking-[.16em] text-slate-400">Client assets under advisement</p>
+                    <p class="tabular mt-2 text-5xl font-semibold tracking-tight text-white sm:text-6xl"><span data-count="1000" data-format="assets">$1B+</span></p>
+                  </div>
+                  <span class="flex items-center gap-2 rounded-full border border-mint/25 bg-mint/10 px-2.5 py-1 font-mono text-[11px] text-mint"><span class="live-dot"></span>LIVE</span>
+                </div>
+
+                <svg class="mt-6 h-36 w-full" viewBox="0 0 400 140" preserveAspectRatio="none" fill="none" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="gArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#00E699" stop-opacity=".28"/><stop offset="1" stop-color="#00E699" stop-opacity="0"/></linearGradient>
+                    <linearGradient id="gLine" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#00E699"/><stop offset="1" stop-color="#F59E0B"/></linearGradient>
+                  </defs>
+                  <g stroke="rgba(148,163,184,.10)"><path d="M0 35H400M0 70H400M0 105H400"/></g>
+                  <path d="M0 118 C30 112 50 114 75 104 S120 86 150 90 S200 70 230 62 S280 58 305 40 S360 22 400 12 L400 140 L0 140Z" fill="url(#gArea)" data-load style="--d:1.1s"/>
+                  <path class="draw draw-load" pathLength="1" d="M0 118 C30 112 50 114 75 104 S120 86 150 90 S200 70 230 62 S280 58 305 40 S360 22 400 12" stroke="url(#gLine)" stroke-width="2.5" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+                </svg>
+                <div class="mt-1 flex justify-between font-mono text-[10px] uppercase tracking-wider text-slate-500"><span>2011</span><span>2015</span><span>2019</span><span>2023</span><span>Today</span></div>
+
+                <div class="mt-6 grid grid-cols-3 gap-3">
+                  <div class="rounded-2xl border border-white/[.07] bg-white/[.02] p-3 sm:p-4">
+                    <div class="flex items-center gap-2">
+                      <svg class="h-7 w-7 -rotate-90" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" stroke="rgba(255,255,255,.08)" stroke-width="4" fill="none"/><circle data-ring="99" cx="20" cy="20" r="16" stroke="#00E699" stroke-width="4" fill="none" stroke-linecap="round" pathLength="100" stroke-dasharray="100" stroke-dashoffset="1"/></svg>
+                      <p class="tabular text-xl font-semibold text-white sm:text-2xl"><span data-count="99">99</span>%</p>
+                    </div>
+                    <p class="mt-2 text-xs text-slate-400">Client retention</p>
+                  </div>
+                  <div class="rounded-2xl border border-white/[.07] bg-white/[.02] p-3 sm:p-4">
+                    <p class="tabular text-xl font-semibold text-white sm:text-2xl"><span data-count="500">500</span>+</p>
+                    <p class="mt-2 text-xs text-slate-400">Business clients</p>
+                  </div>
+                  <div class="rounded-2xl border border-white/[.07] bg-white/[.02] p-3 sm:p-4">
+                    <p class="tabular text-xl font-semibold text-white sm:text-2xl"><span data-count="15">15</span>+</p>
+                    <p class="mt-2 text-xs text-slate-400">Years of practice</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- floating: tax card -->
+          <div class="layer absolute -right-2 -top-16 z-10 sm:-right-8 sm:-top-20" data-depth="28">
+            <div data-load style="--d:.9s">
+              <div class="float-a glass w-44 rounded-2xl p-4">
+                <p class="font-mono text-[10px] uppercase tracking-[.14em] text-slate-400">Effective tax rate</p>
+                <p class="mt-1 flex items-center gap-1 text-lg font-semibold text-amber-400"><i data-lucide="trending-up" class="h-4 w-4 rotate-180 -scale-x-100"></i> −6.4 pts</p>
+                <div class="mt-3 flex h-8 items-end gap-1.5" aria-hidden="true">
+                  <span class="h-[90%] flex-1 rounded-sm bg-white/15"></span><span class="h-[80%] flex-1 rounded-sm bg-white/15"></span><span class="h-[70%] flex-1 rounded-sm bg-white/15"></span><span class="h-[55%] flex-1 rounded-sm bg-amber-400/70"></span><span class="h-[45%] flex-1 rounded-sm bg-amber-400"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- floating: activity toast -->
+          <div class="layer absolute -bottom-10 -left-2 z-10 sm:-left-10" data-depth="36">
+            <div data-load style="--d:1.1s">
+              <div class="float-b glass flex w-[17rem] items-center gap-3 rounded-2xl p-3.5" role="status" aria-live="off">
+                <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-mint/15 text-mint"><i data-lucide="check" class="h-4 w-4"></i></span>
+                <div id="toast-text" class="min-w-0">
+                  <p class="truncate text-sm font-medium text-white">Monthly close delivered</p>
+                  <p class="truncate text-xs text-slate-400">Day 4 · 38 accounts reconciled</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= MARQUEE ================= -->
+    <section class="relative border-y border-white/[.06] py-8" aria-label="Integrations">
+      <p class="mb-6 text-center font-mono text-[11px] uppercase tracking-[.18em] text-slate-500">Plugs into the stack you already run</p>
+      <div class="marquee overflow-hidden">
+        <div class="marquee-track flex w-max gap-14 pr-14 text-xl font-medium tracking-tight text-slate-500">
+          <span>QuickBooks</span><span>Xero</span><span>NetSuite</span><span>Gusto</span><span>Rippling</span><span>Stripe</span><span>Ramp</span><span>Brex</span><span>Bill.com</span><span>Carta</span><span>Expensify</span><span>Shopify</span>
+          <span aria-hidden="true">QuickBooks</span><span aria-hidden="true">Xero</span><span aria-hidden="true">NetSuite</span><span aria-hidden="true">Gusto</span><span aria-hidden="true">Rippling</span><span aria-hidden="true">Stripe</span><span aria-hidden="true">Ramp</span><span aria-hidden="true">Brex</span><span aria-hidden="true">Bill.com</span><span aria-hidden="true">Carta</span><span aria-hidden="true">Expensify</span><span aria-hidden="true">Shopify</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SERVICES ================= -->
+    <section id="services" class="relative py-24 sm:py-32">
+      <div class="mx-auto max-w-7xl px-5 sm:px-8">
+        <div class="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+          <div data-reveal class="max-w-2xl">
+            <span class="eyebrow"><span class="dot"></span>Service architecture</span>
+            <h2 class="mt-5 text-4xl font-semibold tracking-[-0.03em] text-white sm:text-5xl">Four practices. <span class="text-slate-500">One integrated finance team.</span></h2>
+          </div>
+          <p data-reveal style="--d:.1s" class="max-w-md text-[17px] leading-relaxed">Pick a practice to see exactly what's included. Every engagement shares one ledger, one portal, and one team that knows your numbers.</p>
+        </div>
+
+        <div role="tablist" aria-label="Core services" class="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <!-- Tax -->
+          <button role="tab" id="tab-tax" data-svc="tax" aria-controls="svc-panel" aria-selected="true" data-reveal
+            class="svc-card card gborder spot play is-active flex flex-col border border-white/[.08] bg-white/[.025] p-5 text-left">
+            <div class="ill ill-tax grid-lines h-28 overflow-hidden rounded-2xl border border-white/[.06] bg-ink/60" style="background-size:20px 20px">
+              <svg viewBox="0 0 200 80" class="h-full w-full" aria-hidden="true">
+                <defs><linearGradient id="gAmber" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F59E0B"/><stop offset="1" stop-color="#F59E0B" stop-opacity=".25"/></linearGradient></defs>
+                <line x1="14" y1="16" x2="186" y2="16" stroke="rgba(148,163,184,.35)" stroke-dasharray="3 4"/>
+                <rect class="bar" style="--s:.62" x="22" y="18" width="22" height="58" rx="4"/>
+                <rect class="bar" style="--s:.55" x="56" y="24" width="22" height="52" rx="4"/>
+                <rect class="bar" style="--s:.5" x="90" y="20" width="22" height="56" rx="4"/>
+                <rect class="bar" style="--s:.44" x="124" y="26" width="22" height="50" rx="4"/>
+                <rect class="bar" style="--s:.4" x="158" y="22" width="22" height="54" rx="4"/>
+                <g class="tag"><rect x="120" y="4" width="68" height="18" rx="9" fill="rgba(245,158,11,.15)" stroke="rgba(245,158,11,.5)"/><text x="154" y="16.5" text-anchor="middle" font-size="9" font-family="Geist Mono, monospace" fill="#FBBF24">−28% liability</text></g>
+              </svg>
+            </div>
+            <div class="mt-6 flex items-center gap-3">
+              <span class="icon-chip grid h-10 w-10 place-items-center rounded-xl bg-white/[.06] text-white"><i data-lucide="receipt" class="h-5 w-5"></i></span>
+              <h3 class="text-lg font-semibold tracking-tight text-white">Tax Strategy</h3>
+            </div>
+            <p class="mt-3 flex-1 text-[15px] leading-relaxed">Year-round planning, multi-state filings, credits, and audit defense.</p>
+            <span class="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-white/80">View details <i data-lucide="arrow-right" class="h-4 w-4"></i></span>
+          </button>
+
+          <!-- Advisory -->
+          <button role="tab" id="tab-advisory" data-svc="advisory" aria-controls="svc-panel" aria-selected="false" tabindex="-1" data-reveal style="--d:.08s"
+            class="svc-card card gborder spot flex flex-col border border-white/[.08] bg-white/[.025] p-5 text-left">
+            <div class="ill ill-adv grid-lines h-28 overflow-hidden rounded-2xl border border-white/[.06] bg-ink/60" style="background-size:20px 20px">
+              <svg viewBox="0 0 200 80" class="h-full w-full" aria-hidden="true">
+                <g stroke="rgba(148,163,184,.18)" stroke-width="1"><path d="M100 40 L40 18M100 40 L36 62M100 40 L160 16M100 40 L166 60M100 40 L100 8"/></g>
+                <g stroke="#00E699" stroke-width="1.5" fill="none">
+                  <path class="link" pathLength="1" d="M100 40 L40 18"/><path class="link" pathLength="1" d="M100 40 L160 16"/>
+                  <path class="link" pathLength="1" d="M100 40 L36 62"/><path class="link" pathLength="1" d="M100 40 L166 60"/><path class="link" pathLength="1" d="M100 40 L100 8"/>
+                </g>
+                <circle class="node" cx="40" cy="18" r="5"/><circle class="node" cx="36" cy="62" r="5"/><circle class="node" cx="160" cy="16" r="5"/><circle class="node" cx="166" cy="60" r="5"/><circle class="node" cx="100" cy="8" r="4"/>
+                <circle cx="100" cy="40" r="14" fill="rgba(0,230,153,.12)" class="core"/>
+                <circle cx="100" cy="40" r="7" fill="#00E699"/>
+              </svg>
+            </div>
+            <div class="mt-6 flex items-center gap-3">
+              <span class="icon-chip grid h-10 w-10 place-items-center rounded-xl bg-white/[.06] text-white"><i data-lucide="briefcase" class="h-5 w-5"></i></span>
+              <h3 class="text-lg font-semibold tracking-tight text-white">Corporate Advisory</h3>
+            </div>
+            <p class="mt-3 flex-1 text-[15px] leading-relaxed">Structure, capital strategy, M&amp;A diligence, and exit planning.</p>
+            <span class="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-white/80">View details <i data-lucide="arrow-right" class="h-4 w-4"></i></span>
+          </button>
+
+          <!-- CFO -->
+          <button role="tab" id="tab-cfo" data-svc="cfo" aria-controls="svc-panel" aria-selected="false" tabindex="-1" data-reveal style="--d:.16s"
+            class="svc-card card gborder spot flex flex-col border border-white/[.08] bg-white/[.025] p-5 text-left">
+            <div class="ill ill-cfo grid-lines h-28 overflow-hidden rounded-2xl border border-white/[.06] bg-ink/60" style="background-size:20px 20px">
+              <svg viewBox="0 0 200 80" class="h-full w-full" aria-hidden="true">
+                <defs><linearGradient id="gMint" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#00E699" stop-opacity=".3"/><stop offset="1" stop-color="#00E699" stop-opacity="0"/></linearGradient></defs>
+                <path class="area" d="M10 66 C40 62 55 58 75 52 S110 48 125 36 S160 26 188 14 L188 80 L10 80Z" fill="url(#gMint)"/>
+                <path class="path" pathLength="1" d="M10 66 C40 62 55 58 75 52 S110 48 125 36 S160 26 188 14" stroke="#00E699" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+                <g class="end"><circle cx="188" cy="14" r="8" fill="rgba(0,230,153,.2)"/><circle cx="188" cy="14" r="3.5" fill="#00E699"/></g>
+                <g class="tag"><rect x="12" y="6" width="74" height="18" rx="9" fill="rgba(0,230,153,.12)" stroke="rgba(0,230,153,.45)"/><text x="49" y="18.5" text-anchor="middle" font-size="9" font-family="Geist Mono, monospace" fill="#00E699">14-mo runway</text></g>
+              </svg>
+            </div>
+            <div class="mt-6 flex items-center gap-3">
+              <span class="icon-chip grid h-10 w-10 place-items-center rounded-xl bg-white/[.06] text-white"><i data-lucide="trending-up" class="h-5 w-5"></i></span>
+              <h3 class="text-lg font-semibold tracking-tight text-white">Fractional CFO</h3>
+            </div>
+            <p class="mt-3 flex-1 text-[15px] leading-relaxed">Forecasting, board reporting, and cash strategy from a senior operator.</p>
+            <span class="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-white/80">View details <i data-lucide="arrow-right" class="h-4 w-4"></i></span>
+          </button>
+
+          <!-- Audit -->
+          <button role="tab" id="tab-audit" data-svc="audit" aria-controls="svc-panel" aria-selected="false" tabindex="-1" data-reveal style="--d:.24s"
+            class="svc-card card gborder spot flex flex-col border border-white/[.08] bg-white/[.025] p-5 text-left">
+            <div class="ill ill-aud grid-lines h-28 overflow-hidden rounded-2xl border border-white/[.06] bg-ink/60" style="background-size:20px 20px">
+              <svg viewBox="0 0 200 80" class="h-full w-full" aria-hidden="true">
+                <rect x="70" y="8" width="60" height="66" rx="6" fill="#111A2E" stroke="rgba(148,163,184,.3)"/>
+                <g stroke="rgba(148,163,184,.35)" stroke-width="3" stroke-linecap="round"><path d="M80 22H112M80 32H120M80 42H106M80 52H116M80 62H100"/></g>
+                <rect class="scan" x="66" y="12" width="68" height="3" rx="1.5" fill="#00E699" style="filter:drop-shadow(0 0 6px #00E699)"/>
+                <g class="badge"><circle cx="130" cy="62" r="12" fill="#00E699"/><path class="tick" pathLength="1" d="M124.5 62 L128.5 66 L135.5 58.5" stroke="#03140D" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+              </svg>
+            </div>
+            <div class="mt-6 flex items-center gap-3">
+              <span class="icon-chip grid h-10 w-10 place-items-center rounded-xl bg-white/[.06] text-white"><i data-lucide="shield-check" class="h-5 w-5"></i></span>
+              <h3 class="text-lg font-semibold tracking-tight text-white">Audit &amp; Compliance</h3>
+            </div>
+            <p class="mt-3 flex-1 text-[15px] leading-relaxed">Independent audits, reviews, and control testing stakeholders trust.</p>
+            <span class="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-white/80">View details <i data-lucide="arrow-right" class="h-4 w-4"></i></span>
+          </button>
+        </div>
+
+        <div id="svc-panel" role="tabpanel" aria-labelledby="tab-tax" tabindex="0" data-reveal class="glass mt-4 overflow-hidden rounded-[28px]">
+          <div id="svc-inner"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PROCESS ================= -->
+    <section id="process" class="relative border-t border-white/[.06] py-24 sm:py-32">
+      <div class="grid-lines fade-mask pointer-events-none absolute inset-0 opacity-60" aria-hidden="true"></div>
+      <div class="relative mx-auto max-w-7xl px-5 sm:px-8">
+        <div data-reveal class="mx-auto max-w-2xl text-center">
+          <span class="eyebrow"><span class="dot"></span>How it works</span>
+          <h2 class="mt-5 text-4xl font-semibold tracking-[-0.03em] text-white sm:text-5xl">From first call to fully onboarded in two weeks.</h2>
+        </div>
+
+        <ol id="steps" class="relative mt-16 grid gap-10 lg:grid-cols-4 lg:gap-0">
+          <li class="pointer-events-none absolute left-6 top-6 hidden h-px w-3/4 bg-white/10 lg:block" aria-hidden="true">
+            <div class="p-fill h-full w-full bg-gradient-to-r from-mint to-amber-500 shadow-[0_0_12px_rgba(0,230,153,.8)]"></div>
+          </li>
+          <li class="step relative flex gap-5 lg:block lg:pr-8">
+            <div class="relative">
+              <span class="num relative z-10 grid h-12 w-12 place-items-center rounded-full border border-white/15 bg-ink font-mono text-sm text-white">01</span>
+            </div>
+            <span class="seg absolute -bottom-10 left-6 top-12 w-px bg-gradient-to-b from-mint to-mint/0 lg:hidden" aria-hidden="true"></span>
+            <div class="body lg:mt-7">
+              <h3 class="text-lg font-semibold text-white">Discovery call</h3>
+              <p class="mt-2 text-[15px] leading-relaxed">A free 30-minute conversation with a partner about your goals, entity, and pain points.</p>
+            </div>
+          </li>
+          <li class="step relative flex gap-5 lg:block lg:pr-8">
+            <div class="relative">
+              <span class="num relative z-10 grid h-12 w-12 place-items-center rounded-full border border-white/15 bg-ink font-mono text-sm text-white">02</span>
+            </div>
+            <span class="seg absolute -bottom-10 left-6 top-12 w-px bg-gradient-to-b from-mint to-mint/0 lg:hidden" aria-hidden="true"></span>
+            <div class="body lg:mt-7">
+              <h3 class="text-lg font-semibold text-white">Fixed-fee proposal</h3>
+              <p class="mt-2 text-[15px] leading-relaxed">A clear scope and one monthly price. No hourly billing, no surprise invoices.</p>
+            </div>
+          </li>
+          <li class="step relative flex gap-5 lg:block lg:pr-8">
+            <div class="relative">
+              <span class="num relative z-10 grid h-12 w-12 place-items-center rounded-full border border-white/15 bg-ink font-mono text-sm text-white">03</span>
+            </div>
+            <span class="seg absolute -bottom-10 left-6 top-12 w-px bg-gradient-to-b from-mint to-mint/0 lg:hidden" aria-hidden="true"></span>
+            <div class="body lg:mt-7">
+              <h3 class="text-lg font-semibold text-white">Secure onboarding</h3>
+              <p class="mt-2 text-[15px] leading-relaxed">We connect your bank, payroll, and ledger to our portal and clean up historicals.</p>
+            </div>
+          </li>
+          <li class="step relative flex gap-5 lg:block lg:pr-8">
+            <div class="relative">
+              <span class="num relative z-10 grid h-12 w-12 place-items-center rounded-full border border-white/15 bg-ink font-mono text-sm text-white">04</span>
+            </div>
+            <div class="body lg:mt-7">
+              <h3 class="text-lg font-semibold text-white">Ongoing partnership</h3>
+              <p class="mt-2 text-[15px] leading-relaxed">Monthly close, quarterly strategy sessions, and a dedicated team on call.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ================= PRICING / ESTIMATOR ================= -->
+    <section id="pricing" class="relative overflow-hidden py-24 sm:py-32">
+      <div class="blob blob-a left-[30%] top-[20%] h-[420px] w-[420px] bg-mint/10" aria-hidden="true"></div>
+      <div class="relative mx-auto max-w-7xl px-5 sm:px-8">
+        <div data-reveal class="max-w-2xl">
+          <span class="eyebrow"><span class="dot"></span>Pricing estimator</span>
+          <h2 class="mt-5 text-4xl font-semibold tracking-[-0.03em] text-white sm:text-5xl">Transparent pricing that scales with you.</h2>
+          <p class="mt-5 text-[17px] leading-relaxed">Choose your profile, adjust the inputs, and see what's included with an illustrative monthly range.</p>
+        </div>
+
+        <div class="mt-12 grid gap-4 lg:grid-cols-12">
+          <div data-reveal class="glass rounded-[28px] p-6 sm:p-9 lg:col-span-7">
+            <div id="seg" role="tablist" aria-label="Client type" class="relative flex w-full rounded-full border border-white/10 bg-white/[.03] p-1 sm:inline-flex sm:w-auto">
+              <span id="seg-pill" class="absolute bottom-1 left-0 top-1 rounded-full border border-mint/40 bg-mint/10 shadow-[0_0_24px_-6px_rgba(0,230,153,.7)]" aria-hidden="true"></span>
+              <button role="tab" aria-selected="true" data-type="startup" class="seg-btn relative z-10 flex-1 whitespace-nowrap rounded-full px-2 py-2.5 text-[13px] font-medium text-slate-400 sm:px-6 sm:text-sm">Startup</button>
+              <button role="tab" aria-selected="false" data-type="enterprise" class="seg-btn relative z-10 flex-1 whitespace-nowrap rounded-full px-2 py-2.5 text-[13px] font-medium text-slate-400 sm:px-6 sm:text-sm">Enterprise</button>
+              <button role="tab" aria-selected="false" data-type="hnw" class="seg-btn relative z-10 flex-1 whitespace-nowrap rounded-full px-2 py-2.5 text-[13px] font-medium text-slate-400 sm:px-6 sm:text-sm">High Net Worth</button>
+            </div>
+
+            <div id="est-body" class="mt-9">
+              <p id="est-sub" class="font-mono text-[11px] uppercase tracking-[.16em] text-slate-500">Pre-seed to Series B</p>
+              <div class="mt-5 flex items-baseline justify-between gap-4">
+                <label for="est-range" id="est-label" class="text-[15px] text-white">Annual revenue</label>
+                <output id="est-val" for="est-range" class="tabular text-lg font-medium text-white">$2M</output>
+              </div>
+              <input id="est-range" type="range" class="range mt-5 w-full" min="0" max="10" step="0.5" value="2">
+              <p class="mt-9 text-[15px] text-white">Add-ons</p>
+              <div id="est-addons" class="mt-4 flex flex-wrap gap-2"></div>
+            </div>
+
+            <div class="mt-9 flex flex-col justify-between gap-6 border-t border-white/[.08] pt-8">
+              <div>
+                <p class="font-mono text-[11px] uppercase tracking-[.16em] text-slate-500">Estimated monthly investment</p>
+                <p id="est-amount" class="tabular mt-3 whitespace-nowrap text-[2rem] font-semibold tracking-tight text-white sm:text-5xl" aria-live="polite">
+                  <span id="est-low">$1,350</span><span class="text-slate-600"> – </span><span id="est-high">$1,800</span><span class="ml-1 text-base font-normal text-slate-500">/mo</span>
+                </p>
+              </div>
+              <a href="#contact" id="est-cta" class="btn btn-primary btn-shine shrink-0 self-start px-6 py-3.5 text-[15px]">Get an exact quote <i data-lucide="arrow-right" class="arrow h-4 w-4"></i></a>
+            </div>
+            <p class="mt-5 text-xs leading-relaxed text-slate-500">Illustrative ranges for planning purposes only. Final fixed fees are set after a scoping call and depend on transaction volume, entity count, and complexity.</p>
+          </div>
+
+          <div data-reveal style="--d:.1s" class="glass rounded-[28px] p-6 sm:p-9 lg:col-span-5">
+            <div class="flex items-center justify-between gap-4">
+              <h3 class="text-lg font-semibold text-white">What's included</h3>
+              <span id="est-plan" class="rounded-full border border-amber-500/40 bg-amber-500/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[.14em] text-amber-400">Launch</span>
+            </div>
+            <ul id="matrix" class="mt-6 divide-y divide-white/[.06]">
+              <li class="mrow flex items-center justify-between gap-4 py-3.5"><span class="label text-[15px]">Monthly bookkeeping &amp; close</span><span class="mark grid h-7 w-7 shrink-0 place-items-center rounded-full bg-white/[.04] text-slate-600"></span></li>
+              <li class="mrow flex items-center justify-between gap-4 py-3.5"><span class="label text-[15px]">Federal &amp; state tax filings</span><span class="mark grid h-7 w-7 shrink-0 place-items-center rounded-full bg-white/[.04] text-slate-600"></span></li>
+              <li class="mrow flex items-center justify-between gap-4 py-3.5"><span class="label text-[15px]">Quarterly tax planning sessions</span><span class="mark grid h-7 w-7 shrink-0 place-items-center rounded-full bg-white/[.04] text-slate-600"></span></li>
+              <li class="mrow flex items-center justify-between gap-4 py-3.5"><span class="label text-[15px]">Dedicated CPA lead</span><span class="mark grid h-7 w-7 shrink-0 place-items-center rounded-full bg-white/[.04] text-slate-600"></span></li>
+              <li class="mrow flex items-center justify-between gap-4 py-3.5"><span class="label text-[15px]">Investor &amp; board reporting</span><span class="mark grid h-7 w-7 shrink-0 place-items-center rounded-full bg-white/[.04] text-slate-600"></span></li>
+              <li class="mrow flex items-center justify-between gap-4 py-3.5"><span class="label text-[15px]">Multi-entity consolidation</span><span class="mark grid h-7 w-7 shrink-0 place-items-center rounded-full bg-white/[.04] text-slate-600"></span></li>
+              <li class="mrow flex items-center justify-between gap-4 py-3.5"><span class="label text-[15px]">Audit &amp; assurance readiness</span><span class="mark grid h-7 w-7 shrink-0 place-items-center rounded-full bg-white/[.04] text-slate-600"></span></li>
+              <li class="mrow flex items-center justify-between gap-4 py-3.5"><span class="label text-[15px]">Trust, estate &amp; gifting strategy</span><span class="mark grid h-7 w-7 shrink-0 place-items-center rounded-full bg-white/[.04] text-slate-600"></span></li>
+              <li class="mrow flex items-center justify-between gap-4 py-3.5"><span class="label text-[15px]">Real-time dashboard &amp; secure portal</span><span class="mark grid h-7 w-7 shrink-0 place-items-center rounded-full bg-white/[.04] text-slate-600"></span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TESTIMONIALS ================= -->
+    <section id="clients" class="relative border-t border-white/[.06] py-24 sm:py-32">
+      <div class="mx-auto max-w-7xl px-5 sm:px-8">
+        <div class="flex flex-col justify-between gap-8 sm:flex-row sm:items-end">
+          <div data-reveal class="max-w-2xl">
+            <span class="eyebrow"><span class="dot"></span>Client stories</span>
+            <h2 class="mt-5 text-4xl font-semibold tracking-[-0.03em] text-white sm:text-5xl">Trusted by the people <br class="hidden sm:block">who sign the checks.</h2>
+          </div>
+          <div data-reveal style="--d:.1s" class="flex gap-2">
+            <button id="t-prev" class="btn btn-ghost h-12 w-12" aria-label="Previous testimonial"><i data-lucide="chevron-left" class="h-5 w-5"></i></button>
+            <button id="t-next" class="btn btn-ghost h-12 w-12" aria-label="Next testimonial"><i data-lucide="chevron-right" class="h-5 w-5"></i></button>
+          </div>
+        </div>
+
+        <div id="carousel" data-reveal class="mt-12" aria-roledescription="carousel" aria-label="Client testimonials">
+          <div id="t-viewport" class="overflow-hidden" style="touch-action: pan-y">
+            <div id="t-track" class="flex gap-6">
+              <figure class="t-card card spot glass flex shrink-0 basis-full flex-col rounded-[28px] p-7 sm:p-9 md:basis-[calc(50%-12px)]">
+                <i data-lucide="quote" class="h-8 w-8 text-mint/70"></i>
+                <blockquote class="mt-6 flex-1 text-xl leading-relaxed tracking-tight text-white/90 sm:text-[22px]">“A&amp;R turned our books from a quarterly fire drill into a real management tool. I make hiring decisions with actual numbers in front of me now.”</blockquote>
+                <span class="mt-7 inline-flex w-fit items-center gap-2 rounded-full border border-mint/30 bg-mint/10 px-3 py-1 font-mono text-xs text-mint">Close time: 21 → 5 days</span>
+                <figcaption class="mt-7 flex items-center gap-4 border-t border-white/[.08] pt-6">
+                  <span class="grid h-12 w-12 place-items-center rounded-full bg-gradient-to-br from-mint/40 to-amber-500/40 text-sm font-semibold text-white">MR</span>
+                  <span><span class="block font-medium text-white">Maya Reynolds</span><span class="text-sm">CEO, Northline Logistics</span></span>
+                </figcaption>
+              </figure>
+              <figure class="t-card card spot glass flex shrink-0 basis-full flex-col rounded-[28px] p-7 sm:p-9 md:basis-[calc(50%-12px)]">
+                <i data-lucide="quote" class="h-8 w-8 text-mint/70"></i>
+                <blockquote class="mt-6 flex-1 text-xl leading-relaxed tracking-tight text-white/90 sm:text-[22px]">“Their fractional CFO ran point on our acquisition. The diligence was meticulous, the model was bulletproof, and we closed on schedule.”</blockquote>
+                <span class="mt-7 inline-flex w-fit items-center gap-2 rounded-full border border-mint/30 bg-mint/10 px-3 py-1 font-mono text-xs text-mint">Acquisition closed on time</span>
+                <figcaption class="mt-7 flex items-center gap-4 border-t border-white/[.08] pt-6">
+                  <span class="grid h-12 w-12 place-items-center rounded-full bg-gradient-to-br from-sky-400/40 to-mint/40 text-sm font-semibold text-white">DK</span>
+                  <span><span class="block font-medium text-white">David Kim</span><span class="text-sm">Founder, Brightpath Health</span></span>
+                </figcaption>
+              </figure>
+              <figure class="t-card card spot glass flex shrink-0 basis-full flex-col rounded-[28px] p-7 sm:p-9 md:basis-[calc(50%-12px)]">
+                <i data-lucide="quote" class="h-8 w-8 text-mint/70"></i>
+                <blockquote class="mt-6 flex-1 text-xl leading-relaxed tracking-tight text-white/90 sm:text-[22px]">“We finally have one team that sees the whole picture: trusts, partnerships, and personal returns. Planning is proactive instead of reactive.”</blockquote>
+                <span class="mt-7 inline-flex w-fit items-center gap-2 rounded-full border border-mint/30 bg-mint/10 px-3 py-1 font-mono text-xs text-mint">11 entities, one dashboard</span>
+                <figcaption class="mt-7 flex items-center gap-4 border-t border-white/[.08] pt-6">
+                  <span class="grid h-12 w-12 place-items-center rounded-full bg-gradient-to-br from-amber-500/40 to-rose-400/40 text-sm font-semibold text-white">SP</span>
+                  <span><span class="block font-medium text-white">Sofia Patel</span><span class="text-sm">Principal, Patel Family Office</span></span>
+                </figcaption>
+              </figure>
+              <figure class="t-card card spot glass flex shrink-0 basis-full flex-col rounded-[28px] p-7 sm:p-9 md:basis-[calc(50%-12px)]">
+                <i data-lucide="quote" class="h-8 w-8 text-mint/70"></i>
+                <blockquote class="mt-6 flex-1 text-xl leading-relaxed tracking-tight text-white/90 sm:text-[22px]">“The audit team is rigorous without being disruptive. Our lenders and board have complete confidence in the numbers.”</blockquote>
+                <span class="mt-7 inline-flex w-fit items-center gap-2 rounded-full border border-mint/30 bg-mint/10 px-3 py-1 font-mono text-xs text-mint">3 clean audits running</span>
+                <figcaption class="mt-7 flex items-center gap-4 border-t border-white/[.08] pt-6">
+                  <span class="grid h-12 w-12 place-items-center rounded-full bg-gradient-to-br from-violet-400/40 to-sky-400/40 text-sm font-semibold text-white">JO</span>
+                  <span><span class="block font-medium text-white">James Okafor</span><span class="text-sm">CFO, Meridian Manufacturing</span></span>
+                </figcaption>
+              </figure>
+              <figure class="t-card card spot glass flex shrink-0 basis-full flex-col rounded-[28px] p-7 sm:p-9 md:basis-[calc(50%-12px)]">
+                <i data-lucide="quote" class="h-8 w-8 text-mint/70"></i>
+                <blockquote class="mt-6 flex-1 text-xl leading-relaxed tracking-tight text-white/90 sm:text-[22px]">“They found R&amp;D credits our previous firm missed for two years. It feels like having a finance department, not a vendor.”</blockquote>
+                <span class="mt-7 inline-flex w-fit items-center gap-2 rounded-full border border-mint/30 bg-mint/10 px-3 py-1 font-mono text-xs text-mint">R&amp;D credits funded 2 hires</span>
+                <figcaption class="mt-7 flex items-center gap-4 border-t border-white/[.08] pt-6">
+                  <span class="grid h-12 w-12 place-items-center rounded-full bg-gradient-to-br from-mint/40 to-sky-400/40 text-sm font-semibold text-white">LH</span>
+                  <span><span class="block font-medium text-white">Lena Hoffmann</span><span class="text-sm">Co-founder, Parcel AI</span></span>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+          <div id="t-dots" class="mt-8 flex items-center justify-center gap-2"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section id="contact" class="relative overflow-hidden py-24 sm:py-32">
+      <div class="blob blob-b bottom-[-10%] left-[-10%] h-[480px] w-[480px] bg-mint/15" aria-hidden="true"></div>
+      <div class="blob blob-a right-[-5%] top-[5%] h-[380px] w-[380px] bg-amber-500/10" aria-hidden="true"></div>
+      <div class="relative mx-auto grid max-w-7xl gap-14 px-5 sm:px-8 lg:grid-cols-12">
+        <div data-reveal class="lg:col-span-5">
+          <span class="eyebrow"><span class="dot"></span>Book a consultation</span>
+          <h2 class="mt-5 text-4xl font-semibold tracking-[-0.03em] text-white sm:text-5xl">Let's make your numbers work harder.</h2>
+          <p class="mt-5 text-[17px] leading-relaxed">Tell us where you are and where you're headed. A partner will reply within one business day to schedule a free 30-minute strategy call.</p>
+
+          <ul class="mt-10 space-y-3">
+            <li class="card spot flex items-center gap-4 rounded-2xl border border-white/[.07] bg-white/[.02] p-4">
+              <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-white/[.05] text-mint"><i data-lucide="map-pin" class="h-5 w-5"></i></span>
+              <div><p class="text-sm text-white">1200 Market Street, Suite 400</p><p class="text-sm">Philadelphia, PA 19107</p></div>
+            </li>
+            <li class="card spot flex items-center gap-4 rounded-2xl border border-white/[.07] bg-white/[.02] p-4">
+              <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-white/[.05] text-mint"><i data-lucide="phone" class="h-5 w-5"></i></span>
+              <div><a href="tel:+12155550142" class="ulink text-sm text-white">(215) 555-0142</a><br><a href="mailto:info@arllp.ca" class="ulink text-sm">info@arllp.ca</a></div>
+            </li>
+            <li class="card spot flex items-center gap-4 rounded-2xl border border-white/[.07] bg-white/[.02] p-4">
+              <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-white/[.05] text-mint"><i data-lucide="clock" class="h-5 w-5"></i></span>
+              <div><p class="text-sm text-white">Mon–Fri, 8:30 AM – 6:00 PM ET</p><p class="text-sm">Extended hours during tax season</p></div>
+            </li>
+          </ul>
+        </div>
+
+        <div data-reveal style="--d:.1s" class="lg:col-span-7">
+          <div id="form-card" class="glass relative overflow-hidden rounded-[28px] p-6 sm:p-10">
+            <form id="lead-form" novalidate>
+              <div id="form-body" class="grid gap-4 sm:grid-cols-2">
+                <div class="field">
+                  <input id="f-name" name="name" type="text" placeholder=" " autocomplete="name" required>
+                  <label for="f-name">Full name</label><span class="bar"></span>
+                  <svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12.5l4.5 4.5L19 7.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <p class="err">Please enter your name.</p>
+                </div>
+                <div class="field">
+                  <input id="f-email" name="email" type="email" placeholder=" " autocomplete="email" required>
+                  <label for="f-email">Work email</label><span class="bar"></span>
+                  <svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12.5l4.5 4.5L19 7.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <p class="err">Please enter a valid email address.</p>
+                </div>
+                <div class="field">
+                  <input id="f-company" name="company" type="text" placeholder=" " autocomplete="organization">
+                  <label for="f-company">Company (optional)</label><span class="bar"></span>
+                  <svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12.5l4.5 4.5L19 7.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="field">
+                  <select id="f-service" name="service" required>
+                    <option value="" hidden></option>
+                    <option value="tax">Tax Strategy</option>
+                    <option value="advisory">Corporate Advisory</option>
+                    <option value="cfo">Fractional CFO</option>
+                    <option value="audit">Audit &amp; Compliance</option>
+                    <option value="unsure">Not sure yet</option>
+                  </select>
+                  <label for="f-service">Service needed</label><span class="bar"></span>
+                  <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <p class="err">Please choose a service.</p>
+                </div>
+                <div class="field sm:col-span-2">
+                  <textarea id="f-msg" name="message" placeholder=" " required></textarea>
+                  <label for="f-msg">What are you looking to solve?</label><span class="bar"></span>
+                  <p class="err">A sentence or two helps us prepare.</p>
+                </div>
+                <div class="flex flex-col gap-4 pt-2 sm:col-span-2 sm:flex-row sm:items-center sm:justify-between">
+                  <p class="text-xs leading-relaxed text-slate-500">Encrypted in transit. Submitting does not create a CPA–client relationship.</p>
+                  <button id="submit" type="submit" class="btn btn-primary btn-shine shrink-0 min-w-[200px] whitespace-nowrap px-7 py-4 text-[15px]">
+                    <span class="label">Request Consultation</span><i data-lucide="arrow-right" class="arrow h-4 w-4"></i>
+                    <svg class="spinner h-5 w-5 animate-spin" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-opacity=".25" stroke-width="3"/><path d="M21 12a9 9 0 00-9-9" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+                  </button>
+                </div>
+              </div>
+            </form>
+
+            <div id="success" class="absolute inset-0 grid place-items-center p-8 text-center" role="status" aria-live="polite">
+              <div>
+                <div id="burst" class="relative mx-auto h-24 w-24">
+                  <svg viewBox="0 0 96 96" class="h-24 w-24" fill="none" aria-hidden="true">
+                    <circle cx="48" cy="48" r="44" fill="rgba(0,230,153,.08)"/>
+                    <circle class="ring" pathLength="1" cx="48" cy="48" r="44" stroke="#00E699" stroke-width="2.5" transform="rotate(-90 48 48)"/>
+                    <path class="tick" pathLength="1" d="M31 49 L43 61 L66 36" stroke="#00E699" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <h3 class="mt-7 text-2xl font-semibold tracking-tight text-white">Request received.</h3>
+                <p id="success-msg" class="mx-auto mt-3 max-w-sm leading-relaxed">Thanks! A partner will reach out within one business day to schedule your consultation.</p>
+                <button id="reset" type="button" class="btn btn-ghost mt-8 px-6 py-3 text-sm">Send another message</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="relative overflow-hidden border-t border-white/[.06] pt-20">
+    <div class="mx-auto max-w-7xl px-5 sm:px-8">
+      <div class="grid gap-12 md:grid-cols-12">
+        <div class="md:col-span-5">
+          <a href="#top" class="flex items-center gap-3">
+            <span class="grid h-9 w-9 place-items-center rounded-xl border border-white/10 bg-white/[.04]">
+              <svg viewBox="0 0 64 64" class="h-5 w-5" fill="none" aria-hidden="true"><path d="M18 48 L32 16 L46 48" stroke="#00E699" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 37 H40" stroke="#F59E0B" stroke-width="6" stroke-linecap="round"/></svg>
+            </span>
+            <span class="text-[17px] font-semibold tracking-tight text-white">A&amp;R LLP</span>
+          </a>
+          <p class="mt-5 max-w-sm text-[15px] leading-relaxed">Certified Public Accountants &amp; Business Advisors for founders, growing companies, and private clients.</p>
+          <div class="mt-6 flex gap-2">
+            <a href="#" aria-label="LinkedIn" class="grid h-10 w-10 place-items-center rounded-full border border-white/10 text-slate-400 transition duration-300 hover:-translate-y-0.5 hover:border-mint/50 hover:text-mint hover:shadow-[0_0_20px_-4px_rgba(0,230,153,.6)]">
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.4c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21H9z"/></svg>
+            </a>
+            <a href="#" aria-label="X" class="grid h-10 w-10 place-items-center rounded-full border border-white/10 text-slate-400 transition duration-300 hover:-translate-y-0.5 hover:border-mint/50 hover:text-mint hover:shadow-[0_0_20px_-4px_rgba(0,230,153,.6)]">
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.8 3h3.1l-6.8 7.8L22 21h-6.2l-4.9-6.4L5.3 21H2.2l7.3-8.3L2 3h6.4l4.4 5.8L17.8 3zm-1.1 16.2h1.7L7.4 4.7H5.6l11.1 14.5z"/></svg>
+            </a>
+            <a href="mailto:info@arllp.ca" aria-label="Email info@arllp.ca" class="grid h-10 w-10 place-items-center rounded-full border border-white/10 text-slate-400 transition duration-300 hover:-translate-y-0.5 hover:border-mint/50 hover:text-mint hover:shadow-[0_0_20px_-4px_rgba(0,230,153,.6)]">
+              <i data-lucide="mail" class="h-4 w-4"></i>
+            </a>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-8 sm:grid-cols-3 md:col-span-7">
+          <div>
+            <p class="font-mono text-[11px] uppercase tracking-[.16em] text-slate-500">Services</p>
+            <ul class="mt-5 space-y-3 text-[15px]">
+              <li><a href="#services" class="ulink">Tax Strategy</a></li>
+              <li><a href="#services" class="ulink">Corporate Advisory</a></li>
+              <li><a href="#services" class="ulink">Fractional CFO</a></li>
+              <li><a href="#services" class="ulink">Audit &amp; Compliance</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="font-mono text-[11px] uppercase tracking-[.16em] text-slate-500">Firm</p>
+            <ul class="mt-5 space-y-3 text-[15px]">
+              <li><a href="#process" class="ulink">How we work</a></li>
+              <li><a href="#pricing" class="ulink">Pricing</a></li>
+              <li><a href="#clients" class="ulink">Clients</a></li>
+              <li><a href="#contact" class="ulink">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="font-mono text-[11px] uppercase tracking-[.16em] text-slate-500">Legal</p>
+            <ul class="mt-5 space-y-3 text-[15px]">
+              <li><a href="#" class="ulink">Privacy Policy</a></li>
+              <li><a href="#" class="ulink">Terms of Use</a></li>
+              <li><a href="#" class="ulink">Accessibility</a></li>
+              <li><a href="#" class="ulink">Disclosures</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="hairline mt-16"></div>
+      <div class="py-8 text-xs leading-relaxed text-slate-500">
+        <p>A&amp;R LLP is a licensed Certified Public Accounting firm. Content on this website is provided for general informational purposes only and does not constitute tax, accounting, legal, or investment advice. Use of this site or submission of information does not create a CPA–client relationship; engagements are established only by a signed engagement letter. Statistics and client results shown are illustrative; individual outcomes vary. Attest services are performed only for clients for whom independence requirements are met.</p>
+        <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <p>&copy; <span id="year">2026</span> A&amp;R LLP. All rights reserved.</p>
+          <p class="flex items-center gap-2"><span class="live-dot"></span> All systems operational</p>
+        </div>
+      </div>
+    </div>
+    <p class="pointer-events-none select-none text-center text-[22vw] font-semibold leading-[.75] tracking-[-0.06em] text-transparent" style="background:linear-gradient(180deg,rgba(148,163,184,.10),rgba(148,163,184,0) 80%);-webkit-background-clip:text;background-clip:text" aria-hidden="true">A&amp;R LLP</p>
+  </footer>
+
+  <script>
+  (() => {
+    const $ = (s, c = document) => c.querySelector(s);
+    const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const finePointer = matchMedia('(pointer: fine)').matches;
+    const easeOut = t => 1 - Math.pow(1 - t, 3);
+    const money = n => '$' + Math.round(n).toLocaleString('en-US');
+    const CHECK = '<svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12.5l4.5 4.5L19 7.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    const DASH = '<svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 12h10" stroke-linecap="round"/></svg>';
+    const drawIcons = () => { if (window.lucide) window.lucide.createIcons(); };
+
+    // Tween with cancellation: a newer tween on the same element/key wins.
+    function tween(el, key, from, to, dur, draw) {
+      const token = (el[key] = (el[key] || 0) + 1);
+      if (reduce) return draw(to);
+      const t0 = performance.now();
+      const step = now => {
+        if (el[key] !== token) return;
+        const p = Math.min((now - t0) / dur, 1);
+        draw(from + (to - from) * easeOut(p));
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    }
+
+    $('#year').textContent = new Date().getFullYear();
+    if (window.lucide) drawIcons(); else window.addEventListener('load', drawIcons);
+
+    /* ---------- Header: shrink on scroll, progress bar, mobile menu ---------- */
+    const nav = $('#nav'), progress = $('#progress'), steps = $('#steps'), stepEls = $$('.step');
+    let ticking = false;
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        ticking = false;
+        const y = scrollY, max = document.documentElement.scrollHeight - innerHeight;
+        progress.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
+        nav.classList.toggle('scrolled', y > 24);
+        // Scroll-linked process timeline
+        const r = steps.getBoundingClientRect();
+        const p = Math.min(Math.max((innerHeight * 0.72 - r.top) / (r.height * 0.9), 0), 1);
+        steps.style.setProperty('--p', p.toFixed(3));
+        stepEls.forEach(s => s.classList.toggle('on', s.getBoundingClientRect().top < innerHeight * 0.72));
+      });
+    }
+    addEventListener('scroll', onScroll, { passive: true });
+    addEventListener('resize', onScroll);
+    onScroll();
+
+    const burger = $('#burger'), menu = $('#menu');
+    const setMenu = open => { menu.classList.toggle('open', open); nav.classList.toggle('menu-open', open); burger.setAttribute('aria-expanded', open); };
+    burger.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
+    $$('a', menu).forEach(a => a.addEventListener('click', () => setMenu(false)));
+    addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+
+    // Sliding hover pill + active-section tracking
+    const navLinks = $$('#navlinks a'), pill = $('#nav-pill');
+    let activeLink = null, hovering = false;
+    function movePill(a) {
+      if (!a) { pill.style.opacity = 0; return; }
+      pill.style.opacity = 1;
+      pill.style.width = a.offsetWidth + 'px';
+      pill.style.transform = `translateX(${a.offsetLeft}px)`;
+    }
+    navLinks.forEach(a => a.addEventListener('mouseenter', () => { hovering = true; movePill(a); }));
+    $('#navlinks').addEventListener('mouseleave', () => { hovering = false; movePill(activeLink); });
+    const spy = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        activeLink = navLinks.find(a => a.getAttribute('href') === '#' + e.target.id) || null;
+        navLinks.forEach(a => a.setAttribute('aria-current', a === activeLink));
+        if (!hovering) movePill(activeLink);
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    ['top', 'services', 'process', 'pricing', 'clients', 'contact'].forEach(id => spy.observe(document.getElementById(id)));
+
+    /* ---------- Scroll reveals ---------- */
+    const revealer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const el = e.target;
+        obs.unobserve(el);
+        el.classList.add('in');
+        // Hand transforms back to hover/height transitions once the entrance is done.
+        setTimeout(() => { el.removeAttribute('data-reveal'); el.classList.remove('in'); }, reduce ? 0 : 1100 + (parseFloat(el.style.getPropertyValue('--d')) || 0) * 1000);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    $$('[data-reveal]').forEach(el => revealer.observe(el));
+
+    /* ---------- Counters & ring ---------- */
+    const formats = { assets: v => v >= 999.5 ? '$1B+' : `$${Math.round(v)}M`, int: v => Math.round(v).toLocaleString('en-US') };
+    const counter = new IntersectionObserver((entries, obs) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        obs.unobserve(e.target);
+        const el = e.target, f = formats[el.dataset.format || 'int'];
+        setTimeout(() => tween(el, '_c', 0, +el.dataset.count, 2000, v => (el.textContent = f(v))), 700);
+      });
+    }, { threshold: 0.4 });
+    $$('[data-count]').forEach(el => {
+      if (!reduce) el.textContent = (formats[el.dataset.format || 'int'])(0);
+      counter.observe(el);
+    });
+    $$('[data-ring]').forEach(c => {
+      const target = 100 - +c.dataset.ring;
+      if (reduce) return;
+      c.setAttribute('stroke-dashoffset', 100);
+      setTimeout(() => tween(c, '_r', 100, target, 2000, v => c.setAttribute('stroke-dashoffset', v)), 700);
+    });
+
+    /* ---------- Hero parallax & cursor glow ---------- */
+    const hero = $('#top'), layers = $$('.layer', hero), glow = $('#cursor-glow');
+    if (finePointer && !reduce) {
+      let tx = 0, ty = 0, cx = 0, cy = 0, raf = 0;
+      const loop = () => {
+        cx += (tx - cx) * 0.08; cy += (ty - cy) * 0.08;
+        layers.forEach(l => { const d = +l.dataset.depth; l.style.transform = `translate3d(${(-cx * d).toFixed(2)}px, ${(-cy * d).toFixed(2)}px, 0)`; });
+        raf = Math.abs(tx - cx) + Math.abs(ty - cy) > 0.001 ? requestAnimationFrame(loop) : 0;
+      };
+      hero.addEventListener('pointermove', e => {
+        const r = hero.getBoundingClientRect();
+        tx = (e.clientX - r.left) / r.width - 0.5; ty = (e.clientY - r.top) / r.height - 0.5;
+        glow.style.opacity = 1;
+        glow.style.transform = `translate3d(${e.clientX - r.left - 300}px, ${e.clientY - r.top - 300}px, 0)`;
+        if (!raf) raf = requestAnimationFrame(loop);
+      });
+      hero.addEventListener('pointerleave', () => { tx = ty = 0; glow.style.opacity = 0; if (!raf) raf = requestAnimationFrame(loop); });
+    }
+
+    // Cycling activity toast
+    const toast = $('#toast-text');
+    const events = [
+      ['Monthly close delivered', 'Day 4 · 38 accounts reconciled'],
+      ['R&D credit identified', '$84,200 federal + state'],
+      ['Q4 estimate scheduled', 'Reminder sent to client'],
+      ['Board pack published', 'Shared to secure portal'],
+      ['Sales-tax nexus review', '3 states flagged, 0 exposure']
+    ];
+    let ev = 0;
+    if (!reduce) setInterval(() => {
+      toast.classList.add('out');
+      setTimeout(() => {
+        ev = (ev + 1) % events.length;
+        toast.children[0].textContent = events[ev][0];
+        toast.children[1].textContent = events[ev][1];
+        toast.classList.remove('out');
+      }, 380);
+    }, 3400);
+
+    /* ---------- Spotlight follow ---------- */
+    $$('.spot').forEach(c => c.addEventListener('pointermove', e => {
+      const r = c.getBoundingClientRect();
+      c.style.setProperty('--mx', e.clientX - r.left + 'px');
+      c.style.setProperty('--my', e.clientY - r.top + 'px');
+    }));
+
+    /* ---------- Services: tabbed cards + fluid detail panel ---------- */
+    const SVC = {
+      tax: { kicker: 'Tax Strategy', title: 'Proactive tax strategy, twelve months a year.', expert: 'tax partner',
+        summary: 'We model decisions before they happen: entity choice, compensation, timing, and credits. Then we handle every filing and stand behind it if the IRS comes calling.',
+        ideal: 'Founders, profitable SMBs, and high-income households.',
+        includes: ['Entity structuring & S/C-corp analysis', 'Federal, state & multi-state filings', 'R&D and energy credit studies', 'Quarterly projections & estimates', 'IRS & state audit representation'],
+        outcomes: [['4×', 'planning sessions per year'], ['100%', 'on-time filing record'], ['24h', 'response to tax notices']] },
+      advisory: { kicker: 'Corporate Advisory', title: 'Board-level thinking for your biggest decisions.', expert: 'advisory partner',
+        summary: 'From raising capital to buying a competitor or planning an exit, we bring the financial rigor and deal experience that turn big moves into good outcomes.',
+        ideal: 'Growth-stage companies, acquirers, and owners planning succession.',
+        includes: ['Growth, exit & succession planning', 'Buy- and sell-side due diligence', 'Valuation & 409A coordination', 'Capital-raise and lender readiness', 'Entity reorganizations'],
+        outcomes: [['60+', 'transactions supported'], ['3–5 wk', 'typical diligence cycle'], ['1', 'integrated deal team']] },
+      cfo: { kicker: 'Fractional CFO', title: 'A senior finance leader, without the full-time cost.', expert: 'CFO',
+        summary: 'An experienced CFO embedded in your team: owning the forecast, the board deck, the bank relationship, and the metrics that tell you where the business is really going.',
+        ideal: 'Venture-backed startups and $5M–$100M operating companies.',
+        includes: ['Monthly close in 5 business days', 'Board & investor reporting packs', '13-week cash & 3-statement models', 'Budgets, KPIs & unit economics', 'Banking & lender relationships'],
+        outcomes: [['5 days', 'to monthly close'], ['13-wk', 'rolling cash visibility'], ['½', 'the cost of a full-time CFO']] },
+      audit: { kicker: 'Audit & Compliance', title: 'Independent assurance your stakeholders trust.', expert: 'assurance partner',
+        summary: 'Audits and reviews built on a risk-focused, tech-enabled approach: rigorous where it matters, efficient everywhere else, and minimally disruptive to your team.',
+        ideal: 'Lender-backed companies, PE portfolio companies, and benefit plans.',
+        includes: ['Financial statement audits & reviews', 'Agreed-upon procedures', 'Employee benefit plan audits', 'Internal control assessments', 'SOC readiness support'],
+        outcomes: [['0', 'missed lender deadlines'], ['40%', 'fewer PBC requests'], ['GAAS', 'aligned methodology']] }
+    };
+    const tabs = $$('.svc-card'), panel = $('#svc-panel'), inner = $('#svc-inner');
+    const renderSvc = key => {
+      const s = SVC[key];
+      return `<div class="grid gap-10 p-7 sm:p-10 lg:grid-cols-12">
+        <div class="lg:col-span-5">
+          <p class="stag font-mono text-[11px] uppercase tracking-[.16em] text-mint">${s.kicker}</p>
+          <h3 class="stag mt-3 text-2xl font-semibold tracking-tight text-white sm:text-3xl" style="--i:1">${s.title}</h3>
+          <p class="stag mt-4 leading-relaxed" style="--i:2">${s.summary}</p>
+          <p class="stag mt-5 text-sm" style="--i:3"><span class="text-white">Ideal for:</span> ${s.ideal}</p>
+          <a href="#contact" data-prefill="${key}" class="stag btn btn-ghost btn-shine mt-7 px-5 py-3 text-sm" style="--i:4">Talk to a ${s.expert} <span class="arrow">&rarr;</span></a>
+        </div>
+        <div class="lg:col-span-4">
+          <p class="stag font-mono text-[11px] uppercase tracking-[.16em] text-slate-500">What's included</p>
+          <ul class="mt-5 space-y-3.5">${s.includes.map((x, i) => `<li class="stag flex items-start gap-3 text-[15px] text-slate-300" style="--i:${i + 1}"><span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-mint/15 text-mint">${CHECK}</span>${x}</li>`).join('')}</ul>
+        </div>
+        <div class="grid grid-cols-3 gap-3 lg:col-span-3 lg:grid-cols-1">${s.outcomes.map((o, i) => `<div class="stag rounded-2xl border border-white/[.07] bg-white/[.02] p-4" style="--i:${i + 3}"><p class="tabular text-xl font-semibold tracking-tight text-white sm:text-2xl">${o[0]}</p><p class="mt-1 text-xs leading-snug">${o[1]}</p></div>`).join('')}</div>
+      </div>`;
+    };
+    inner.innerHTML = renderSvc('tax');
+    let currentSvc = 'tax', swapT;
+    function selectSvc(key, focus) {
+      tabs.forEach(t => {
+        const on = t.dataset.svc === key;
+        t.classList.toggle('is-active', on);
+        t.classList.toggle('play', on);
+        t.setAttribute('aria-selected', on);
+        t.tabIndex = on ? 0 : -1;
+        if (on && focus) t.focus();
+      });
+      panel.setAttribute('aria-labelledby', 'tab-' + key);
+      if (key === currentSvc) return;
+      currentSvc = key;
+      if (reduce) { inner.innerHTML = renderSvc(key); return; }
+      const chrome = panel.offsetHeight - panel.clientHeight;
+      panel.style.height = panel.offsetHeight + 'px';
+      inner.classList.add('swap-out');
+      clearTimeout(swapT);
+      swapT = setTimeout(() => {
+        inner.innerHTML = renderSvc(key);
+        inner.classList.remove('swap-out');
+        inner.classList.add('swap-in');
+        panel.style.height = inner.offsetHeight + chrome + 'px';
+        requestAnimationFrame(() => requestAnimationFrame(() => inner.classList.remove('swap-in')));
+        swapT = setTimeout(() => (panel.style.height = ''), 600);
+      }, 200);
+    }
+    tabs.forEach((t, i) => {
+      t.addEventListener('click', () => selectSvc(t.dataset.svc));
+      t.addEventListener('mouseenter', () => t.classList.add('play'));
+      t.addEventListener('mouseleave', () => { if (!t.classList.contains('is-active')) t.classList.remove('play'); });
+      t.addEventListener('keydown', e => {
+        const dir = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
+        if (!dir) return;
+        e.preventDefault();
+        selectSvc(tabs[(i + dir + tabs.length) % tabs.length].dataset.svc, true);
+      });
+    });
+
+    /* ---------- Pricing estimator ---------- */
+    const EST = {
+      startup: { plan: 'Launch', sub: 'Pre-seed to Series B', label: 'Annual revenue', min: 0, max: 10, step: 0.5, val: 2,
+        show: v => (v == 0 ? 'Pre-revenue' : `$${v}M`), base: v => 900 + v * 180,
+        addons: [['cfo', 'Fractional CFO', 2500], ['rd', 'R&D tax credit study', 350], ['payroll', 'Payroll & sales-tax compliance', 250]],
+        matrix: [1, 1, 1, 1, 1, 0, 0, 0, 1] },
+      enterprise: { plan: 'Scale', sub: '$10M+ revenue · multi-entity', label: 'Annual revenue', min: 10, max: 250, step: 5, val: 50,
+        show: v => `$${v}M`, base: v => 4200 + v * 32,
+        addons: [['audit', 'Financial statement audit', 3000], ['multi', 'Multi-entity consolidation', 1500], ['mna', 'Transaction & M&A support', 2000]],
+        matrix: [1, 1, 1, 1, 1, 1, 1, 0, 1] },
+      hnw: { plan: 'Private Client', sub: 'Individuals, families & trusts', label: 'Entities, trusts & returns', min: 1, max: 30, step: 1, val: 4,
+        show: v => `${v} ${v == 1 ? 'entity' : 'entities'}`, base: v => 500 + v * 160,
+        addons: [['estate', 'Trust & estate planning', 600], ['multistate', 'Multi-state residency', 300], ['fo', 'Family office reporting', 2500]],
+        matrix: [0, 1, 1, 1, 0, 1, 0, 1, 1] }
+    };
+    const segBtns = $$('.seg-btn'), segPill = $('#seg-pill'), range = $('#est-range'), estBody = $('#est-body');
+    const lowEl = $('#est-low'), highEl = $('#est-high'), amount = $('#est-amount'), rows = $$('.mrow');
+    const chosen = { startup: new Set(), enterprise: new Set(), hnw: new Set() };
+    let type = 'startup', shownLow = 0, shownHigh = 0, pulseT;
+    const r50 = n => Math.round(n / 50) * 50;
+
+    function placeSegPill() {
+      const b = segBtns.find(x => x.dataset.type === type);
+      segPill.style.width = b.offsetWidth + 'px';
+      segPill.style.transform = `translateX(${b.offsetLeft - 4}px)`;
+      segPill.style.left = '4px';
+    }
+    function calc() {
+      const c = EST[type], v = +range.value;
+      c.val = v;
+      $('#est-val').textContent = c.show(v);
+      range.style.setProperty('--fill', ((v - c.min) / (c.max - c.min)) * 100 + '%');
+      const est = c.base(v) + c.addons.reduce((sum, a) => sum + (chosen[type].has(a[0]) ? a[2] : 0), 0);
+      const lo = r50(est * 0.9), hi = r50(est * 1.2);
+      tween(lowEl, '_t', shownLow, lo, 700, n => (lowEl.textContent = money(r50(n))));
+      tween(highEl, '_t', shownHigh, hi, 700, n => (highEl.textContent = money(r50(n))));
+      shownLow = lo; shownHigh = hi;
+      amount.classList.add('pulse');
+      clearTimeout(pulseT); pulseT = setTimeout(() => amount.classList.remove('pulse'), 400);
+    }
+    function renderType(first) {
+      const c = EST[type];
+      $('#est-sub').textContent = c.sub;
+      $('#est-label').textContent = c.label;
+      $('#est-plan').textContent = c.plan;
+      Object.assign(range, { min: c.min, max: c.max, step: c.step });
+      range.value = c.val;
+      $('#est-addons').innerHTML = c.addons.map((a, i) =>
+        `<button type="button" class="chip ${first ? '' : 'stag'}" style="--i:${i}" data-id="${a[0]}" aria-pressed="${chosen[type].has(a[0])}">
+          <span class="box">${CHECK}</span>${a[1]}<span class="cost">+${money(a[2])}</span></button>`).join('');
+      rows.forEach((row, i) => {
+        const on = !!c.matrix[i];
+        row.style.transitionDelay = i * 35 + 'ms';
+        row.querySelector('.mark').style.transitionDelay = i * 35 + 'ms';
+        row.classList.toggle('on', on);
+        row.querySelector('.mark').innerHTML = on ? CHECK : DASH;
+        row.querySelector('.label').setAttribute('aria-label', row.querySelector('.label').textContent + (on ? ': included' : ': not included'));
+      });
+      calc();
+    }
+    segBtns.forEach(b => b.addEventListener('click', () => {
+      if (b.dataset.type === type) return;
+      type = b.dataset.type;
+      segBtns.forEach(x => x.setAttribute('aria-selected', x === b));
+      placeSegPill();
+      estBody.classList.add('swap-out');
+      setTimeout(() => { renderType(); estBody.classList.remove('swap-out'); }, reduce ? 0 : 180);
+    }));
+    range.addEventListener('input', calc);
+    $('#est-addons').addEventListener('click', e => {
+      const chip = e.target.closest('.chip');
+      if (!chip) return;
+      const set = chosen[type], id = chip.dataset.id;
+      set.has(id) ? set.delete(id) : set.add(id);
+      chip.setAttribute('aria-pressed', set.has(id));
+      calc();
+    });
+    renderType(true);
+    placeSegPill();
+
+    /* ---------- Testimonials carousel ---------- */
+    const carousel = $('#carousel'), track = $('#t-track'), slides = $$('.t-card', track), dotsWrap = $('#t-dots'), viewport = $('#t-viewport');
+    let idx = 0, per = 1;
+    const maxIdx = () => Math.max(0, slides.length - per);
+    function buildDots() {
+      dotsWrap.innerHTML = '';
+      for (let i = 0; i <= maxIdx(); i++) {
+        const d = document.createElement('button');
+        d.className = 't-dot';
+        d.setAttribute('aria-label', `Show testimonial ${i + 1}`);
+        d.innerHTML = '<span></span>';
+        d.addEventListener('click', () => go(i));
+        if (!reduce) d.firstChild.addEventListener('animationend', () => go(idx + 1));
+        dotsWrap.appendChild(d);
+      }
+    }
+    function go(i) {
+      const n = maxIdx() + 1;
+      idx = ((i % n) + n) % n;
+      const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+      track.style.transform = `translate3d(${-idx * (slides[0].offsetWidth + gap)}px,0,0)`;
+      slides.forEach((s, k) => {
+        const vis = k >= idx && k < idx + per;
+        s.classList.toggle('is-vis', vis);
+        s.setAttribute('aria-hidden', !vis);
+      });
+      $$('.t-dot', dotsWrap).forEach((d, k) => {
+        d.classList.remove('active');
+        if (k === idx) { void d.offsetWidth; d.classList.add('active'); }
+      });
+    }
+    function layoutCarousel() {
+      const next = innerWidth >= 768 ? 2 : 1;
+      if (next !== per || !dotsWrap.children.length) { per = next; buildDots(); }
+      go(Math.min(idx, maxIdx()));
+    }
+    $('#t-prev').addEventListener('click', () => go(idx - 1));
+    $('#t-next').addEventListener('click', () => go(idx + 1));
+    carousel.addEventListener('mouseenter', () => carousel.classList.add('paused'));
+    carousel.addEventListener('mouseleave', () => carousel.classList.remove('paused'));
+    carousel.addEventListener('focusin', () => carousel.classList.add('paused'));
+    carousel.addEventListener('focusout', () => carousel.classList.remove('paused'));
+    let sx = null, dx = 0;
+    viewport.addEventListener('pointerdown', e => { sx = e.clientX; dx = 0; });
+    viewport.addEventListener('pointermove', e => { if (sx !== null) dx = e.clientX - sx; });
+    const endSwipe = () => { if (sx !== null && Math.abs(dx) > 50) go(idx + (dx < 0 ? 1 : -1)); sx = null; };
+    viewport.addEventListener('pointerup', endSwipe);
+    viewport.addEventListener('pointercancel', () => (sx = null));
+    // Only autoplay while the carousel is on screen.
+    new IntersectionObserver(([e]) => carousel.classList.toggle('paused', !e.isIntersecting)).observe(carousel);
+    layoutCarousel();
+
+    let resizeT;
+    addEventListener('resize', () => {
+      clearTimeout(resizeT);
+      resizeT = setTimeout(() => { layoutCarousel(); placeSegPill(); movePill(activeLink); }, 120);
+    });
+
+    /* ---------- Contact form ---------- */
+    const form = $('#lead-form'), card = $('#form-card'), submit = $('#submit'), service = $('#f-service');
+    const fields = $$('input, select, textarea', form);
+    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    const isValid = f => { const v = f.value.trim(); if (f.required && !v) return false; return f.type === 'email' && v ? emailRe.test(v) : true; };
+    function validate(f) {
+      const w = f.closest('.field'), ok = isValid(f);
+      w.classList.toggle('invalid', !ok);
+      w.classList.toggle('valid', ok && !!f.value.trim() && f.tagName !== 'TEXTAREA' && f.tagName !== 'SELECT');
+      f.setAttribute('aria-invalid', !ok);
+      return ok;
+    }
+    const syncFilled = f => f.closest('.field').classList.toggle('filled', !!f.value);
+    fields.forEach(f => {
+      syncFilled(f);
+      f.addEventListener('input', () => {
+        syncFilled(f);
+        const w = f.closest('.field');
+        if (w.classList.contains('invalid')) validate(f);
+        else w.classList.toggle('valid', isValid(f) && !!f.value.trim() && f.tagName === 'INPUT');
+      });
+      f.addEventListener('change', () => { syncFilled(f); validate(f); });
+      f.addEventListener('blur', () => { if (f.value.trim()) validate(f); });
+    });
+
+    // Service CTAs pre-select the dropdown
+    document.addEventListener('click', e => {
+      const a = e.target.closest('[data-prefill]');
+      if (!a) return;
+      service.value = a.dataset.prefill;
+      syncFilled(service); validate(service);
+    });
+
+    function burst() {
+      if (reduce) return;
+      const host = $('#burst'), colors = ['#00E699', '#F59E0B', '#8AF5CF', '#FFFFFF'];
+      for (let i = 0; i < 18; i++) {
+        const p = document.createElement('span');
+        p.className = 'particle';
+        p.style.left = p.style.top = 'calc(50% - 3.5px)';
+        p.style.background = colors[i % colors.length];
+        host.appendChild(p);
+        const a = (Math.PI * 2 * i) / 18 + Math.random() * 0.3, d = 60 + Math.random() * 50;
+        p.animate([{ transform: 'translate(0,0) scale(1)', opacity: 1 },
+                   { transform: `translate(${Math.cos(a) * d}px, ${Math.sin(a) * d}px) scale(.2)`, opacity: 0 }],
+                  { duration: 900 + Math.random() * 400, delay: 750, easing: 'cubic-bezier(.2,.8,.2,1)', fill: 'forwards' })
+          .onfinish = () => p.remove();
+      }
+    }
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const results = fields.map(validate);
+      const firstBad = fields[results.indexOf(false)];
+      if (firstBad) {
+        card.classList.remove('shake'); void card.offsetWidth; card.classList.add('shake');
+        firstBad.focus();
+        return;
+      }
+      submit.classList.add('loading');
+      submit.disabled = true;
+      const first = $('#f-name').value.trim().split(/\s+/)[0];
+      // Simulated request. Replace with fetch() to your form endpoint or CRM.
+      setTimeout(() => {
+        submit.classList.remove('loading');
+        submit.disabled = false;
+        $('#success-msg').textContent = `Thanks, ${first}! A partner will reach out within one business day to schedule your consultation.`;
+        card.style.minHeight = card.offsetHeight + 'px';
+        card.classList.add('done');
+        burst();
+      }, 1200);
+    });
+
+    $('#reset').addEventListener('click', () => {
+      form.reset();
+      fields.forEach(f => { const w = f.closest('.field'); w.classList.remove('valid', 'invalid', 'filled'); f.removeAttribute('aria-invalid'); });
+      card.classList.remove('done');
+      setTimeout(() => (card.style.minHeight = ''), 600);
+      $('#f-name').focus({ preventScroll: true });
+    });
+  })();
+  </script>
+</body>
+</html>
