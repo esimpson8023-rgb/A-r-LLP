@@ -44,3 +44,5 @@ The hero photo (`assets/hero-meeting.jpg`, embedded in the page as a data URI) a
 ### Branding (v3)
 
 `a-r-llp-v3.html` uses the firm logo (`assets/ar-llp-logo.png`, embedded in the page as a data URI) and a palette built around it: white backgrounds, warm charcoal text, logo gold (#B8924A) for fills and accents, and a deeper gold (#86672A) for small text so it stays readable on white. A higher-resolution or SVG version of the logo would render more sharply on high-density screens.
+
+Two dark photo sections add contrast: a call-to-action band between Services and Industries (`assets/band-boardroom.jpg`) and the Testimonials background (`assets/testimonials-bg.jpg`). Both are embedded as data URIs; confirm they are licensed before publishing.
