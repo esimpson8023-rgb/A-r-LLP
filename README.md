@@ -39,7 +39,7 @@ Content is written for Canada and uses details published on arllp.ca (Waterdown 
 - The "Sample report" figures in the hero illustration (illustrative only)
 - Office hours, which were not found on arllp.ca and are not shown (the primary email is info@arllp.ca)
 
-A softly washed-out backdrop photo (`assets/hero-backdrop.jpg`, 716 x 428) fades in behind the top of the hero. The hero photo (`assets/hero-meeting.jpg`, 1050 x 700, embedded in the page as a data URI) is shown whole at its natural 3:2 shape beside the headline. Confirm it is licensed before publishing. The contact form only simulates a submission; connect it to a form service or backend.
+The hero banner (`assets/hero-meeting.jpg`, 1050 x 700, embedded in the page as a data URI) runs across the top behind the headline at its natural 3:2 shape, with a light wash on the text side only. Confirm it is licensed before publishing. The contact form only simulates a submission; connect it to a form service or backend.
 
 ### Branding (v3)
 
