@@ -92,7 +92,7 @@
   // Replace with a form service (e.g. Formspree) or your own endpoint when ready.
   var form = document.getElementById("contact-form");
   var status = form.querySelector(".form-status");
-  var FIRM_EMAIL = "hello@example.com";
+  var FIRM_EMAIL = "info@arllp.ca";
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();

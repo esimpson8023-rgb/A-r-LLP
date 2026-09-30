@@ -12,7 +12,7 @@ A static, dependency-free marketing site for A&R LLP. Open `index.html` in a bro
 ## Before going live, replace the placeholders
 
 - **Contact details** in the `#contact` section of `index.html`: phone, email, office address, hours
-- **`FIRM_EMAIL`** in `js/main.js` (the form currently opens the visitor's email app; swap in a form service such as Formspree or your own endpoint if you prefer)
+- **`FIRM_EMAIL`** in `js/main.js` is set to info@arllp.ca (the form currently opens the visitor's email app; swap in a form service such as Formspree or your own endpoint if you prefer)
 - **Footer legal line**: LLP registration number (`OC…`) and registered office address
 - Add your professional body and regulatory wording (e.g. ICAEW/ACCA registration, audit registration) and a privacy policy / cookie notice
 - Review services, FAQs and key dates so they match what the firm actually offers
@@ -37,7 +37,7 @@ Content is written for Canada and uses details published on arllp.ca (Waterdown 
 - Partner bio (Hassan Rasul, CPA, CMA, 20+ years), taken from his public profile
 - Industries and service descriptions in the `SERVICES` and `INDUSTRIES` objects in the script
 - The "Sample report" figures in the hero illustration (illustrative only)
-- A contact email and office hours, which were not found on arllp.ca and are not shown
+- Office hours, which were not found on arllp.ca and are not shown (the primary email is info@arllp.ca)
 
 The hero uses a built-in illustration rather than a photo; swap in licensed photography if preferred. The contact form only simulates a submission; connect it to a form service or backend.
 

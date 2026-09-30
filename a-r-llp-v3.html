@@ -582,8 +582,9 @@
           <ul data-reveal style="--d:.15s" class="mt-10 space-y-5">
             <li class="flex gap-4"><span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-accent-soft text-accent"><i data-lucide="map-pin" class="h-5 w-5"></i></span><div><p class="font-medium text-ink">Office</p><p class="text-[15px]">9-22 Spring Creek Dr<br>Waterdown, ON L8B 1V7</p></div></li>
             <li class="flex gap-4"><span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-accent-soft text-accent"><i data-lucide="phone" class="h-5 w-5"></i></span><div><p class="font-medium text-ink">Phone</p><a href="tel:+19056337081" class="text-[15px] hover:text-accent">(905) 633-7081</a></div></li>
+            <li class="flex gap-4"><span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-accent-soft text-accent"><i data-lucide="mail" class="h-5 w-5"></i></span><div><p class="font-medium text-ink">Email</p><p class="flex flex-wrap items-center gap-x-3 gap-y-1"><a href="mailto:info@arllp.ca" class="select-all text-[15px] hover:text-accent">info@arllp.ca</a><button type="button" data-copy="info@arllp.ca" class="rounded-full border border-stone-300 px-2.5 py-0.5 text-xs font-medium text-stone-600 transition hover:border-ink hover:text-ink">Copy</button></p></div></li>
             <li class="flex gap-4"><span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-accent-soft text-accent"><i data-lucide="compass" class="h-5 w-5"></i></span><div><p class="font-medium text-ink">Areas served</p><p class="text-[15px]">Waterdown, Burlington, Oakville, Hamilton<br>and the Greater Toronto Area</p></div></li>
-            <li class="flex gap-4"><span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-accent-soft text-accent"><i data-lucide="clock" class="h-5 w-5"></i></span><div><p class="font-medium text-ink">Appointments</p><p class="text-[15px]">Call or send the form to book a time</p></div></li>
+            <li class="flex gap-4"><span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-accent-soft text-accent"><i data-lucide="clock" class="h-5 w-5"></i></span><div><p class="font-medium text-ink">Appointments</p><p class="text-[15px]">Call, email or send the form to book a time</p></div></li>
           </ul>
         </div>
 
@@ -592,7 +593,7 @@
             <form id="lead-form" novalidate>
               <div id="form-inner">
                 <h3 class="font-display text-2xl text-ink">Book a Consultation</h3>
-                <p class="mt-1 text-sm text-stone-500">A member of our team will follow up with you.</p>
+                <p class="mt-1 text-sm text-stone-500">A member of our team will follow up with you. Prefer email? Write to <a href="mailto:info@arllp.ca" class="font-medium text-accent hover:underline">info@arllp.ca</a>.</p>
                 <div class="mt-8 grid gap-5 sm:grid-cols-2">
                   <div class="fld">
                     <label for="f-name" class="mb-1.5 block text-sm font-medium text-ink">Full name</label>
@@ -683,6 +684,9 @@
             <a href="#" aria-label="X" class="grid h-10 w-10 place-items-center rounded-full border border-white/15 transition hover:border-white hover:text-white">
               <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.8 3h3.1l-6.8 7.8L22 21h-6.2l-4.9-6.4L5.3 21H2.2l7.3-8.3L2 3h6.4l4.4 5.8L17.8 3zm-1.1 16.2h1.7L7.4 4.7H5.6l11.1 14.5z"/></svg>
             </a>
+            <a href="mailto:info@arllp.ca" aria-label="Email info@arllp.ca" class="grid h-10 w-10 place-items-center rounded-full border border-white/15 transition hover:border-white hover:text-white">
+              <i data-lucide="mail" class="h-4 w-4"></i>
+            </a>
           </div>
         </div>
         <div class="grid grid-cols-2 gap-8 sm:grid-cols-3 md:col-span-8">
@@ -708,6 +712,7 @@
             <p class="text-xs font-semibold uppercase tracking-[.14em] text-gold-light">Get in touch</p>
             <ul class="mt-5 space-y-3 text-[15px]">
               <li><a href="tel:+19056337081" class="flink">(905) 633-7081</a></li>
+              <li><a href="mailto:info@arllp.ca" class="flink">info@arllp.ca</a></li>
               <li>9-22 Spring Creek Dr<br>Waterdown, ON L8B 1V7</li>
             </ul>
           </div>
@@ -1210,6 +1215,15 @@
       card.classList.remove('done');
       setTimeout(() => (card.style.minHeight = ''), 500);
       $('#f-name').focus({ preventScroll: true });
+    });
+
+    // Copy buttons (email links may not open a mail app for every visitor)
+    document.addEventListener('click', e => {
+      const btn = e.target.closest('[data-copy]');
+      if (!btn) return;
+      const text = btn.dataset.copy, done = () => { btn.textContent = 'Copied'; setTimeout(() => (btn.textContent = 'Copy'), 1600); };
+      const fallback = () => { const a = btn.parentElement.querySelector('a'); const r = document.createRange(); r.selectNodeContents(a); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); };
+      try { navigator.clipboard.writeText(text).then(done, fallback); } catch (_) { fallback(); }
     });
 
     // Convert icons last, after the industries tabs and panel have been rendered.
