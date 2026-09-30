@@ -31,12 +31,13 @@ Before publishing, replace the placeholder contact details, the testimonials, th
 
 `a-r-llp-v3.html` is a light, minimalist version (white background, navy text, deep teal accent, serif headlines). It uses Tailwind CSS and Lucide icons from CDNs plus vanilla JS. Sections: hero, stats bar, About with an "Our approach" timeline, six services that open a detail dialog, an eight-industry switcher, a testimonial carousel, and a consultation form.
 
-Placeholder content that must be replaced before publishing (the page labels the stats and testimonials as placeholders on screen):
-- Stats bar figures (25+, 500+, 98%)
-- Testimonials (sample names and quotes)
-- Contact details: address, phone, email, hours (also in the footer)
-- The "Sample report" figures in the hero illustration
-- Service and industry descriptions in the `SERVICES` and `INDUSTRIES` objects in the script
+Content is written for Canada and uses details published on arllp.ca (Waterdown office, phone, services, partner, "serving Halton and Hamilton since 2010"). Before publishing, confirm:
+- The stats bar (15+ years serving Halton & Hamilton, 20+ years partner experience, QuickBooks & Sage ProAdvisors)
+- Testimonials: these are paraphrased from arllp.ca/testimonials; replace them with the exact client wording
+- Partner bio (Hassan Rasul, CPA, CMA, 20+ years), taken from his public profile
+- Industries and service descriptions in the `SERVICES` and `INDUSTRIES` objects in the script
+- The "Sample report" figures in the hero illustration (illustrative only)
+- A contact email and office hours, which were not found on arllp.ca and are not shown
 
 The hero uses a built-in illustration rather than a photo; swap in licensed photography if preferred. The contact form only simulates a submission; connect it to a form service or backend.
 
