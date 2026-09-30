@@ -39,7 +39,7 @@ Content is written for Canada and uses details published on arllp.ca (Waterdown 
 - The "Sample report" figures in the hero illustration (illustrative only)
 - Office hours, which were not found on arllp.ca and are not shown (the primary email is info@arllp.ca)
 
-The hero photo (`assets/hero-calculator.jpg`, embedded in the page as a data URI) is 1000 x 360. Before publishing, confirm it is licensed and replace it with a larger file (2000px or wider) if available: re-encode the new image as a data URI in the `hero-img` `<img>`. The contact form only simulates a submission; connect it to a form service or backend.
+A softly washed-out backdrop photo (`assets/hero-backdrop.jpg`, 716 x 428) fades in behind the top of the hero. The hero photo (`assets/hero-calculator.jpg`, embedded in the page as a data URI) is 1000 x 360. Before publishing, confirm it is licensed and replace it with a larger file (2000px or wider) if available: re-encode the new image as a data URI in the `hero-img` `<img>`. The contact form only simulates a submission; connect it to a form service or backend.
 
 ### Branding (v3)
 
