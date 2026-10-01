@@ -2,6 +2,10 @@
 
 A static, dependency-free marketing site for A&R LLP. Open `index.html` in a browser, or host the folder on any static host (GitHub Pages, Netlify, etc.).
 
+## Next.js app
+
+The site is also available as a Next.js app in `web/`, rebuilt from `a-r-llp-v3.html` with the same design and behaviour. See `web/README.md` to run it.
+
 ## Structure
 
 - `index.html` — single-page site: hero, services, client types, process, about, FAQs, contact
