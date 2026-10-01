@@ -2,16 +2,12 @@
 
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { ArrowRight } from 'lucide-react';
-import { SERVICES, SERVICE_KEYS } from '@/lib/content';
+import { isFieldValid as isValid, MAX_LENGTH, REQUIRED_FIELDS as REQUIRED, SERVICE_OPTIONS, type ContactField as Field } from '@/lib/contact';
 import { useSite } from './SiteProvider';
 
-type Field = 'name' | 'email' | 'service' | 'message';
-type Values = Record<Field | 'phone' | 'method', string>;
+type Values = Record<Field | 'phone' | 'method' | 'website', string>;
 
-const REQUIRED: Field[] = ['name', 'email', 'service', 'message'];
-const EMPTY: Values = { name: '', email: '', phone: '', service: '', method: 'email', message: '' };
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-const isValid = (f: Field, v: string) => !!v.trim() && (f !== 'email' || EMAIL_RE.test(v.trim()));
+const EMPTY: Values = { name: '', email: '', phone: '', service: '', method: 'email', message: '', website: '' };
 const ERRORS: Record<Field, string> = {
   name: 'Please enter your name.',
   email: 'Please enter a valid email address.',
@@ -23,7 +19,7 @@ export default function ContactForm() {
   const { prefill } = useSite();
   const [values, setValues] = useState<Values>(EMPTY);
   const [invalid, setInvalid] = useState<Partial<Record<Field, boolean>>>({});
-  const [status, setStatus] = useState<'idle' | 'loading' | 'done'>('idle');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'done' | 'error'>('idle');
   const [shaking, setShaking] = useState(false);
   const [flash, setFlash] = useState(false);
   const [minHeight, setMinHeight] = useState<number | undefined>();
@@ -67,7 +63,7 @@ export default function ContactForm() {
     };
   }, [prefill]);
 
-  const onSubmit = (e: FormEvent) => {
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
     const bad = REQUIRED.filter(f => !validate(f));
     if (bad.length) {
@@ -78,12 +74,19 @@ export default function ContactForm() {
       return;
     }
     setStatus('loading');
-    // Simulated submission. Replace with a fetch() to your form service or an API route.
-    setTimeout(() => {
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(values),
+      });
+      if (!res.ok) throw new Error(`Contact request failed with ${res.status}`);
       setFirstName(values.name.trim().split(/\s+/)[0]);
       setMinHeight(card.current?.offsetHeight);
       setStatus('done');
-    }, 1100);
+    } catch {
+      setStatus('error');
+    }
   };
 
   const reset = () => {
@@ -133,21 +136,21 @@ export default function ContactForm() {
               <label htmlFor="f-name" className="mb-1.5 block text-sm font-medium text-ink">
                 Full name
               </label>
-              <input id="f-name" {...common('name')} className="inp" type="text" autoComplete="name" placeholder="Jane Smith" value={values.name} onChange={e => set('name', e.target.value)} />
+              <input id="f-name" {...common('name')} className="inp" type="text" autoComplete="name" maxLength={MAX_LENGTH.name} placeholder="Jane Smith" value={values.name} onChange={e => set('name', e.target.value)} />
               {err('name')}
             </div>
             <div className={fld('email')}>
               <label htmlFor="f-email" className="mb-1.5 block text-sm font-medium text-ink">
                 Email
               </label>
-              <input id="f-email" {...common('email')} className="inp" type="email" autoComplete="email" placeholder="jane@company.ca" value={values.email} onChange={e => set('email', e.target.value)} />
+              <input id="f-email" {...common('email')} className="inp" type="email" autoComplete="email" maxLength={MAX_LENGTH.email} placeholder="jane@company.ca" value={values.email} onChange={e => set('email', e.target.value)} />
               {err('email')}
             </div>
             <div className="fld">
               <label htmlFor="f-phone" className="mb-1.5 block text-sm font-medium text-ink">
                 Phone <span className="font-normal text-stone-500">(optional)</span>
               </label>
-              <input id="f-phone" name="phone" className="inp" type="tel" autoComplete="tel" placeholder="(905) 555-0123" value={values.phone} onChange={e => set('phone', e.target.value)} />
+              <input id="f-phone" name="phone" className="inp" type="tel" autoComplete="tel" maxLength={MAX_LENGTH.phone} placeholder="(905) 555-0123" value={values.phone} onChange={e => set('phone', e.target.value)} />
             </div>
             <div className={fld('service')}>
               <label htmlFor="f-service" className="mb-1.5 block text-sm font-medium text-ink">
@@ -158,12 +161,11 @@ export default function ContactForm() {
                   <option value="" disabled>
                     Select a service
                   </option>
-                  {SERVICE_KEYS.map(k => (
+                  {Object.entries(SERVICE_OPTIONS).map(([k, label]) => (
                     <option key={k} value={k}>
-                      {SERVICES[k].title}
+                      {label}
                     </option>
                   ))}
-                  <option value="other">Something else</option>
                 </select>
               </div>
               {err('service')}
@@ -185,10 +187,28 @@ export default function ContactForm() {
               <label htmlFor="f-msg" className="mb-1.5 block text-sm font-medium text-ink">
                 How can we help?
               </label>
-              <textarea id="f-msg" {...common('message')} className="inp min-h-[130px] resize-y" placeholder="Tell us briefly about your situation..." value={values.message} onChange={e => set('message', e.target.value)} />
+              <textarea id="f-msg" {...common('message')} className="inp min-h-[130px] resize-y" maxLength={MAX_LENGTH.message} placeholder="Tell us briefly about your situation..." value={values.message} onChange={e => set('message', e.target.value)} />
               {err('message')}
             </div>
           </div>
+          {/* Honeypot: hidden from people and screen readers; bots that fill it are ignored by the server. */}
+          <div className="absolute -left-[9999px] h-px w-px overflow-hidden" aria-hidden="true">
+            <label htmlFor="f-website">Website</label>
+            <input id="f-website" name="website" type="text" tabIndex={-1} autoComplete="off" value={values.website} onChange={e => set('website', e.target.value)} />
+          </div>
+          {status === 'error' && (
+            <p role="alert" className="mt-6 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
+              Sorry, your message couldn&apos;t be sent. Please try again, or email{' '}
+              <a href="mailto:info@arllp.ca" className="font-medium underline">
+                info@arllp.ca
+              </a>{' '}
+              or call{' '}
+              <a href="tel:+19056337081" className="font-medium underline">
+                (905) 633-7081
+              </a>
+              .
+            </p>
+          )}
           <div className="mt-7 flex flex-col-reverse gap-4 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-xs leading-relaxed text-stone-500">
               Your information is kept confidential. Submitting this form does not create a client relationship.
