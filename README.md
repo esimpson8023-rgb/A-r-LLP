@@ -50,3 +50,7 @@ The hero banner (`assets/hero-meeting.jpg`, 1050 x 700, embedded in the page as 
 `a-r-llp-v3.html` uses the firm logo (`assets/ar-llp-logo.png`, embedded in the page as a data URI) and a palette built around it: white backgrounds, warm charcoal text, logo gold (#B8924A) for fills and accents, and a deeper gold (#86672A) for small text so it stays readable on white. A navy family drawn from the hero photo adds contrast: deep navy (#1E3350) for the footer, dark photo sections and selected states, and pale blue (#EFF4F9) for the Services background. A higher-resolution or SVG version of the logo would render more sharply on high-density screens.
 
 Two dark photo sections add contrast: a call-to-action band between Services and Industries (`assets/band-boardroom.jpg`) and the Testimonials background (`assets/testimonials-bg.jpg`). Both are embedded as data URIs; confirm they are licensed before publishing.
+
+## Claude Code marketing skills
+
+`.claude/skills/` vendors the 50 marketing skills from [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills) (MIT, see `.claude/skills/MARKETINGSKILLS-LICENSE`), pinned at commit `55ff469`. Claude Code loads them automatically in this repo — e.g. `/cro`, `/copywriting`, `/seo-audit`, `/schema`, `/content-strategy`. Many skills read optional product context from `.claude/product-marketing.md`; the `product-marketing` skill can create it. To update, re-copy `skills/` from the upstream repo.
