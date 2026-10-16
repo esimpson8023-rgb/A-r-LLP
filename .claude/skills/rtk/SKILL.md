@@ -15,15 +15,16 @@ with noise stripped. Treat rtk output as the complete result.
 command -v rtk || export PATH="$HOME/.local/bin:$PATH"; rtk --version
 ```
 
-If it is missing, install it (Apache-2.0 edition, pinned, checksum-verified):
+If it is missing, install it (pinned, checksum-verified):
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh \
-  | RTK_EDITION=oss RTK_VERSION=v0.49.0 sh
+  | RTK_VERSION=v0.49.0 sh
 export PATH="$HOME/.local/bin:$PATH"
 ```
 
-Alternatives: `brew install rtk-ai/tap/rtk-oss`, or `cargo install rtk`.
+Alternatives: `brew install rtk`, or `cargo install rtk`. The Apache-2.0-only
+edition (`RTK_EDITION=oss`) is not published for every release.
 If the installer says the latest-version lookup failed, keep `RTK_VERSION` pinned.
 
 ## 2. Global setup (all projects, done once on the user's machine)
