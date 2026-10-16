@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "tailgate": {
+      "type": "http",
+      "url": "https://mcp.usetailgate.ca/mcp"
+    },
+    "github": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp"
+    }
+  }
+}
